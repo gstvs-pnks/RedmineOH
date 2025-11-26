@@ -3,10 +3,10 @@
  Experimenting with plugins, themes, afterwards Redmine installation will be made more portable. 
 
 
-## Raw Redmine how-to : 
+## Redmine how-to : 
 
 <details>
-  <summary>Installing Redmine itself</summary>
+  <summary>Installing Redmine (original)</summary>
     
   ```bash
 1. Install Dependencies:
@@ -62,6 +62,67 @@
 
      RAILS_ENV=production bundle exec rails server -b 0.0.0.0
 
+
+  ```
+
+</details>
+
+<details>
+  <summary>Installing Redmine (this version)</summary>
+    
+  ```bash
+1. Install Dependencies:
+
+     sudo apt update
+     sudo apt install -y build-essential libssl-dev libreadline-dev zlib1g-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev libicu-dev libmariadb-dev-compat libmariadb-dev
+     
+     sudo apt install -y ruby-full
+     sudo gem install bundler
+     
+
+2. Download Your Redmine Fork:
+
+     git clone https://github.com/gstvs-pnks/RedmineM89 /home/main/Documents/GitHub/RedmineM89
+     cd /home/main/Documents/GitHub/RedmineM89
+     
+
+3. Install Gems:
+
+     bundle install --without development test
+     
+
+4. Configure MySQL/MariaDB Database:
+     
+     sudo apt install -y mariadb-client
+
+     sudo mysql -u root -p
+     CREATE DATABASE redmine CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+     CREATE USER 'redmine'@'localhost' IDENTIFIED BY '...';
+     GRANT ALL PRIVILEGES ON redmine.* TO 'redmine'@'localhost';
+     FLUSH PRIVILEGES;
+     EXIT;
+     
+
+5. Configure Redmine Database Connection:
+   - Edit `config/database.yml`:
+
+     production:
+       adapter: mysql2
+       database: redmine
+       host: localhost
+       username: redmine
+       password: "..."
+       encoding: utf8mb4
+     
+
+6. Database Migration:
+
+     RAILS_ENV=production bundle exec rake db:migrate
+     
+
+7. Start Redmine:
+
+     RAILS_ENV=production bundle exec rails server -b 0.0.0.0
 
   ```
 
