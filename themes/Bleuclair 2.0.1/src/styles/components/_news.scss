@@ -1,0 +1,13 @@
+.controller-news.action-show div.news {
+  & > p {
+    margin-top: 0;
+  }
+
+  .wiki p:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+div#add-news, div#edit-news {
+  margin-bottom: 20px;
+}

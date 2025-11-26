@@ -1,0 +1,31 @@
+// forum(board)
+
+.controller-messages.action-show #content h2 + div.message {
+  border-radius: 3px;
+  background-color: $color-history-bg;
+  border: 1px solid $color-history-border;
+  padding: $histry-padding;
+
+  & > p {
+    background-color: $color-note-title-bg;
+    border-radius: 4px;
+    margin: 0;
+    padding: $note-title-padding;
+    a[href*="activity"][data-absolute-date*=":"] {
+      box-shadow: none;
+      padding: 0;
+    }
+  }
+
+  div.reaction {
+    margin: 0;
+    padding: $note-title-padding;
+  }
+}
+
+#replies {
+  background-color: $color-history-bg;
+  border-radius: 3px;
+  border: 1px solid $color-history-border;
+  padding: $histry-padding;
+}
