@@ -24,6 +24,7 @@ body {
   position: relative;
   left: 0;
   right: 0;
+  color: #212529 !important;
 }
 h1, h2, h3, h4 {
   font-family: 'Lato', Helvetika, Calibri, Arial, sans-serif;
@@ -50,25 +51,25 @@ input:focus {
   text-transform: uppercase;
   border-right: 2px solid #eeeff3;
   padding: 0;
-  background-color: #354051;
+  background-color: #eff4f8;
   line-height: 40px;
 }
 
 #top-menu a {
-  color: #a0abbe;
+  color: #8a090c;
   margin-right: 0px;
   font-size: 16px;
 }
 
 #top-menu a:hover {
-  color: #47a3da;
+  color: #d61a1a;
   text-decoration: none;
 }
 
 #top-menu #loggedas {
   float: right;
   margin-right: 0.5em;
-  color: #999;
+  color: #8a090c;
   font-size: 15px;
 }
 
@@ -79,7 +80,7 @@ input:focus {
 #top-menu > ul{
   margin-top: 20px;
   padding: 0 0 20px 20px;
-  border-bottom: 3px solid #2d3747;
+  border-bottom: 3px solid #8a090c;
 }
 #top-menu, .menu-push-toright, body, #menu, #quick-search {
   -webkit-transition: all 0.3s ease;
@@ -128,12 +129,13 @@ label[for="q"]{
 #header{
   padding-left: 80px;
   padding-top: 80px;
-  background-color: #fefefe;
-  color: #fefefe;
+  /*background-color: #eff4f8;*/
+  color: #eff4f8;
+  background: #8a090c !important;
 }
 
 #header h1{
-  color: #4e515e;
+  color: #eff4f8;
   margin-left: -40px;
 }
 #header h1 a{
@@ -143,11 +145,16 @@ label[for="q"]{
   color: #fefefe;
 }
 
+#a, a:link, a:visited{ 
+color: #212529; 
+text-decoration: none; 
+}
+
 #quick-search {
   position: fixed;
   left: 60px;
   top: 0;
-  /*padding-top: 8px;*/
+  /*padding-top: 0px;*/
   height: 53px;
   margin-left: 15px;
   border: 3px;
@@ -164,6 +171,7 @@ label[for="q"]{
   width: 100%;
   height: 100%;
   border: none;
+  margin: 13px;
 }
 
 #quick-search form {
@@ -174,9 +182,9 @@ label[for="q"]{
 
 #quick-search input{
   padding: 0 20px !important;
-  height: auto;
+  height: 28px !important;
   /*width: calc(100% - 2em);*/
-  border: none;
+  border: 1px solid var(--oc-gray-4) !important;
   width: 100%;
   background: transparent;
   color: rgba(0,0,0,0.8);
@@ -210,7 +218,7 @@ label[for="q"]{
 
 #top-menu #loggedas{
   font-size: 0;
-  border-bottom: 3px solid #2d3747;
+  border-bottom: 3px solid #8a090c;
   text-align: center;
   margin-top: 10px;
   float: none;
@@ -228,7 +236,7 @@ label[for="q"]{
   padding: 0px;
 }
 #top-menu .logout{
-  color: #ad66ad;
+  color: #8a090c;
 }
 #header{
   border-bottom: 2px solid #dee4e9;
@@ -239,13 +247,13 @@ label[for="q"]{
 }
 #main-menu li a.selected,
 #main-menu li a.selected:hover {
-  border-bottom: 3px solid #40aff8;
+  border-bottom: 3px solid #d61a1a;
 }
 #main-menu li a:hover {
-  border-bottom: 3px solid #40aff8;
+  border-bottom: 3px solid #d61a1a;
 }
 #main-menu li a {
-  color: #848f9f;
+  color: #FFF;
   text-transform: uppercase;
   margin-left: 20px;
   padding: 4px 5px 4px 5px;
@@ -254,7 +262,7 @@ label[for="q"]{
 #main-menu li a:hover {
   background: none;
   color: #000;
-  border-bottom: 3px solid #40aff8;
+  border-bottom: 3px solid #d61a1a;
 }
 #main-menu li a.new-object {
   background-color: transparent;
@@ -334,7 +342,7 @@ p.nodata{
 
 
 #sidebar {
-  width: 15% !important;
+  width: 15%;
 }
 #sidebar a.selected {
   font-weight: bold;

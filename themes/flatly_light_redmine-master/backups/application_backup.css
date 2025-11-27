@@ -1,17 +1,17 @@
-@import url("/assets/application-2ac82834.css");
-@import url("/assets/themes/flatly_light_redmine-master/font-awesome-db8d2dec.css");
+@import url(../../../stylesheets/application.css);
+@import url(font-awesome.css);
 @import url(//fonts.googleapis.com/css?family=Lato:300,400,700);
-@import url("/assets/themes/flatly_light_redmine-master/theme-5b712139.css");
-@import url("/assets/themes/flatly_light_redmine-master/lists-064c3795.css");
-@import url("/assets/themes/flatly_light_redmine-master/color_tasks-b17df440.css");
-@import url("/assets/themes/flatly_light_redmine-master/DMSF-8706e535.css");
-@import url("/assets/themes/flatly_light_redmine-master/buttons-38d608c2.css");
-@import url("/assets/themes/flatly_light_redmine-master/forum-7e85d754.css");
-@import url("/assets/themes/flatly_light_redmine-master/news-efde92b3.css");
-@import url("/assets/themes/flatly_light_redmine-master/pagination-e4b6c8f8.css");
-@import url("/assets/themes/flatly_light_redmine-master/redminebacklogs-f90f8189.css");
-@import url("/assets/themes/flatly_light_redmine-master/activity-a861eb60.css");
-@import url("/assets/themes/flatly_light_redmine-master/projects-fd022d89.css");
+@import url(theme.css);
+@import url(lists.css);
+@import url(color_tasks.css);
+@import url(DMSF.css);
+@import url(buttons.css);
+@import url(forum.css);
+@import url(news.css);
+@import url(pagination.css);
+@import url(redminebacklogs.css);
+@import url(activity.css);
+@import url(projects.css);
 
 html{
   overflow-x: hidden;
@@ -377,7 +377,7 @@ tr.time-entry {
   margin: auto;
   width: 200px;
   height: 45px;
-  background-image: url("/assets/themes/flatly_light_redmine-master/redmine_logo-1f334c53.png");
+  background-image: url('../images/redmine_logo.png');
   background-size: 200px;
   background-repeat: no-repeat;
 }
