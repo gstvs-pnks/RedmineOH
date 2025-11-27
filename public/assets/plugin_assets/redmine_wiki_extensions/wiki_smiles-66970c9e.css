@@ -1,0 +1,64 @@
+/* Here added styles for smiles */
+
+.jstb_smile {
+	background-image: url("/assets/plugin_assets/redmine_wiki_extensions/smile-fa123d98.png");
+}
+.jstb_sad {
+	background-image: url("/assets/plugin_assets/redmine_wiki_extensions/sad-193120fd.png");
+}
+.jstb_tongue {
+	background-image: url("/assets/plugin_assets/redmine_wiki_extensions/tongue-467ead9e.png");
+}
+.jstb_biggrin {
+	background-image: url("/assets/plugin_assets/redmine_wiki_extensions/biggrin-b5082a8f.png");
+}
+.jstb_wink {
+	background-image: url("/assets/plugin_assets/redmine_wiki_extensions/wink-3379882c.png");
+}
+.jstb_check {
+	background-image: url("/assets/plugin_assets/redmine_wiki_extensions/check-e804d786.png");
+}
+.jstb_warn {
+	background-image: url("/assets/plugin_assets/redmine_wiki_extensions/warning-699c1e00.png");
+}
+.jstb_add {
+	background-image: url("/assets/plugin_assets/redmine_wiki_extensions/add-f7d48fbc.png");
+}
+
+.jstt_smiles #smiles_img {
+	background-color:#F7F7F7;
+	background-position:50% 50%;
+	background-repeat:no-repeat;
+	border:1px solid #DDDDDD;
+	height:22px;
+	margin-right:6px;
+	width:22px;
+}
+
+.jstt_smiles #smiles_img:hover {
+	border-color:#000000;
+}
+
+.jstt_smiles #group_of_smiles {
+	background-color:#F7F7F7;
+	border:1px solid #507AAA;
+	display:none;
+	position:absolute;
+	width:210px;
+}
+
+.jstt_smiles a:hover  #group_of_smiles{
+	display:block;
+	z-index:80;
+}
+
+.jstt_smiles {
+	float:left;
+}
+
+.jstElements button {
+	float:left;
+}
+.jstElements, .jstSpacer {
+	float:left;
+}

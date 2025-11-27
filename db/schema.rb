@@ -666,6 +666,63 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_07_073256) do
     t.index ["page_id"], name: "wiki_contents_page_id"
   end
 
+  create_table "wiki_extensions_comments", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.integer "wiki_page_id"
+    t.string "key_word"
+    t.integer "user_id"
+    t.text "comment"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer "parent_id"
+  end
+
+  create_table "wiki_extensions_counts", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "page_id"
+    t.date "date"
+    t.integer "count"
+  end
+
+  create_table "wiki_extensions_menus", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "menu_no"
+    t.string "page_name"
+    t.string "title"
+    t.boolean "enabled"
+  end
+
+  create_table "wiki_extensions_settings", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.integer "project_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer "lock_version"
+    t.boolean "auto_preview_enabled", default: false, null: false
+    t.boolean "tag_disabled", default: false
+  end
+
+  create_table "wiki_extensions_tag_relations", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "wiki_page_id"
+    t.timestamp "created_at"
+    t.index ["tag_id"], name: "index_wiki_extensions_tag_relations_on_tag_id"
+    t.index ["wiki_page_id"], name: "index_wiki_extensions_tag_relations_on_wiki_page_id"
+  end
+
+  create_table "wiki_extensions_tags", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.integer "project_id"
+    t.string "name"
+    t.timestamp "created_at"
+    t.index ["name"], name: "index_wiki_extensions_tags_on_name"
+    t.index ["project_id"], name: "index_wiki_extensions_tags_on_project_id"
+  end
+
+  create_table "wiki_extensions_votes", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "keystr"
+    t.string "target_class_name"
+    t.integer "target_id"
+    t.integer "count"
+  end
+
   create_table "wiki_pages", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "wiki_id", null: false
     t.string "title", null: false
