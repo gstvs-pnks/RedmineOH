@@ -30,7 +30,8 @@
      
 
 4. Configure MySQL/MariaDB Database:
-     
+
+     sudo apt install -y mariadb-server
      sudo apt install -y mariadb-client
 
      sudo mysql -u root -p
