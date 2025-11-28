@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '>= 3.2.0', '< 3.5.0'
 
+gem 'rexml'
 gem 'puma', '7.1.0'
 gem 'rails', '8.0.4'
 gem 'rouge', '~> 4.5'

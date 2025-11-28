@@ -470,6 +470,7 @@ DEPENDENCIES
   rbpdf (~> 1.21.4)
   requestjs-rails (~> 0.0.13)
   rest-client (~> 2.1)
+  rexml
   roadie-rails (~> 3.4.0)
   rotp (>= 5.0.0)
   rouge (~> 4.5)
