@@ -12,7 +12,7 @@
 1. Install Dependencies:
 
      sudo apt update
-     sudo apt install -y build-essential libssl-dev libreadline-dev zlib1g-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev libicu-dev libmariadb-dev-compat libmariadb-dev
+     sudo apt install -y build-essential libssl-dev libreadline-dev zlib1g-dev libyaml-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev libicu-dev libmariadb-dev-compat libmariadb-dev mariadb-client mariadb-server
      
      sudo apt install -y ruby-full
      sudo gem install bundler
