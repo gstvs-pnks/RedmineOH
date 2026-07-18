@@ -1,7 +1,6 @@
 /* RedmineOH theme entry point */
 
-@import url("tokens.css");
-@import url(../../application.css);
+@import url("/assets/application-2ac82834.css");
 
 :root {
   --oh-theme-name: "RedmineOH";
