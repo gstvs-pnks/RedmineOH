@@ -1,0 +1,1071 @@
+  [1m[35m (1.7ms)[0m  [1m[35mDROP TABLE IF EXISTS `attachments` CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE `attachments` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `container_id` int, `container_type` varchar(30), `filename` varchar(255) DEFAULT '' NOT NULL, `disk_filename` varchar(255) DEFAULT '' NOT NULL, `filesize` bigint DEFAULT 0 NOT NULL, `content_type` varchar(255) DEFAULT '', `digest` varchar(64) DEFAULT '' NOT NULL, `downloads` int DEFAULT 0 NOT NULL, `author_id` int DEFAULT 0 NOT NULL, `created_on` timestamp NULL, `description` varchar(255), `disk_directory` varchar(255), INDEX `index_attachments_on_author_id` (`author_id`), INDEX `index_attachments_on_container_id_and_container_type` (`container_id`, `container_type`), INDEX `index_attachments_on_created_on` (`created_on`), INDEX `index_attachments_on_disk_filename` (`disk_filename`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `auth_sources` CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE `auth_sources` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `type` varchar(30) DEFAULT '' NOT NULL, `name` varchar(60) DEFAULT '' NOT NULL, `host` varchar(60), `port` int, `account` varchar(255), `account_password` varchar(255) DEFAULT '', `base_dn` varchar(255), `attr_login` varchar(30), `attr_firstname` varchar(30), `attr_lastname` varchar(30), `attr_mail` varchar(30), `onthefly_register` tinyint(1) DEFAULT FALSE NOT NULL, `tls` tinyint(1) DEFAULT FALSE NOT NULL, `filter` text, `timeout` int, `verify_peer` tinyint(1) DEFAULT TRUE NOT NULL, INDEX `index_auth_sources_on_id_and_type` (`id`, `type`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `boards` CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE `boards` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int NOT NULL, `name` varchar(255) DEFAULT '' NOT NULL, `description` varchar(255), `position` int, `topics_count` int DEFAULT 0 NOT NULL, `messages_count` int DEFAULT 0 NOT NULL, `last_message_id` int, `parent_id` int, INDEX `index_boards_on_last_message_id` (`last_message_id`), INDEX `boards_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `changes` CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE `changes` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `changeset_id` int NOT NULL, `action` varchar(1) DEFAULT '' NOT NULL, `path` text NOT NULL, `from_path` text, `from_revision` varchar(255), `revision` varchar(255), `branch` varchar(255), INDEX `changesets_changeset_id` (`changeset_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `changeset_parents` CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `changeset_parents` (`changeset_id` int NOT NULL, `parent_id` int NOT NULL, INDEX `changeset_parents_changeset_ids` (`changeset_id`), INDEX `changeset_parents_parent_ids` (`parent_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `changesets` CASCADE[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE `changesets` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `repository_id` int NOT NULL, `revision` varchar(255) NOT NULL, `committer` varchar(255), `committed_on` datetime NOT NULL, `comments` longtext, `commit_date` date, `scmid` varchar(255), `user_id` int, INDEX `index_changesets_on_committed_on` (`committed_on`), UNIQUE INDEX `changesets_repos_rev` (`repository_id`, `revision`), INDEX `changesets_repos_scmid` (`repository_id`, `scmid`), INDEX `index_changesets_on_repository_id` (`repository_id`), INDEX `index_changesets_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `changesets_issues` CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE `changesets_issues` (`changeset_id` int NOT NULL, `issue_id` int NOT NULL, UNIQUE INDEX `changesets_issues_ids` (`changeset_id`, `issue_id`), INDEX `index_changesets_issues_on_issue_id` (`issue_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `comments` CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE `comments` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `commented_type` varchar(30) DEFAULT '' NOT NULL, `commented_id` int DEFAULT 0 NOT NULL, `author_id` int DEFAULT 0 NOT NULL, `content` text, `created_on` datetime NOT NULL, `updated_on` datetime NOT NULL, INDEX `index_comments_on_author_id` (`author_id`), INDEX `index_comments_on_commented_id_and_commented_type` (`commented_id`, `commented_type`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `custom_field_enumerations` CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE `custom_field_enumerations` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `custom_field_id` int NOT NULL, `name` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT TRUE NOT NULL, `position` int DEFAULT 1 NOT NULL) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `custom_fields` CASCADE[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE `custom_fields` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `type` varchar(30) DEFAULT '' NOT NULL, `name` varchar(30) DEFAULT '' NOT NULL, `field_format` varchar(30) DEFAULT '' NOT NULL, `possible_values` text, `regexp` varchar(255) DEFAULT '', `min_length` int, `max_length` int, `is_required` tinyint(1) DEFAULT FALSE NOT NULL, `is_for_all` tinyint(1) DEFAULT FALSE NOT NULL, `is_filter` tinyint(1) DEFAULT FALSE NOT NULL, `position` int, `searchable` tinyint(1) DEFAULT FALSE, `default_value` text, `editable` tinyint(1) DEFAULT TRUE, `visible` tinyint(1) DEFAULT TRUE NOT NULL, `multiple` tinyint(1) DEFAULT FALSE, `format_store` text, `description` text, INDEX `index_custom_fields_on_id_and_type` (`id`, `type`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `custom_fields_projects` CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE `custom_fields_projects` (`custom_field_id` int DEFAULT 0 NOT NULL, `project_id` int DEFAULT 0 NOT NULL, UNIQUE INDEX `index_custom_fields_projects_on_custom_field_id_and_project_id` (`custom_field_id`, `project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `custom_fields_roles` CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE `custom_fields_roles` (`custom_field_id` int NOT NULL, `role_id` int NOT NULL, UNIQUE INDEX `custom_fields_roles_ids` (`custom_field_id`, `role_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `custom_fields_trackers` CASCADE[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE `custom_fields_trackers` (`custom_field_id` int DEFAULT 0 NOT NULL, `tracker_id` int DEFAULT 0 NOT NULL, UNIQUE INDEX `index_custom_fields_trackers_on_custom_field_id_and_tracker_id` (`custom_field_id`, `tracker_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `custom_values` CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE `custom_values` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `customized_type` varchar(30) DEFAULT '' NOT NULL, `customized_id` int DEFAULT 0 NOT NULL, `custom_field_id` int DEFAULT 0 NOT NULL, `value` longtext, INDEX `index_custom_values_on_custom_field_id` (`custom_field_id`), INDEX `custom_values_customized_custom_field` (`customized_type`, `customized_id`, `custom_field_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `documents` CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE `documents` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int DEFAULT 0 NOT NULL, `category_id` int DEFAULT 0 NOT NULL, `title` varchar(255) DEFAULT '' NOT NULL, `description` text, `created_on` timestamp NULL, INDEX `index_documents_on_category_id` (`category_id`), INDEX `index_documents_on_created_on` (`created_on`), INDEX `documents_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `email_addresses` CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE `email_addresses` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` int NOT NULL, `address` varchar(255) NOT NULL, `is_default` tinyint(1) DEFAULT FALSE NOT NULL, `notify` tinyint(1) DEFAULT TRUE NOT NULL, `created_on` datetime NOT NULL, `updated_on` datetime NOT NULL, INDEX `index_email_addresses_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `enabled_modules` CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE `enabled_modules` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int, `name` varchar(255) NOT NULL, INDEX `enabled_modules_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `enumerations` CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE `enumerations` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(30) DEFAULT '' NOT NULL, `position` int, `is_default` tinyint(1) DEFAULT FALSE NOT NULL, `type` varchar(255), `active` tinyint(1) DEFAULT TRUE NOT NULL, `project_id` int, `parent_id` int, `position_name` varchar(30), INDEX `index_enumerations_on_id_and_type` (`id`, `type`), INDEX `index_enumerations_on_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `groups_users` CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE `groups_users` (`group_id` int NOT NULL, `user_id` int NOT NULL, UNIQUE INDEX `groups_users_ids` (`group_id`, `user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `import_items` CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE `import_items` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `import_id` int NOT NULL, `position` int NOT NULL, `obj_id` int, `message` text, `unique_id` varchar(255), INDEX `index_import_items_on_import_id_and_unique_id` (`import_id`, `unique_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `imports` CASCADE[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE `imports` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `type` varchar(255), `user_id` int NOT NULL, `filename` varchar(255), `settings` text, `total_items` int, `finished` tinyint(1) DEFAULT FALSE NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `issue_categories` CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `issue_categories` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int DEFAULT 0 NOT NULL, `name` varchar(60) DEFAULT '' NOT NULL, `assigned_to_id` int, INDEX `index_issue_categories_on_assigned_to_id` (`assigned_to_id`), INDEX `issue_categories_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `issue_relations` CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE `issue_relations` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `issue_from_id` int NOT NULL, `issue_to_id` int NOT NULL, `relation_type` varchar(255) DEFAULT '' NOT NULL, `delay` int, UNIQUE INDEX `index_issue_relations_on_issue_from_id_and_issue_to_id` (`issue_from_id`, `issue_to_id`), INDEX `index_issue_relations_on_issue_from_id` (`issue_from_id`), INDEX `index_issue_relations_on_issue_to_id` (`issue_to_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `issue_statuses` CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `issue_statuses` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(30) DEFAULT '' NOT NULL, `description` varchar(255), `is_closed` tinyint(1) DEFAULT FALSE NOT NULL, `position` int, `default_done_ratio` int, INDEX `index_issue_statuses_on_is_closed` (`is_closed`), INDEX `index_issue_statuses_on_position` (`position`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `issues` CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE `issues` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `tracker_id` int NOT NULL, `project_id` int NOT NULL, `subject` varchar(255) DEFAULT '' NOT NULL, `description` longtext, `due_date` date, `category_id` int, `status_id` int NOT NULL, `assigned_to_id` int, `priority_id` int NOT NULL, `fixed_version_id` int, `author_id` int NOT NULL, `lock_version` int DEFAULT 0 NOT NULL, `created_on` timestamp NULL, `updated_on` timestamp NULL, `start_date` date, `done_ratio` int DEFAULT 0 NOT NULL, `estimated_hours` float(24), `parent_id` int, `root_id` int, `lft` int, `rgt` int, `is_private` tinyint(1) DEFAULT FALSE NOT NULL, `closed_on` datetime, INDEX `index_issues_on_assigned_to_id` (`assigned_to_id`), INDEX `index_issues_on_author_id` (`author_id`), INDEX `index_issues_on_category_id` (`category_id`), INDEX `index_issues_on_created_on` (`created_on`), INDEX `index_issues_on_fixed_version_id` (`fixed_version_id`), INDEX `index_issues_on_parent_id` (`parent_id`), INDEX `index_issues_on_priority_id` (`priority_id`), INDEX `issues_project_id` (`project_id`), INDEX `index_issues_on_root_id_and_lft_and_rgt` (`root_id`, `lft`, `rgt`), INDEX `index_issues_on_status_id` (`status_id`), INDEX `index_issues_on_tracker_id` (`tracker_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `journal_details` CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE `journal_details` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `journal_id` int DEFAULT 0 NOT NULL, `property` varchar(30) DEFAULT '' NOT NULL, `prop_key` varchar(30) DEFAULT '' NOT NULL, `old_value` longtext, `value` longtext, INDEX `journal_details_journal_id` (`journal_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `journals` CASCADE[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE `journals` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `journalized_id` int DEFAULT 0 NOT NULL, `journalized_type` varchar(30) DEFAULT '' NOT NULL, `user_id` int DEFAULT 0 NOT NULL, `notes` longtext, `created_on` datetime NOT NULL, `updated_on` datetime, `updated_by_id` int, `private_notes` tinyint(1) DEFAULT FALSE NOT NULL, INDEX `index_journals_on_created_on` (`created_on`), INDEX `journals_journalized_id` (`journalized_id`, `journalized_type`), INDEX `index_journals_on_journalized_id` (`journalized_id`), INDEX `index_journals_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `member_roles` CASCADE[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE `member_roles` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `member_id` int NOT NULL, `role_id` int NOT NULL, `inherited_from` int, INDEX `index_member_roles_on_inherited_from` (`inherited_from`), INDEX `index_member_roles_on_member_id` (`member_id`), INDEX `index_member_roles_on_role_id` (`role_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `members` CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE `members` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` int DEFAULT 0 NOT NULL, `project_id` int DEFAULT 0 NOT NULL, `created_on` timestamp NULL, `mail_notification` tinyint(1) DEFAULT FALSE NOT NULL, INDEX `index_members_on_project_id` (`project_id`), UNIQUE INDEX `index_members_on_user_id_and_project_id` (`user_id`, `project_id`), INDEX `index_members_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `messages` CASCADE[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE `messages` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `board_id` int NOT NULL, `parent_id` int, `subject` varchar(255) DEFAULT '' NOT NULL, `content` text, `author_id` int, `replies_count` int DEFAULT 0 NOT NULL, `last_reply_id` int, `created_on` datetime NOT NULL, `updated_on` datetime NOT NULL, `locked` tinyint(1) DEFAULT FALSE, `sticky` int DEFAULT 0, INDEX `index_messages_on_author_id` (`author_id`), INDEX `messages_board_id` (`board_id`), INDEX `index_messages_on_created_on` (`created_on`), INDEX `index_messages_on_last_reply_id` (`last_reply_id`), INDEX `messages_parent_id` (`parent_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `news` CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `news` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int, `title` varchar(60) DEFAULT '' NOT NULL, `summary` varchar(255) DEFAULT '', `description` text, `author_id` int DEFAULT 0 NOT NULL, `created_on` timestamp NULL, `comments_count` int DEFAULT 0 NOT NULL, INDEX `index_news_on_author_id` (`author_id`), INDEX `index_news_on_created_on` (`created_on`), INDEX `news_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `oauth_access_grants` CASCADE[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE `oauth_access_grants` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `resource_owner_id` int NOT NULL, `application_id` bigint NOT NULL, `token` varchar(255) NOT NULL, `expires_in` int NOT NULL, `redirect_uri` text NOT NULL, `created_at` datetime(6) NOT NULL, `revoked_at` datetime(6), `scopes` text, `code_challenge` varchar(255), `code_challenge_method` varchar(255), INDEX `index_oauth_access_grants_on_application_id` (`application_id`), INDEX `fk_rails_330c32d8d9` (`resource_owner_id`), UNIQUE INDEX `index_oauth_access_grants_on_token` (`token`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `oauth_access_tokens` CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE `oauth_access_tokens` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `resource_owner_id` int, `application_id` bigint, `token` varchar(255) NOT NULL, `refresh_token` varchar(255), `expires_in` int, `revoked_at` datetime(6), `created_at` datetime(6) NOT NULL, `scopes` text, `previous_refresh_token` varchar(255) DEFAULT '' NOT NULL, INDEX `index_oauth_access_tokens_on_application_id` (`application_id`), UNIQUE INDEX `index_oauth_access_tokens_on_refresh_token` (`refresh_token`), INDEX `index_oauth_access_tokens_on_resource_owner_id` (`resource_owner_id`), UNIQUE INDEX `index_oauth_access_tokens_on_token` (`token`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `oauth_applications` CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE `oauth_applications` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `uid` varchar(255) NOT NULL, `secret` varchar(255) NOT NULL, `redirect_uri` text NOT NULL, `scopes` text NOT NULL, `confidential` tinyint(1) DEFAULT TRUE NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, UNIQUE INDEX `index_oauth_applications_on_uid` (`uid`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `projects` CASCADE[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE `projects` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) DEFAULT '' NOT NULL, `description` text, `homepage` varchar(255) DEFAULT '', `is_public` tinyint(1) DEFAULT TRUE NOT NULL, `parent_id` int, `created_on` timestamp NULL, `updated_on` timestamp NULL, `identifier` varchar(255), `status` int DEFAULT 1 NOT NULL, `lft` int, `rgt` int, `inherit_members` tinyint(1) DEFAULT FALSE NOT NULL, `default_version_id` int, `default_assigned_to_id` int, `default_issue_query_id` int, UNIQUE INDEX `index_projects_on_identifier` (`identifier`), INDEX `index_projects_on_lft` (`lft`), INDEX `index_projects_on_rgt` (`rgt`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `projects_trackers` CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE `projects_trackers` (`project_id` int DEFAULT 0 NOT NULL, `tracker_id` int DEFAULT 0 NOT NULL, UNIQUE INDEX `projects_trackers_unique` (`project_id`, `tracker_id`), INDEX `projects_trackers_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `projects_webhooks` CASCADE[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE `projects_webhooks` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int NOT NULL, `webhook_id` int NOT NULL, INDEX `index_projects_webhooks_on_project_id` (`project_id`), INDEX `index_projects_webhooks_on_webhook_id` (`webhook_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `queries` CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE `queries` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int, `name` varchar(255) DEFAULT '' NOT NULL, `filters` text, `user_id` int DEFAULT 0 NOT NULL, `column_names` text, `sort_criteria` text, `group_by` varchar(255), `type` varchar(255), `visibility` int DEFAULT 0, `options` text, `description` varchar(255), INDEX `index_queries_on_project_id` (`project_id`), INDEX `index_queries_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `queries_roles` CASCADE[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE `queries_roles` (`query_id` int NOT NULL, `role_id` int NOT NULL, UNIQUE INDEX `queries_roles_ids` (`query_id`, `role_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `reactions` CASCADE[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE `reactions` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `reactable_type` varchar(255) NOT NULL, `reactable_id` bigint NOT NULL, `user_id` bigint NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_reactions_on_reactable_type_and_reactable_id_and_id` (`reactable_type`, `reactable_id`, `id`), UNIQUE INDEX `index_reactions_on_reactable_type_and_reactable_id_and_user_id` (`reactable_type`, `reactable_id`, `user_id`), INDEX `index_reactions_on_reactable` (`reactable_type`, `reactable_id`), INDEX `index_reactions_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `repositories` CASCADE[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE `repositories` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int DEFAULT 0 NOT NULL, `url` varchar(255) DEFAULT '' NOT NULL, `login` varchar(60) DEFAULT '', `password` varchar(255) DEFAULT '', `root_url` varchar(255) DEFAULT '', `type` varchar(255), `path_encoding` varchar(64), `log_encoding` varchar(64), `extra_info` longtext, `identifier` varchar(255), `is_default` tinyint(1) DEFAULT FALSE, `created_on` timestamp NULL, INDEX `index_repositories_on_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `roles` CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE `roles` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) DEFAULT '' NOT NULL, `position` int, `assignable` tinyint(1) DEFAULT TRUE, `builtin` int DEFAULT 0 NOT NULL, `permissions` text, `issues_visibility` varchar(30) DEFAULT 'default' NOT NULL, `users_visibility` varchar(30) DEFAULT 'members_of_visible_projects' NOT NULL, `time_entries_visibility` varchar(30) DEFAULT 'all' NOT NULL, `all_roles_managed` tinyint(1) DEFAULT TRUE NOT NULL, `settings` text, `default_time_entry_activity_id` int) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `roles_managed_roles` CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE `roles_managed_roles` (`role_id` int NOT NULL, `managed_role_id` int NOT NULL, UNIQUE INDEX `index_roles_managed_roles_on_role_id_and_managed_role_id` (`role_id`, `managed_role_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `settings` CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE `settings` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) DEFAULT '' NOT NULL, `value` longtext, `updated_on` timestamp NULL, INDEX `index_settings_on_name` (`name`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `time_entries` CASCADE[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE `time_entries` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int NOT NULL, `author_id` int, `user_id` int NOT NULL, `issue_id` int, `hours` float(24) NOT NULL, `comments` varchar(1024), `activity_id` int NOT NULL, `spent_on` date NOT NULL, `tyear` int NOT NULL, `tmonth` int NOT NULL, `tweek` int NOT NULL, `created_on` datetime NOT NULL, `updated_on` datetime NOT NULL, INDEX `index_time_entries_on_activity_id` (`activity_id`), INDEX `index_time_entries_on_created_on` (`created_on`), INDEX `time_entries_issue_id` (`issue_id`), INDEX `time_entries_project_id` (`project_id`), INDEX `index_time_entries_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `tokens` CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE `tokens` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` int DEFAULT 0 NOT NULL, `action` varchar(30) DEFAULT '' NOT NULL, `value` varchar(40) DEFAULT '' NOT NULL, `created_on` datetime NOT NULL, `updated_on` timestamp NULL, INDEX `index_tokens_on_user_id` (`user_id`), UNIQUE INDEX `tokens_value` (`value`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `trackers` CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE `trackers` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(30) DEFAULT '' NOT NULL, `description` varchar(255), `position` int, `is_in_roadmap` tinyint(1) DEFAULT TRUE NOT NULL, `fields_bits` int DEFAULT 0, `default_status_id` int) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `user_preferences` CASCADE[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE `user_preferences` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` int DEFAULT 0 NOT NULL, `others` text, `hide_mail` tinyint(1) DEFAULT TRUE, `time_zone` varchar(255), INDEX `index_user_preferences_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `users` CASCADE[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE `users` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `login` varchar(255) DEFAULT '' NOT NULL, `hashed_password` varchar(40) DEFAULT '' NOT NULL, `firstname` varchar(30) DEFAULT '' NOT NULL, `lastname` varchar(255) DEFAULT '' NOT NULL, `admin` tinyint(1) DEFAULT FALSE NOT NULL, `status` int DEFAULT 1 NOT NULL, `last_login_on` datetime, `language` varchar(5) DEFAULT '', `auth_source_id` int, `created_on` timestamp NULL, `updated_on` timestamp NULL, `type` varchar(255), `mail_notification` varchar(255) DEFAULT '' NOT NULL, `salt` varchar(64), `must_change_passwd` tinyint(1) DEFAULT FALSE NOT NULL, `passwd_changed_on` datetime, `twofa_scheme` varchar(255), `twofa_totp_key` varchar(255), `twofa_totp_last_used_at` int, `twofa_required` tinyint(1) DEFAULT FALSE, INDEX `index_users_on_auth_source_id` (`auth_source_id`), INDEX `index_users_on_id_and_type` (`id`, `type`), INDEX `index_users_on_type` (`type`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `versions` CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE `versions` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int DEFAULT 0 NOT NULL, `name` varchar(255) DEFAULT '' NOT NULL, `description` varchar(255) DEFAULT '', `effective_date` date, `created_on` timestamp NULL, `updated_on` timestamp NULL, `wiki_page_title` varchar(255), `status` varchar(255) DEFAULT 'open', `sharing` varchar(255) DEFAULT 'none' NOT NULL, INDEX `versions_project_id` (`project_id`), INDEX `index_versions_on_sharing` (`sharing`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `watchers` CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE `watchers` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `watchable_type` varchar(255) DEFAULT '' NOT NULL, `watchable_id` int DEFAULT 0 NOT NULL, `user_id` int, INDEX `watchers_user_id_type` (`user_id`, `watchable_type`), INDEX `index_watchers_on_user_id` (`user_id`), INDEX `index_watchers_on_watchable_id_and_watchable_type` (`watchable_id`, `watchable_type`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `webhooks` CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE `webhooks` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `url` varchar(2000) NOT NULL, `secret` varchar(255), `events` text, `user_id` int NOT NULL, `active` tinyint(1) DEFAULT FALSE NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_webhooks_on_active` (`active`), INDEX `index_webhooks_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_content_versions` CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `wiki_content_versions` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `wiki_content_id` int NOT NULL, `page_id` int NOT NULL, `author_id` int, `data` longblob, `compression` varchar(6) DEFAULT '', `comments` varchar(1024) DEFAULT '', `updated_on` datetime NOT NULL, `version` int NOT NULL, INDEX `index_wiki_content_versions_on_updated_on` (`updated_on`), INDEX `wiki_content_versions_wcid` (`wiki_content_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_contents` CASCADE[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE `wiki_contents` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `page_id` int NOT NULL, `author_id` int, `text` longtext, `comments` varchar(1024) DEFAULT '', `updated_on` datetime NOT NULL, `version` int NOT NULL, INDEX `index_wiki_contents_on_author_id` (`author_id`), INDEX `wiki_contents_page_id` (`page_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_extensions_comments` CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE `wiki_extensions_comments` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `wiki_page_id` int, `key_word` varchar(255), `user_id` int, `comment` text, `created_at` timestamp NULL, `updated_at` timestamp NULL, `parent_id` int) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_extensions_counts` CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE `wiki_extensions_counts` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int, `page_id` int, `date` date, `count` int) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_extensions_menus` CASCADE[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE `wiki_extensions_menus` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int, `menu_no` int, `page_name` varchar(255), `title` varchar(255), `enabled` tinyint(1)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_extensions_settings` CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE `wiki_extensions_settings` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int, `created_at` timestamp NULL, `updated_at` timestamp NULL, `lock_version` int, `auto_preview_enabled` tinyint(1) DEFAULT FALSE NOT NULL, `tag_disabled` tinyint(1) DEFAULT FALSE) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_extensions_tag_relations` CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE `wiki_extensions_tag_relations` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `tag_id` int, `wiki_page_id` int, `created_at` timestamp NULL, INDEX `index_wiki_extensions_tag_relations_on_tag_id` (`tag_id`), INDEX `index_wiki_extensions_tag_relations_on_wiki_page_id` (`wiki_page_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_extensions_tags` CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `wiki_extensions_tags` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int, `name` varchar(255), `created_at` timestamp NULL, INDEX `index_wiki_extensions_tags_on_name` (`name`), INDEX `index_wiki_extensions_tags_on_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_extensions_votes` CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE `wiki_extensions_votes` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `keystr` varchar(255), `target_class_name` varchar(255), `target_id` int, `count` int) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_pages` CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `wiki_pages` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `wiki_id` int NOT NULL, `title` varchar(255) NOT NULL, `created_on` datetime NOT NULL, `protected` tinyint(1) DEFAULT FALSE NOT NULL, `parent_id` int, INDEX `index_wiki_pages_on_parent_id` (`parent_id`), INDEX `wiki_pages_wiki_id_title` (`wiki_id`, `title`), INDEX `index_wiki_pages_on_wiki_id` (`wiki_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_redirects` CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE `wiki_redirects` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `wiki_id` int NOT NULL, `title` varchar(255), `redirects_to` varchar(255), `created_on` datetime NOT NULL, `redirects_to_wiki_id` int NOT NULL, INDEX `wiki_redirects_wiki_id_title` (`wiki_id`, `title`), INDEX `index_wiki_redirects_on_wiki_id` (`wiki_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `wikis` CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE `wikis` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int NOT NULL, `start_page` varchar(255) NOT NULL, `status` int DEFAULT 1 NOT NULL, INDEX `wikis_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `workflows` CASCADE[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE `workflows` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `tracker_id` int DEFAULT 0 NOT NULL, `old_status_id` int DEFAULT 0 NOT NULL, `new_status_id` int DEFAULT 0 NOT NULL, `role_id` int DEFAULT 0 NOT NULL, `assignee` tinyint(1) DEFAULT FALSE NOT NULL, `author` tinyint(1) DEFAULT FALSE NOT NULL, `type` varchar(30), `field_name` varchar(30), `rule` varchar(30), INDEX `index_workflows_on_new_status_id` (`new_status_id`), INDEX `index_workflows_on_old_status_id` (`old_status_id`), INDEX `wkfs_role_tracker_old_status` (`role_id`, `tracker_id`, `old_status_id`), INDEX `index_workflows_on_role_id` (`role_id`), INDEX `index_workflows_on_tracker_id` (`tracker_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (3.5ms)[0m  [1m[35mALTER TABLE `oauth_access_grants` ADD CONSTRAINT `fk_rails_b4b53e07b8`
+FOREIGN KEY (`application_id`)
+  REFERENCES `oauth_applications` (`id`)
+[0m
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE `oauth_access_grants` ADD CONSTRAINT `fk_rails_330c32d8d9`
+FOREIGN KEY (`resource_owner_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE `oauth_access_tokens` ADD CONSTRAINT `fk_rails_732cb83ab7`
+FOREIGN KEY (`application_id`)
+  REFERENCES `oauth_applications` (`id`)
+[0m
+  [1m[35m (3.6ms)[0m  [1m[35mALTER TABLE `oauth_access_tokens` ADD CONSTRAINT `fk_rails_ee63f25419`
+FOREIGN KEY (`resource_owner_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES (20251007073256)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES
+(20250611092227),
+(20250611092155),
+(20250530185658),
+(20250423065135),
+(20241213003659),
+(20241103184550),
+(20241103150135),
+(20241026031710),
+(20241022095140),
+(20241007144951),
+(20240213101801),
+(20231113131245),
+(20231012112407),
+(20230818020734),
+(20221214173537),
+(20221012135202),
+(20221004172825),
+(20221002193055),
+(20220806215628),
+(20220714093010),
+(20220714093000),
+(20220224194639),
+(20211213122102),
+(20211213122101),
+(20211213122100),
+(20210801211024),
+(20210801145548),
+(20210728131544),
+(20210705111300),
+(20210704125704),
+(20200826153402),
+(20200826153401),
+(20190620135549),
+(20190510070108),
+(20190315102101),
+(20190315094151),
+(20180923091603),
+(20180923082945),
+(20180913072918),
+(20180501132547),
+(20170723112801),
+(20170419144536),
+(20170418090031),
+(20170320051650),
+(20170309214320),
+(20170302015225),
+(20170207050700),
+(20161220091118),
+(20161126094932),
+(20161010081600),
+(20161010081528),
+(20161010081301),
+(20161002133421),
+(20161001122012),
+(20160529063352),
+(20160416072926),
+(20160404080304),
+(20151031095005),
+(20151025072118),
+(20151024082034),
+(20151021190616),
+(20151021185456),
+(20151021184614),
+(20151020182731),
+(20151020182334),
+(20150921210243),
+(20150921204850),
+(20150730122735),
+(20150730122707),
+(20150725112753),
+(20150528093249),
+(20150528092912),
+(20150528084820),
+(20150526183158),
+(20150525103953),
+(20150510083747),
+(20150208105930),
+(20150113213955),
+(20150113213922),
+(20150113211532),
+(20150113194759),
+(20141122124142),
+(20141109112308),
+(20141029181824),
+(20141029181752),
+(20140920094058),
+(20140903143914),
+(20140228130325),
+(20131218183023),
+(20131215104612),
+(20131214094309),
+(20131210180802),
+(20131124175346),
+(20131005100610),
+(20131004113137),
+(20130911193200),
+(20130729070143),
+(20130713111657),
+(20130713104233),
+(20130710182539),
+(20130602092539),
+(20130217094251),
+(20130215111141),
+(20130215111127),
+(20130215073721),
+(20130207181455),
+(20130207175206),
+(20130202090625),
+(20130201184705),
+(20130110122628),
+(20121213084931),
+(20121209123358),
+(20121209123234),
+(20121026003537),
+(20121026002032),
+(20120930112914),
+(20120731164049),
+(20120714122200),
+(20120714122100),
+(20120714122000),
+(20120707064544),
+(20120705074331),
+(20120422150750),
+(20120301153455),
+(20120223110929),
+(20120205111326),
+(20120127174243),
+(20120115143126),
+(20120115143100),
+(20120115143024),
+(20111201201315),
+(20110902000000),
+(20110511000000),
+(20110412065600),
+(20110408103312),
+(20110401192910),
+(20110228000100),
+(20110228000000),
+(20110227125750),
+(20110226120132),
+(20110226120112),
+(20110224000000),
+(20110223180953),
+(20110223180944),
+(20110220160626),
+(20101114115359),
+(20101114115114),
+(20101107130441),
+(20101104182107),
+(20100819172912),
+(20100705164950),
+(20100313171051),
+(20100313132032),
+(20100221100219),
+(20100129193813),
+(20100129193402),
+(20091227112908),
+(20091225164732),
+(20091220184736),
+(20091220183727),
+(20091220183509),
+(20091205124427),
+(20091123212029),
+(20091114105931),
+(20091108092559),
+(20091025163651),
+(20091017214750),
+(20091017214720),
+(20091017214644),
+(20091017214611),
+(20091017214519),
+(20091017214440),
+(20091017214406),
+(20091017214336),
+(20091017214308),
+(20091017214236),
+(20091017214136),
+(20091017214107),
+(20091017214015),
+(20091017213910),
+(20091017213835),
+(20091017213757),
+(20091017213716),
+(20091017213642),
+(20091017213536),
+(20091017213444),
+(20091017213332),
+(20091017213257),
+(20091017213228),
+(20091017213151),
+(20091017213113),
+(20091017213027),
+(20091017212938),
+(20091017212644),
+(20091017212457),
+(20091017212227),
+(20091010093521),
+(20090704172358),
+(20090704172355),
+(20090704172350),
+(20090614091200),
+(20090503121510),
+(20090503121505),
+(20090503121501),
+(20090425161243),
+(20090406161854),
+(20090403001910),
+(20090401231134),
+(20090401221305),
+(20090323224724),
+(20090318181151),
+(20090312194159),
+(20090312172426),
+(20090214190337),
+(108),
+(107),
+(106),
+(105),
+(104),
+(103),
+(102),
+(101),
+(100),
+(99),
+(98),
+(97),
+(96),
+(95),
+(94),
+(93),
+(92),
+(91),
+(90),
+(89),
+(88),
+(87),
+(86),
+(85),
+(84),
+(83),
+(82),
+(81),
+(80),
+(79),
+(78),
+(77),
+(76),
+(75),
+(74),
+(73),
+(72),
+(71),
+(70),
+(69),
+(68),
+(67),
+(66),
+(65),
+(64),
+(63),
+(62),
+(61),
+(60),
+(59),
+(58),
+(57),
+(56),
+(55),
+(54),
+(53),
+(52),
+(51),
+(50),
+(49),
+(48),
+(47),
+(46),
+(45),
+(44),
+(43),
+(42),
+(41),
+(40),
+(39),
+(38),
+(37),
+(36),
+(35),
+(34),
+(33),
+(32),
+(31),
+(30),
+(29),
+(28),
+(27),
+(26),
+(25),
+(24),
+(23),
+(22),
+(21),
+(20),
+(19),
+(18),
+(17),
+(16),
+(15),
+(14),
+(13),
+(12),
+(11),
+(10),
+(9),
+(8),
+(7),
+(6),
+(5),
+(4),
+(3),
+(2),
+(1);[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2026-07-18 06:32:47.873853', '2026-07-18 06:32:47.873854') RETURNING `key`[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'schema_sha1' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('schema_sha1', '417b9373285c46db63254172f6a31a86ea62e03d', '2026-07-18 06:32:47.875212', '2026-07-18 06:32:47.875213') RETURNING `key`[0m
+  [1m[35m (1.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `attachments` CASCADE[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE `attachments` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `container_id` int, `container_type` varchar(30), `filename` varchar(255) DEFAULT '' NOT NULL, `disk_filename` varchar(255) DEFAULT '' NOT NULL, `filesize` bigint DEFAULT 0 NOT NULL, `content_type` varchar(255) DEFAULT '', `digest` varchar(64) DEFAULT '' NOT NULL, `downloads` int DEFAULT 0 NOT NULL, `author_id` int DEFAULT 0 NOT NULL, `created_on` timestamp NULL, `description` varchar(255), `disk_directory` varchar(255), INDEX `index_attachments_on_author_id` (`author_id`), INDEX `index_attachments_on_container_id_and_container_type` (`container_id`, `container_type`), INDEX `index_attachments_on_created_on` (`created_on`), INDEX `index_attachments_on_disk_filename` (`disk_filename`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `auth_sources` CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE `auth_sources` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `type` varchar(30) DEFAULT '' NOT NULL, `name` varchar(60) DEFAULT '' NOT NULL, `host` varchar(60), `port` int, `account` varchar(255), `account_password` varchar(255) DEFAULT '', `base_dn` varchar(255), `attr_login` varchar(30), `attr_firstname` varchar(30), `attr_lastname` varchar(30), `attr_mail` varchar(30), `onthefly_register` tinyint(1) DEFAULT FALSE NOT NULL, `tls` tinyint(1) DEFAULT FALSE NOT NULL, `filter` text, `timeout` int, `verify_peer` tinyint(1) DEFAULT TRUE NOT NULL, INDEX `index_auth_sources_on_id_and_type` (`id`, `type`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (6.3ms)[0m  [1m[35mDROP TABLE IF EXISTS `boards` CASCADE[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE `boards` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int NOT NULL, `name` varchar(255) DEFAULT '' NOT NULL, `description` varchar(255), `position` int, `topics_count` int DEFAULT 0 NOT NULL, `messages_count` int DEFAULT 0 NOT NULL, `last_message_id` int, `parent_id` int, INDEX `index_boards_on_last_message_id` (`last_message_id`), INDEX `boards_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS `changes` CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE `changes` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `changeset_id` int NOT NULL, `action` varchar(1) DEFAULT '' NOT NULL, `path` text NOT NULL, `from_path` text, `from_revision` varchar(255), `revision` varchar(255), `branch` varchar(255), INDEX `changesets_changeset_id` (`changeset_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS `changeset_parents` CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `changeset_parents` (`changeset_id` int NOT NULL, `parent_id` int NOT NULL, INDEX `changeset_parents_changeset_ids` (`changeset_id`), INDEX `changeset_parents_parent_ids` (`parent_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `changesets` CASCADE[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE `changesets` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `repository_id` int NOT NULL, `revision` varchar(255) NOT NULL, `committer` varchar(255), `committed_on` datetime NOT NULL, `comments` longtext, `commit_date` date, `scmid` varchar(255), `user_id` int, INDEX `index_changesets_on_committed_on` (`committed_on`), UNIQUE INDEX `changesets_repos_rev` (`repository_id`, `revision`), INDEX `changesets_repos_scmid` (`repository_id`, `scmid`), INDEX `index_changesets_on_repository_id` (`repository_id`), INDEX `index_changesets_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `changesets_issues` CASCADE[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE `changesets_issues` (`changeset_id` int NOT NULL, `issue_id` int NOT NULL, UNIQUE INDEX `changesets_issues_ids` (`changeset_id`, `issue_id`), INDEX `index_changesets_issues_on_issue_id` (`issue_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `comments` CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE `comments` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `commented_type` varchar(30) DEFAULT '' NOT NULL, `commented_id` int DEFAULT 0 NOT NULL, `author_id` int DEFAULT 0 NOT NULL, `content` text, `created_on` datetime NOT NULL, `updated_on` datetime NOT NULL, INDEX `index_comments_on_author_id` (`author_id`), INDEX `index_comments_on_commented_id_and_commented_type` (`commented_id`, `commented_type`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `custom_field_enumerations` CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE `custom_field_enumerations` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `custom_field_id` int NOT NULL, `name` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT TRUE NOT NULL, `position` int DEFAULT 1 NOT NULL) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `custom_fields` CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `custom_fields` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `type` varchar(30) DEFAULT '' NOT NULL, `name` varchar(30) DEFAULT '' NOT NULL, `field_format` varchar(30) DEFAULT '' NOT NULL, `possible_values` text, `regexp` varchar(255) DEFAULT '', `min_length` int, `max_length` int, `is_required` tinyint(1) DEFAULT FALSE NOT NULL, `is_for_all` tinyint(1) DEFAULT FALSE NOT NULL, `is_filter` tinyint(1) DEFAULT FALSE NOT NULL, `position` int, `searchable` tinyint(1) DEFAULT FALSE, `default_value` text, `editable` tinyint(1) DEFAULT TRUE, `visible` tinyint(1) DEFAULT TRUE NOT NULL, `multiple` tinyint(1) DEFAULT FALSE, `format_store` text, `description` text, INDEX `index_custom_fields_on_id_and_type` (`id`, `type`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `custom_fields_projects` CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE `custom_fields_projects` (`custom_field_id` int DEFAULT 0 NOT NULL, `project_id` int DEFAULT 0 NOT NULL, UNIQUE INDEX `index_custom_fields_projects_on_custom_field_id_and_project_id` (`custom_field_id`, `project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `custom_fields_roles` CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE `custom_fields_roles` (`custom_field_id` int NOT NULL, `role_id` int NOT NULL, UNIQUE INDEX `custom_fields_roles_ids` (`custom_field_id`, `role_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `custom_fields_trackers` CASCADE[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE `custom_fields_trackers` (`custom_field_id` int DEFAULT 0 NOT NULL, `tracker_id` int DEFAULT 0 NOT NULL, UNIQUE INDEX `index_custom_fields_trackers_on_custom_field_id_and_tracker_id` (`custom_field_id`, `tracker_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `custom_values` CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE `custom_values` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `customized_type` varchar(30) DEFAULT '' NOT NULL, `customized_id` int DEFAULT 0 NOT NULL, `custom_field_id` int DEFAULT 0 NOT NULL, `value` longtext, INDEX `index_custom_values_on_custom_field_id` (`custom_field_id`), INDEX `custom_values_customized_custom_field` (`customized_type`, `customized_id`, `custom_field_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `documents` CASCADE[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE `documents` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int DEFAULT 0 NOT NULL, `category_id` int DEFAULT 0 NOT NULL, `title` varchar(255) DEFAULT '' NOT NULL, `description` text, `created_on` timestamp NULL, INDEX `index_documents_on_category_id` (`category_id`), INDEX `index_documents_on_created_on` (`created_on`), INDEX `documents_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `email_addresses` CASCADE[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE `email_addresses` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` int NOT NULL, `address` varchar(255) NOT NULL, `is_default` tinyint(1) DEFAULT FALSE NOT NULL, `notify` tinyint(1) DEFAULT TRUE NOT NULL, `created_on` datetime NOT NULL, `updated_on` datetime NOT NULL, INDEX `index_email_addresses_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `enabled_modules` CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE `enabled_modules` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int, `name` varchar(255) NOT NULL, INDEX `enabled_modules_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `enumerations` CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `enumerations` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(30) DEFAULT '' NOT NULL, `position` int, `is_default` tinyint(1) DEFAULT FALSE NOT NULL, `type` varchar(255), `active` tinyint(1) DEFAULT TRUE NOT NULL, `project_id` int, `parent_id` int, `position_name` varchar(30), INDEX `index_enumerations_on_id_and_type` (`id`, `type`), INDEX `index_enumerations_on_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `groups_users` CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE `groups_users` (`group_id` int NOT NULL, `user_id` int NOT NULL, UNIQUE INDEX `groups_users_ids` (`group_id`, `user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `import_items` CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE `import_items` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `import_id` int NOT NULL, `position` int NOT NULL, `obj_id` int, `message` text, `unique_id` varchar(255), INDEX `index_import_items_on_import_id_and_unique_id` (`import_id`, `unique_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `imports` CASCADE[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE `imports` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `type` varchar(255), `user_id` int NOT NULL, `filename` varchar(255), `settings` text, `total_items` int, `finished` tinyint(1) DEFAULT FALSE NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `issue_categories` CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE `issue_categories` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int DEFAULT 0 NOT NULL, `name` varchar(60) DEFAULT '' NOT NULL, `assigned_to_id` int, INDEX `index_issue_categories_on_assigned_to_id` (`assigned_to_id`), INDEX `issue_categories_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `issue_relations` CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE `issue_relations` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `issue_from_id` int NOT NULL, `issue_to_id` int NOT NULL, `relation_type` varchar(255) DEFAULT '' NOT NULL, `delay` int, UNIQUE INDEX `index_issue_relations_on_issue_from_id_and_issue_to_id` (`issue_from_id`, `issue_to_id`), INDEX `index_issue_relations_on_issue_from_id` (`issue_from_id`), INDEX `index_issue_relations_on_issue_to_id` (`issue_to_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `issue_statuses` CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE `issue_statuses` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(30) DEFAULT '' NOT NULL, `description` varchar(255), `is_closed` tinyint(1) DEFAULT FALSE NOT NULL, `position` int, `default_done_ratio` int, INDEX `index_issue_statuses_on_is_closed` (`is_closed`), INDEX `index_issue_statuses_on_position` (`position`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `issues` CASCADE[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE `issues` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `tracker_id` int NOT NULL, `project_id` int NOT NULL, `subject` varchar(255) DEFAULT '' NOT NULL, `description` longtext, `due_date` date, `category_id` int, `status_id` int NOT NULL, `assigned_to_id` int, `priority_id` int NOT NULL, `fixed_version_id` int, `author_id` int NOT NULL, `lock_version` int DEFAULT 0 NOT NULL, `created_on` timestamp NULL, `updated_on` timestamp NULL, `start_date` date, `done_ratio` int DEFAULT 0 NOT NULL, `estimated_hours` float(24), `parent_id` int, `root_id` int, `lft` int, `rgt` int, `is_private` tinyint(1) DEFAULT FALSE NOT NULL, `closed_on` datetime, INDEX `index_issues_on_assigned_to_id` (`assigned_to_id`), INDEX `index_issues_on_author_id` (`author_id`), INDEX `index_issues_on_category_id` (`category_id`), INDEX `index_issues_on_created_on` (`created_on`), INDEX `index_issues_on_fixed_version_id` (`fixed_version_id`), INDEX `index_issues_on_parent_id` (`parent_id`), INDEX `index_issues_on_priority_id` (`priority_id`), INDEX `issues_project_id` (`project_id`), INDEX `index_issues_on_root_id_and_lft_and_rgt` (`root_id`, `lft`, `rgt`), INDEX `index_issues_on_status_id` (`status_id`), INDEX `index_issues_on_tracker_id` (`tracker_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `journal_details` CASCADE[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE `journal_details` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `journal_id` int DEFAULT 0 NOT NULL, `property` varchar(30) DEFAULT '' NOT NULL, `prop_key` varchar(30) DEFAULT '' NOT NULL, `old_value` longtext, `value` longtext, INDEX `journal_details_journal_id` (`journal_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `journals` CASCADE[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE `journals` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `journalized_id` int DEFAULT 0 NOT NULL, `journalized_type` varchar(30) DEFAULT '' NOT NULL, `user_id` int DEFAULT 0 NOT NULL, `notes` longtext, `created_on` datetime NOT NULL, `updated_on` datetime, `updated_by_id` int, `private_notes` tinyint(1) DEFAULT FALSE NOT NULL, INDEX `index_journals_on_created_on` (`created_on`), INDEX `journals_journalized_id` (`journalized_id`, `journalized_type`), INDEX `index_journals_on_journalized_id` (`journalized_id`), INDEX `index_journals_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `member_roles` CASCADE[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE `member_roles` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `member_id` int NOT NULL, `role_id` int NOT NULL, `inherited_from` int, INDEX `index_member_roles_on_inherited_from` (`inherited_from`), INDEX `index_member_roles_on_member_id` (`member_id`), INDEX `index_member_roles_on_role_id` (`role_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `members` CASCADE[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE `members` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` int DEFAULT 0 NOT NULL, `project_id` int DEFAULT 0 NOT NULL, `created_on` timestamp NULL, `mail_notification` tinyint(1) DEFAULT FALSE NOT NULL, INDEX `index_members_on_project_id` (`project_id`), UNIQUE INDEX `index_members_on_user_id_and_project_id` (`user_id`, `project_id`), INDEX `index_members_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `messages` CASCADE[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE `messages` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `board_id` int NOT NULL, `parent_id` int, `subject` varchar(255) DEFAULT '' NOT NULL, `content` text, `author_id` int, `replies_count` int DEFAULT 0 NOT NULL, `last_reply_id` int, `created_on` datetime NOT NULL, `updated_on` datetime NOT NULL, `locked` tinyint(1) DEFAULT FALSE, `sticky` int DEFAULT 0, INDEX `index_messages_on_author_id` (`author_id`), INDEX `messages_board_id` (`board_id`), INDEX `index_messages_on_created_on` (`created_on`), INDEX `index_messages_on_last_reply_id` (`last_reply_id`), INDEX `messages_parent_id` (`parent_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `news` CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE `news` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int, `title` varchar(60) DEFAULT '' NOT NULL, `summary` varchar(255) DEFAULT '', `description` text, `author_id` int DEFAULT 0 NOT NULL, `created_on` timestamp NULL, `comments_count` int DEFAULT 0 NOT NULL, INDEX `index_news_on_author_id` (`author_id`), INDEX `index_news_on_created_on` (`created_on`), INDEX `news_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `oauth_access_grants` CASCADE[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE `oauth_access_grants` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `resource_owner_id` int NOT NULL, `application_id` bigint NOT NULL, `token` varchar(255) NOT NULL, `expires_in` int NOT NULL, `redirect_uri` text NOT NULL, `created_at` datetime(6) NOT NULL, `revoked_at` datetime(6), `scopes` text, `code_challenge` varchar(255), `code_challenge_method` varchar(255), INDEX `index_oauth_access_grants_on_application_id` (`application_id`), INDEX `fk_rails_330c32d8d9` (`resource_owner_id`), UNIQUE INDEX `index_oauth_access_grants_on_token` (`token`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `oauth_access_tokens` CASCADE[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE `oauth_access_tokens` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `resource_owner_id` int, `application_id` bigint, `token` varchar(255) NOT NULL, `refresh_token` varchar(255), `expires_in` int, `revoked_at` datetime(6), `created_at` datetime(6) NOT NULL, `scopes` text, `previous_refresh_token` varchar(255) DEFAULT '' NOT NULL, INDEX `index_oauth_access_tokens_on_application_id` (`application_id`), UNIQUE INDEX `index_oauth_access_tokens_on_refresh_token` (`refresh_token`), INDEX `index_oauth_access_tokens_on_resource_owner_id` (`resource_owner_id`), UNIQUE INDEX `index_oauth_access_tokens_on_token` (`token`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `oauth_applications` CASCADE[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE `oauth_applications` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `uid` varchar(255) NOT NULL, `secret` varchar(255) NOT NULL, `redirect_uri` text NOT NULL, `scopes` text NOT NULL, `confidential` tinyint(1) DEFAULT TRUE NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, UNIQUE INDEX `index_oauth_applications_on_uid` (`uid`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `projects` CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE `projects` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) DEFAULT '' NOT NULL, `description` text, `homepage` varchar(255) DEFAULT '', `is_public` tinyint(1) DEFAULT TRUE NOT NULL, `parent_id` int, `created_on` timestamp NULL, `updated_on` timestamp NULL, `identifier` varchar(255), `status` int DEFAULT 1 NOT NULL, `lft` int, `rgt` int, `inherit_members` tinyint(1) DEFAULT FALSE NOT NULL, `default_version_id` int, `default_assigned_to_id` int, `default_issue_query_id` int, UNIQUE INDEX `index_projects_on_identifier` (`identifier`), INDEX `index_projects_on_lft` (`lft`), INDEX `index_projects_on_rgt` (`rgt`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `projects_trackers` CASCADE[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE `projects_trackers` (`project_id` int DEFAULT 0 NOT NULL, `tracker_id` int DEFAULT 0 NOT NULL, UNIQUE INDEX `projects_trackers_unique` (`project_id`, `tracker_id`), INDEX `projects_trackers_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `projects_webhooks` CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE `projects_webhooks` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int NOT NULL, `webhook_id` int NOT NULL, INDEX `index_projects_webhooks_on_project_id` (`project_id`), INDEX `index_projects_webhooks_on_webhook_id` (`webhook_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `queries` CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE `queries` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int, `name` varchar(255) DEFAULT '' NOT NULL, `filters` text, `user_id` int DEFAULT 0 NOT NULL, `column_names` text, `sort_criteria` text, `group_by` varchar(255), `type` varchar(255), `visibility` int DEFAULT 0, `options` text, `description` varchar(255), INDEX `index_queries_on_project_id` (`project_id`), INDEX `index_queries_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `queries_roles` CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE `queries_roles` (`query_id` int NOT NULL, `role_id` int NOT NULL, UNIQUE INDEX `queries_roles_ids` (`query_id`, `role_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `reactions` CASCADE[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE `reactions` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `reactable_type` varchar(255) NOT NULL, `reactable_id` bigint NOT NULL, `user_id` bigint NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_reactions_on_reactable_type_and_reactable_id_and_id` (`reactable_type`, `reactable_id`, `id`), UNIQUE INDEX `index_reactions_on_reactable_type_and_reactable_id_and_user_id` (`reactable_type`, `reactable_id`, `user_id`), INDEX `index_reactions_on_reactable` (`reactable_type`, `reactable_id`), INDEX `index_reactions_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `repositories` CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE `repositories` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int DEFAULT 0 NOT NULL, `url` varchar(255) DEFAULT '' NOT NULL, `login` varchar(60) DEFAULT '', `password` varchar(255) DEFAULT '', `root_url` varchar(255) DEFAULT '', `type` varchar(255), `path_encoding` varchar(64), `log_encoding` varchar(64), `extra_info` longtext, `identifier` varchar(255), `is_default` tinyint(1) DEFAULT FALSE, `created_on` timestamp NULL, INDEX `index_repositories_on_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `roles` CASCADE[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE `roles` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) DEFAULT '' NOT NULL, `position` int, `assignable` tinyint(1) DEFAULT TRUE, `builtin` int DEFAULT 0 NOT NULL, `permissions` text, `issues_visibility` varchar(30) DEFAULT 'default' NOT NULL, `users_visibility` varchar(30) DEFAULT 'members_of_visible_projects' NOT NULL, `time_entries_visibility` varchar(30) DEFAULT 'all' NOT NULL, `all_roles_managed` tinyint(1) DEFAULT TRUE NOT NULL, `settings` text, `default_time_entry_activity_id` int) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `roles_managed_roles` CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE `roles_managed_roles` (`role_id` int NOT NULL, `managed_role_id` int NOT NULL, UNIQUE INDEX `index_roles_managed_roles_on_role_id_and_managed_role_id` (`role_id`, `managed_role_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `settings` CASCADE[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE `settings` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) DEFAULT '' NOT NULL, `value` longtext, `updated_on` timestamp NULL, INDEX `index_settings_on_name` (`name`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `time_entries` CASCADE[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE `time_entries` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int NOT NULL, `author_id` int, `user_id` int NOT NULL, `issue_id` int, `hours` float(24) NOT NULL, `comments` varchar(1024), `activity_id` int NOT NULL, `spent_on` date NOT NULL, `tyear` int NOT NULL, `tmonth` int NOT NULL, `tweek` int NOT NULL, `created_on` datetime NOT NULL, `updated_on` datetime NOT NULL, INDEX `index_time_entries_on_activity_id` (`activity_id`), INDEX `index_time_entries_on_created_on` (`created_on`), INDEX `time_entries_issue_id` (`issue_id`), INDEX `time_entries_project_id` (`project_id`), INDEX `index_time_entries_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `tokens` CASCADE[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE `tokens` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` int DEFAULT 0 NOT NULL, `action` varchar(30) DEFAULT '' NOT NULL, `value` varchar(40) DEFAULT '' NOT NULL, `created_on` datetime NOT NULL, `updated_on` timestamp NULL, INDEX `index_tokens_on_user_id` (`user_id`), UNIQUE INDEX `tokens_value` (`value`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `trackers` CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE `trackers` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(30) DEFAULT '' NOT NULL, `description` varchar(255), `position` int, `is_in_roadmap` tinyint(1) DEFAULT TRUE NOT NULL, `fields_bits` int DEFAULT 0, `default_status_id` int) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `user_preferences` CASCADE[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE `user_preferences` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` int DEFAULT 0 NOT NULL, `others` text, `hide_mail` tinyint(1) DEFAULT TRUE, `time_zone` varchar(255), INDEX `index_user_preferences_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `users` CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE `users` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `login` varchar(255) DEFAULT '' NOT NULL, `hashed_password` varchar(40) DEFAULT '' NOT NULL, `firstname` varchar(30) DEFAULT '' NOT NULL, `lastname` varchar(255) DEFAULT '' NOT NULL, `admin` tinyint(1) DEFAULT FALSE NOT NULL, `status` int DEFAULT 1 NOT NULL, `last_login_on` datetime, `language` varchar(5) DEFAULT '', `auth_source_id` int, `created_on` timestamp NULL, `updated_on` timestamp NULL, `type` varchar(255), `mail_notification` varchar(255) DEFAULT '' NOT NULL, `salt` varchar(64), `must_change_passwd` tinyint(1) DEFAULT FALSE NOT NULL, `passwd_changed_on` datetime, `twofa_scheme` varchar(255), `twofa_totp_key` varchar(255), `twofa_totp_last_used_at` int, `twofa_required` tinyint(1) DEFAULT FALSE, INDEX `index_users_on_auth_source_id` (`auth_source_id`), INDEX `index_users_on_id_and_type` (`id`, `type`), INDEX `index_users_on_type` (`type`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `versions` CASCADE[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE `versions` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int DEFAULT 0 NOT NULL, `name` varchar(255) DEFAULT '' NOT NULL, `description` varchar(255) DEFAULT '', `effective_date` date, `created_on` timestamp NULL, `updated_on` timestamp NULL, `wiki_page_title` varchar(255), `status` varchar(255) DEFAULT 'open', `sharing` varchar(255) DEFAULT 'none' NOT NULL, INDEX `versions_project_id` (`project_id`), INDEX `index_versions_on_sharing` (`sharing`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `watchers` CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE `watchers` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `watchable_type` varchar(255) DEFAULT '' NOT NULL, `watchable_id` int DEFAULT 0 NOT NULL, `user_id` int, INDEX `watchers_user_id_type` (`user_id`, `watchable_type`), INDEX `index_watchers_on_user_id` (`user_id`), INDEX `index_watchers_on_watchable_id_and_watchable_type` (`watchable_id`, `watchable_type`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `webhooks` CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE `webhooks` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `url` varchar(2000) NOT NULL, `secret` varchar(255), `events` text, `user_id` int NOT NULL, `active` tinyint(1) DEFAULT FALSE NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_webhooks_on_active` (`active`), INDEX `index_webhooks_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_content_versions` CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `wiki_content_versions` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `wiki_content_id` int NOT NULL, `page_id` int NOT NULL, `author_id` int, `data` longblob, `compression` varchar(6) DEFAULT '', `comments` varchar(1024) DEFAULT '', `updated_on` datetime NOT NULL, `version` int NOT NULL, INDEX `index_wiki_content_versions_on_updated_on` (`updated_on`), INDEX `wiki_content_versions_wcid` (`wiki_content_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_contents` CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `wiki_contents` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `page_id` int NOT NULL, `author_id` int, `text` longtext, `comments` varchar(1024) DEFAULT '', `updated_on` datetime NOT NULL, `version` int NOT NULL, INDEX `index_wiki_contents_on_author_id` (`author_id`), INDEX `wiki_contents_page_id` (`page_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_extensions_comments` CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE `wiki_extensions_comments` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `wiki_page_id` int, `key_word` varchar(255), `user_id` int, `comment` text, `created_at` timestamp NULL, `updated_at` timestamp NULL, `parent_id` int) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_extensions_counts` CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE `wiki_extensions_counts` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int, `page_id` int, `date` date, `count` int) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_extensions_menus` CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE `wiki_extensions_menus` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int, `menu_no` int, `page_name` varchar(255), `title` varchar(255), `enabled` tinyint(1)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_extensions_settings` CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE `wiki_extensions_settings` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int, `created_at` timestamp NULL, `updated_at` timestamp NULL, `lock_version` int, `auto_preview_enabled` tinyint(1) DEFAULT FALSE NOT NULL, `tag_disabled` tinyint(1) DEFAULT FALSE) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_extensions_tag_relations` CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `wiki_extensions_tag_relations` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `tag_id` int, `wiki_page_id` int, `created_at` timestamp NULL, INDEX `index_wiki_extensions_tag_relations_on_tag_id` (`tag_id`), INDEX `index_wiki_extensions_tag_relations_on_wiki_page_id` (`wiki_page_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_extensions_tags` CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `wiki_extensions_tags` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int, `name` varchar(255), `created_at` timestamp NULL, INDEX `index_wiki_extensions_tags_on_name` (`name`), INDEX `index_wiki_extensions_tags_on_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_extensions_votes` CASCADE[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE `wiki_extensions_votes` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `keystr` varchar(255), `target_class_name` varchar(255), `target_id` int, `count` int) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_pages` CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE `wiki_pages` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `wiki_id` int NOT NULL, `title` varchar(255) NOT NULL, `created_on` datetime NOT NULL, `protected` tinyint(1) DEFAULT FALSE NOT NULL, `parent_id` int, INDEX `index_wiki_pages_on_parent_id` (`parent_id`), INDEX `wiki_pages_wiki_id_title` (`wiki_id`, `title`), INDEX `index_wiki_pages_on_wiki_id` (`wiki_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `wiki_redirects` CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `wiki_redirects` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `wiki_id` int NOT NULL, `title` varchar(255), `redirects_to` varchar(255), `created_on` datetime NOT NULL, `redirects_to_wiki_id` int NOT NULL, INDEX `wiki_redirects_wiki_id_title` (`wiki_id`, `title`), INDEX `index_wiki_redirects_on_wiki_id` (`wiki_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `wikis` CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE `wikis` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `project_id` int NOT NULL, `start_page` varchar(255) NOT NULL, `status` int DEFAULT 1 NOT NULL, INDEX `wikis_project_id` (`project_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `workflows` CASCADE[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE `workflows` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `tracker_id` int DEFAULT 0 NOT NULL, `old_status_id` int DEFAULT 0 NOT NULL, `new_status_id` int DEFAULT 0 NOT NULL, `role_id` int DEFAULT 0 NOT NULL, `assignee` tinyint(1) DEFAULT FALSE NOT NULL, `author` tinyint(1) DEFAULT FALSE NOT NULL, `type` varchar(30), `field_name` varchar(30), `rule` varchar(30), INDEX `index_workflows_on_new_status_id` (`new_status_id`), INDEX `index_workflows_on_old_status_id` (`old_status_id`), INDEX `wkfs_role_tracker_old_status` (`role_id`, `tracker_id`, `old_status_id`), INDEX `index_workflows_on_role_id` (`role_id`), INDEX `index_workflows_on_tracker_id` (`tracker_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci[0m
+  [1m[35m (4.1ms)[0m  [1m[35mALTER TABLE `oauth_access_grants` ADD CONSTRAINT `fk_rails_b4b53e07b8`
+FOREIGN KEY (`application_id`)
+  REFERENCES `oauth_applications` (`id`)
+[0m
+  [1m[35m (3.4ms)[0m  [1m[35mALTER TABLE `oauth_access_grants` ADD CONSTRAINT `fk_rails_330c32d8d9`
+FOREIGN KEY (`resource_owner_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (3.5ms)[0m  [1m[35mALTER TABLE `oauth_access_tokens` ADD CONSTRAINT `fk_rails_732cb83ab7`
+FOREIGN KEY (`application_id`)
+  REFERENCES `oauth_applications` (`id`)
+[0m
+  [1m[35m (3.9ms)[0m  [1m[35mALTER TABLE `oauth_access_tokens` ADD CONSTRAINT `fk_rails_ee63f25419`
+FOREIGN KEY (`resource_owner_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES (20251007073256)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES
+(20250611092227),
+(20250611092155),
+(20250530185658),
+(20250423065135),
+(20241213003659),
+(20241103184550),
+(20241103150135),
+(20241026031710),
+(20241022095140),
+(20241007144951),
+(20240213101801),
+(20231113131245),
+(20231012112407),
+(20230818020734),
+(20221214173537),
+(20221012135202),
+(20221004172825),
+(20221002193055),
+(20220806215628),
+(20220714093010),
+(20220714093000),
+(20220224194639),
+(20211213122102),
+(20211213122101),
+(20211213122100),
+(20210801211024),
+(20210801145548),
+(20210728131544),
+(20210705111300),
+(20210704125704),
+(20200826153402),
+(20200826153401),
+(20190620135549),
+(20190510070108),
+(20190315102101),
+(20190315094151),
+(20180923091603),
+(20180923082945),
+(20180913072918),
+(20180501132547),
+(20170723112801),
+(20170419144536),
+(20170418090031),
+(20170320051650),
+(20170309214320),
+(20170302015225),
+(20170207050700),
+(20161220091118),
+(20161126094932),
+(20161010081600),
+(20161010081528),
+(20161010081301),
+(20161002133421),
+(20161001122012),
+(20160529063352),
+(20160416072926),
+(20160404080304),
+(20151031095005),
+(20151025072118),
+(20151024082034),
+(20151021190616),
+(20151021185456),
+(20151021184614),
+(20151020182731),
+(20151020182334),
+(20150921210243),
+(20150921204850),
+(20150730122735),
+(20150730122707),
+(20150725112753),
+(20150528093249),
+(20150528092912),
+(20150528084820),
+(20150526183158),
+(20150525103953),
+(20150510083747),
+(20150208105930),
+(20150113213955),
+(20150113213922),
+(20150113211532),
+(20150113194759),
+(20141122124142),
+(20141109112308),
+(20141029181824),
+(20141029181752),
+(20140920094058),
+(20140903143914),
+(20140228130325),
+(20131218183023),
+(20131215104612),
+(20131214094309),
+(20131210180802),
+(20131124175346),
+(20131005100610),
+(20131004113137),
+(20130911193200),
+(20130729070143),
+(20130713111657),
+(20130713104233),
+(20130710182539),
+(20130602092539),
+(20130217094251),
+(20130215111141),
+(20130215111127),
+(20130215073721),
+(20130207181455),
+(20130207175206),
+(20130202090625),
+(20130201184705),
+(20130110122628),
+(20121213084931),
+(20121209123358),
+(20121209123234),
+(20121026003537),
+(20121026002032),
+(20120930112914),
+(20120731164049),
+(20120714122200),
+(20120714122100),
+(20120714122000),
+(20120707064544),
+(20120705074331),
+(20120422150750),
+(20120301153455),
+(20120223110929),
+(20120205111326),
+(20120127174243),
+(20120115143126),
+(20120115143100),
+(20120115143024),
+(20111201201315),
+(20110902000000),
+(20110511000000),
+(20110412065600),
+(20110408103312),
+(20110401192910),
+(20110228000100),
+(20110228000000),
+(20110227125750),
+(20110226120132),
+(20110226120112),
+(20110224000000),
+(20110223180953),
+(20110223180944),
+(20110220160626),
+(20101114115359),
+(20101114115114),
+(20101107130441),
+(20101104182107),
+(20100819172912),
+(20100705164950),
+(20100313171051),
+(20100313132032),
+(20100221100219),
+(20100129193813),
+(20100129193402),
+(20091227112908),
+(20091225164732),
+(20091220184736),
+(20091220183727),
+(20091220183509),
+(20091205124427),
+(20091123212029),
+(20091114105931),
+(20091108092559),
+(20091025163651),
+(20091017214750),
+(20091017214720),
+(20091017214644),
+(20091017214611),
+(20091017214519),
+(20091017214440),
+(20091017214406),
+(20091017214336),
+(20091017214308),
+(20091017214236),
+(20091017214136),
+(20091017214107),
+(20091017214015),
+(20091017213910),
+(20091017213835),
+(20091017213757),
+(20091017213716),
+(20091017213642),
+(20091017213536),
+(20091017213444),
+(20091017213332),
+(20091017213257),
+(20091017213228),
+(20091017213151),
+(20091017213113),
+(20091017213027),
+(20091017212938),
+(20091017212644),
+(20091017212457),
+(20091017212227),
+(20091010093521),
+(20090704172358),
+(20090704172355),
+(20090704172350),
+(20090614091200),
+(20090503121510),
+(20090503121505),
+(20090503121501),
+(20090425161243),
+(20090406161854),
+(20090403001910),
+(20090401231134),
+(20090401221305),
+(20090323224724),
+(20090318181151),
+(20090312194159),
+(20090312172426),
+(20090214190337),
+(108),
+(107),
+(106),
+(105),
+(104),
+(103),
+(102),
+(101),
+(100),
+(99),
+(98),
+(97),
+(96),
+(95),
+(94),
+(93),
+(92),
+(91),
+(90),
+(89),
+(88),
+(87),
+(86),
+(85),
+(84),
+(83),
+(82),
+(81),
+(80),
+(79),
+(78),
+(77),
+(76),
+(75),
+(74),
+(73),
+(72),
+(71),
+(70),
+(69),
+(68),
+(67),
+(66),
+(65),
+(64),
+(63),
+(62),
+(61),
+(60),
+(59),
+(58),
+(57),
+(56),
+(55),
+(54),
+(53),
+(52),
+(51),
+(50),
+(49),
+(48),
+(47),
+(46),
+(45),
+(44),
+(43),
+(42),
+(41),
+(40),
+(39),
+(38),
+(37),
+(36),
+(35),
+(34),
+(33),
+(32),
+(31),
+(30),
+(29),
+(28),
+(27),
+(26),
+(25),
+(24),
+(23),
+(22),
+(21),
+(20),
+(19),
+(18),
+(17),
+(16),
+(15),
+(14),
+(13),
+(12),
+(11),
+(10),
+(9),
+(8),
+(7),
+(6),
+(5),
+(4),
+(3),
+(2),
+(1);[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2026-07-18 06:35:09.981255', '2026-07-18 06:35:09.981256') RETURNING `key`[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE `ar_internal_metadata` SET `ar_internal_metadata`.`value` = 'test', `ar_internal_metadata`.`updated_at` = '2026-07-18 06:35:09.982563' WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'schema_sha1' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('schema_sha1', '417b9373285c46db63254172f6a31a86ea62e03d', '2026-07-18 06:35:09.983367', '2026-07-18 06:35:09.983367') RETURNING `key`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/" for 192.168.65.1 at 2026-07-18 06:38:26 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 8.1. (called from block (3 levels) in <top (required)> at /app/plugins/redmine_wiki_extensions/config/routes.rb:20)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 8.1. (called from block (3 levels) in <top (required)> at /app/plugins/redmine_wiki_extensions/config/routes.rb:21)
+Processing by WelcomeController#index as HTML
+  [1m[36mSetting Maximum (0.2ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'rest_api_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mAnonymousUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'AnonymousUser' AND `users`.`lastname` = 'Anonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:892:in `anonymous'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.8ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'password_required_char_classes' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mAnonymousUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`type` = 'AnonymousUser' LIMIT 1[0m
+  ↳ app/models/anonymous_user.rb:27:in `validate_anonymous_uniqueness'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_notification_option' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mAnonymousUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`lastname`, `status`, `created_on`, `updated_on`, `type`, `mail_notification`) VALUES ('Anonymous', 0, '2026-07-18 06:38:26', '2026-07-18 06:38:26', 'AnonymousUser', 'only_assigned') RETURNING `id`[0m
+  ↳ app/models/user.rb:894:in `anonymous'
+  [1m[36mCustomValue Load (0.1ms)[0m  [1m[34mSELECT `custom_values`.* FROM `custom_values` WHERE `custom_values`.`customized_id` = 1 AND `custom_values`.`customized_type` = 'Principal'[0m
+  ↳ lib/plugins/acts_as_customizable/lib/acts_as_customizable.rb:149:in `save_custom_field_values'
+  [1m[36mToken Delete All (0.2ms)[0m  [1m[31mDELETE FROM `tokens` WHERE `tokens`.`user_id` = 1 AND `tokens`.`action` IN ('recovery', 'autologin', 'session')[0m
+  ↳ app/models/user.rb:967:in `destroy_tokens'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:894:in `anonymous'
+  Current user: anonymous
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'login_required' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'force_default_language_for_anonymous' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT `roles`.* FROM `roles` WHERE `roles`.`builtin` = 2 LIMIT 1[0m
+  ↳ app/models/role.rb:328:in `find_or_create_system_role'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/role.rb:330:in `find_or_create_system_role'
+  [1m[36mRole Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `roles` WHERE `roles`.`name` = CAST('Anonymous' AS BINARY) LIMIT 1[0m
+  ↳ app/models/role.rb:330:in `find_or_create_system_role'
+  [1m[36mRole Maximum (0.1ms)[0m  [1m[34mSELECT MAX(`roles`.`position`) FROM `roles` WHERE `roles`.`builtin` = 2[0m
+  ↳ lib/redmine/acts/positioned.rb:74:in `set_default_position'
+  [1m[36mRole Create (0.2ms)[0m  [1m[32mINSERT INTO `roles` (`name`, `position`, `builtin`) VALUES ('Anonymous', 1, 2) RETURNING `id`[0m
+  ↳ app/models/role.rb:330:in `find_or_create_system_role'
+  [1m[36mRole Update All (0.1ms)[0m  [1m[33mUPDATE `roles` SET position = position - 1 WHERE `roles`.`builtin` = 0 AND (position >= NULL AND id <> '1')[0m
+  ↳ lib/redmine/acts/positioned.rb:99:in `remove_position'
+  [1m[36mRole Update All (0.1ms)[0m  [1m[33mUPDATE `roles` SET position = position + 1 WHERE `roles`.`builtin` = 2 AND (position >= '1' AND id <> '1')[0m
+  ↳ lib/redmine/acts/positioned.rb:92:in `insert_position'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/role.rb:330:in `find_or_create_system_role'
+  [1m[36mGroupAnonymous Pluck (0.1ms)[0m  [1m[34mSELECT `users`.`id` FROM `users` WHERE `users`.`type` = 'GroupAnonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:683:in `block in project_ids_by_role'
+  [1m[36mMember Pluck (0.2ms)[0m  [1m[34mSELECT `members`.`user_id`, `role_id`, `members`.`project_id` FROM `members` INNER JOIN `projects` ON `projects`.`id` = `members`.`project_id` INNER JOIN `member_roles` ON `member_roles`.`member_id` = `members`.`id` WHERE (projects.status <> 9) AND (members.user_id = '1' OR (projects.is_public = '1' AND members.user_id = NULL))[0m
+  ↳ app/models/user.rb:688:in `block in project_ids_by_role'
+  [1m[36mNews Load (0.1ms)[0m  [1m[34mSELECT `news`.* FROM `news` INNER JOIN `projects` ON `projects`.`id` = `news`.`project_id` WHERE (1=0) ORDER BY news.created_on DESC LIMIT 5[0m
+  ↳ app/models/news.rb:87:in `latest'
+  Rendering layout layouts/base.html.erb
+  Rendering welcome/index.html.erb within layouts/base
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'welcome_text' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'text_formatting' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'cache_formatted_text' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'app_title' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered welcome/index.html.erb within layouts/base (Duration: 9.3ms | GC: 0.5ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'ui_theme' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'wiki_tablesort_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_hide_mail' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_time_zone' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_no_self_notified' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_auto_watch_on' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'plugin_redmine_drawio' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_html_header.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'self_registration' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mGroupAnonymous Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  [1m[36mGroupAnonymous Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`type` = 'GroupAnonymous' LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:47:in `create_instance'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/group_builtin.rb:51:in `create_instance'
+  [1m[36mGroupAnonymous Create (0.6ms)[0m  [1m[32mINSERT INTO `users` (`lastname`, `created_on`, `updated_on`, `type`) VALUES ('GroupAnonymous', '2026-07-18 06:38:26', '2026-07-18 06:38:26', 'GroupAnonymous') RETURNING `id`[0m
+  ↳ app/models/group_builtin.rb:51:in `create_instance'
+  [1m[36mCustomField Load (0.2ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE (type = 'GroupAnonymousCustomField') ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ lib/plugins/acts_as_customizable/lib/acts_as_customizable.rb:52:in `available_custom_fields'
+  [1m[36mCustomValue Load (0.2ms)[0m  [1m[34mSELECT `custom_values`.* FROM `custom_values` WHERE `custom_values`.`customized_id` = 2 AND `custom_values`.`customized_type` = 'Principal'[0m
+  ↳ lib/plugins/acts_as_customizable/lib/acts_as_customizable.rb:149:in `save_custom_field_values'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/group_builtin.rb:51:in `create_instance'
+  [1m[36mGroupAnonymous Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/_macro_dialog.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_body_bottom.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/base.html.erb (Duration: 61.5ms | GC: 0.5ms)
+Completed 200 OK in 501ms (Views: 59.3ms | ActiveRecord: 16.1ms (38 queries, 0 cached) | GC: 89.3ms)
+
+
+Started GET "/apple-touch-icon-precomposed.png" for 192.168.65.1 at 2026-07-18 06:38:27 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/apple-touch-icon-precomposed.png"):
+  
+Started GET "/apple-touch-icon.png" for 192.168.65.1 at 2026-07-18 06:38:27 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/apple-touch-icon.png"):
+  
