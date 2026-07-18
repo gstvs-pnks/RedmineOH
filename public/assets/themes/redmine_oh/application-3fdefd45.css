@@ -1,7 +1,5 @@
 /* RedmineOH theme entry point */
 
-@import url(../../../stylesheets/application.css);
-
 :root {
   --oh-theme-name: "RedmineOH";
   --oh-theme-version: "0.1.0";

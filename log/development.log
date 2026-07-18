@@ -1069,3 +1069,1338 @@ Started GET "/apple-touch-icon.png" for 192.168.65.1 at 2026-07-18 06:38:27 +000
   
 ActionController::RoutingError (No route matches [GET] "/apple-touch-icon.png"):
   
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/" for 192.168.65.1 at 2026-07-18 10:04:50 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 8.1. (called from block (3 levels) in <top (required)> at /app/plugins/redmine_wiki_extensions/config/routes.rb:20)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 8.1. (called from block (3 levels) in <top (required)> at /app/plugins/redmine_wiki_extensions/config/routes.rb:21)
+Processing by WelcomeController#index as HTML
+  [1m[36mSetting Maximum (0.2ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'rest_api_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mAnonymousUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'AnonymousUser' AND `users`.`lastname` = 'Anonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:892:in `anonymous'
+  Current user: anonymous
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'login_required' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'force_default_language_for_anonymous' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT `roles`.* FROM `roles` WHERE `roles`.`builtin` = 2 LIMIT 1[0m
+  ↳ app/models/role.rb:328:in `find_or_create_system_role'
+  [1m[36mGroupAnonymous Pluck (0.1ms)[0m  [1m[34mSELECT `users`.`id` FROM `users` WHERE `users`.`type` = 'GroupAnonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:683:in `block in project_ids_by_role'
+  [1m[36mMember Pluck (0.2ms)[0m  [1m[34mSELECT `members`.`user_id`, `role_id`, `members`.`project_id` FROM `members` INNER JOIN `projects` ON `projects`.`id` = `members`.`project_id` INNER JOIN `member_roles` ON `member_roles`.`member_id` = `members`.`id` WHERE (projects.status <> 9) AND (members.user_id = '1' OR (projects.is_public = '1' AND members.user_id = '2'))[0m
+  ↳ app/models/user.rb:688:in `block in project_ids_by_role'
+  [1m[36mNews Load (0.2ms)[0m  [1m[34mSELECT `news`.* FROM `news` INNER JOIN `projects` ON `projects`.`id` = `news`.`project_id` WHERE (1=0) ORDER BY news.created_on DESC LIMIT 5[0m
+  ↳ app/models/news.rb:87:in `latest'
+  Rendering layout layouts/base.html.erb
+  Rendering welcome/index.html.erb within layouts/base
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'welcome_text' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'text_formatting' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'cache_formatted_text' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'app_title' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered welcome/index.html.erb within layouts/base (Duration: 316.4ms | GC: 53.3ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'ui_theme' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'wiki_tablesort_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_hide_mail' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_time_zone' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_no_self_notified' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_auto_watch_on' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'plugin_redmine_drawio' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_html_header.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'self_registration' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mGroupAnonymous Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  [1m[36mCACHE GroupAnonymous Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/_macro_dialog.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_body_bottom.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/base.html.erb (Duration: 362.0ms | GC: 57.8ms)
+Completed 200 OK in 455ms (Views: 363.0ms | ActiveRecord: 7.6ms (23 queries, 1 cached) | GC: 66.3ms)
+
+
+Started GET "/login" for 192.168.65.1 at 2026-07-18 10:04:55 +0000
+Processing by AccountController#login as HTML
+  [1m[36mSetting Maximum (0.7ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+  [1m[36mAnonymousUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'AnonymousUser' AND `users`.`lastname` = 'Anonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:892:in `anonymous'
+  Current user: anonymous
+  Rendering layout layouts/base.html.erb
+  Rendering account/login.html.erb within layouts/base
+  [1m[36mSetting Load (0.3ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'lost_password' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'autologin' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered account/login.html.erb within layouts/base (Duration: 4.7ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_html_header.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT `roles`.* FROM `roles` WHERE `roles`.`builtin` = 2 LIMIT 1[0m
+  ↳ app/models/role.rb:328:in `find_or_create_system_role'
+  [1m[36mGroupAnonymous Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  [1m[36mGroupAnonymous Pluck (0.1ms)[0m  [1m[34mSELECT `users`.`id` FROM `users` WHERE `users`.`type` = 'GroupAnonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:683:in `block in project_ids_by_role'
+  [1m[36mMember Pluck (0.2ms)[0m  [1m[34mSELECT `members`.`user_id`, `role_id`, `members`.`project_id` FROM `members` INNER JOIN `projects` ON `projects`.`id` = `members`.`project_id` INNER JOIN `member_roles` ON `member_roles`.`member_id` = `members`.`id` WHERE (projects.status <> 9) AND (members.user_id = '1' OR (projects.is_public = '1' AND members.user_id = '2'))[0m
+  ↳ app/models/user.rb:688:in `block in project_ids_by_role'
+  [1m[36mCACHE GroupAnonymous Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/_macro_dialog.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_body_bottom.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layout layouts/base.html.erb (Duration: 14.4ms | GC: 0.0ms)
+Completed 200 OK in 25ms (Views: 14.7ms | ActiveRecord: 2.5ms (9 queries, 1 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for 192.168.65.1 at 2026-07-18 10:05:28 +0000
+Processing by AccountController#login as HTML
+  Parameters: {"authenticity_token"=>"GyF6L5gMJxEe_IGeTfCfC7IzdwGZ1KuYwJlxJgF7Ke97vyUDLMtgaJtItBMKjL1nlfYaewqVGt8DdIXgmfpJ6Q", "back_url"=>"/", "username"=>"admin", "password"=>"[FILTERED]", "login"=>"Login"}
+  [1m[36mSetting Maximum (0.4ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+  [1m[36mAnonymousUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'AnonymousUser' AND `users`.`lastname` = 'Anonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:892:in `anonymous'
+  Current user: anonymous
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`login` = 'admin'[0m
+  ↳ app/models/user.rb:542:in `detect'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND (LOWER(login) = 'admin') LIMIT 1[0m
+  ↳ app/models/user.rb:545:in `find_by_login'
+  [1m[36mAuthSource Load (0.2ms)[0m  [1m[34mSELECT `auth_sources`.* FROM `auth_sources` WHERE `auth_sources`.`onthefly_register` = TRUE[0m
+  ↳ app/models/auth_source.rb:104:in `authenticate'
+Failed login for 'admin' from 192.168.65.1 at 2026-07-18 10:05:28 UTC
+  Rendering layout layouts/base.html.erb
+  Rendering account/login.html.erb within layouts/base
+  Rendered account/login.html.erb within layouts/base (Duration: 0.6ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_html_header.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT `roles`.* FROM `roles` WHERE `roles`.`builtin` = 2 LIMIT 1[0m
+  ↳ app/models/role.rb:328:in `find_or_create_system_role'
+  [1m[36mGroupAnonymous Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  [1m[36mGroupAnonymous Pluck (0.1ms)[0m  [1m[34mSELECT `users`.`id` FROM `users` WHERE `users`.`type` = 'GroupAnonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:683:in `block in project_ids_by_role'
+  [1m[36mMember Pluck (0.2ms)[0m  [1m[34mSELECT `members`.`user_id`, `role_id`, `members`.`project_id` FROM `members` INNER JOIN `projects` ON `projects`.`id` = `members`.`project_id` INNER JOIN `member_roles` ON `member_roles`.`member_id` = `members`.`id` WHERE (projects.status <> 9) AND (members.user_id = '1' OR (projects.is_public = '1' AND members.user_id = '2'))[0m
+  ↳ app/models/user.rb:688:in `block in project_ids_by_role'
+  [1m[36mCACHE GroupAnonymous Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/_macro_dialog.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_body_bottom.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layout layouts/base.html.erb (Duration: 7.7ms | GC: 0.0ms)
+Completed 200 OK in 21ms (Views: 7.5ms | ActiveRecord: 2.7ms (10 queries, 1 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for 192.168.65.1 at 2026-07-18 10:05:33 +0000
+Processing by AccountController#login as HTML
+  Parameters: {"authenticity_token"=>"H-Quz5qpfmH1fFG1I1NrWF38ch_6Wp95-IUYI-YuX8x_enHjLm45GHDIZDhkL0k0ejkfZWkbLj47aOzlfq8_yg", "back_url"=>"/", "username"=>"admin", "password"=>"[FILTERED]", "login"=>"Login"}
+  [1m[36mSetting Maximum (0.7ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+  [1m[36mAnonymousUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'AnonymousUser' AND `users`.`lastname` = 'Anonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:892:in `anonymous'
+  Current user: anonymous
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`login` = 'admin'[0m
+  ↳ app/models/user.rb:542:in `detect'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND (LOWER(login) = 'admin') LIMIT 1[0m
+  ↳ app/models/user.rb:545:in `find_by_login'
+  [1m[36mAuthSource Load (0.2ms)[0m  [1m[34mSELECT `auth_sources`.* FROM `auth_sources` WHERE `auth_sources`.`onthefly_register` = TRUE[0m
+  ↳ app/models/auth_source.rb:104:in `authenticate'
+Failed login for 'admin' from 192.168.65.1 at 2026-07-18 10:05:33 UTC
+  Rendering layout layouts/base.html.erb
+  Rendering account/login.html.erb within layouts/base
+  Rendered account/login.html.erb within layouts/base (Duration: 1.0ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_html_header.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  [1m[36mRole Load (0.4ms)[0m  [1m[34mSELECT `roles`.* FROM `roles` WHERE `roles`.`builtin` = 2 LIMIT 1[0m
+  ↳ app/models/role.rb:328:in `find_or_create_system_role'
+  [1m[36mGroupAnonymous Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  [1m[36mGroupAnonymous Pluck (0.2ms)[0m  [1m[34mSELECT `users`.`id` FROM `users` WHERE `users`.`type` = 'GroupAnonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:683:in `block in project_ids_by_role'
+  [1m[36mMember Pluck (0.3ms)[0m  [1m[34mSELECT `members`.`user_id`, `role_id`, `members`.`project_id` FROM `members` INNER JOIN `projects` ON `projects`.`id` = `members`.`project_id` INNER JOIN `member_roles` ON `member_roles`.`member_id` = `members`.`id` WHERE (projects.status <> 9) AND (members.user_id = '1' OR (projects.is_public = '1' AND members.user_id = '2'))[0m
+  ↳ app/models/user.rb:688:in `block in project_ids_by_role'
+  [1m[36mCACHE GroupAnonymous Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/_macro_dialog.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_body_bottom.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layout layouts/base.html.erb (Duration: 14.3ms | GC: 0.0ms)
+Completed 200 OK in 27ms (Views: 13.7ms | ActiveRecord: 3.2ms (10 queries, 1 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for 192.168.65.1 at 2026-07-18 10:06:04 +0000
+Processing by AccountController#login as HTML
+  Parameters: {"authenticity_token"=>"p39ZtAWvsxa3n9Jm7T0wSYZYBmBVm2mXevLWnVWqw4_H4QaYsWj0bzIr5-uqQRIloZ1rGsba2NC5HyJbzSujiQ", "back_url"=>"/", "username"=>"admin", "password"=>"[FILTERED]", "login"=>"Login"}
+  [1m[36mSetting Maximum (1.4ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+  [1m[36mAnonymousUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'AnonymousUser' AND `users`.`lastname` = 'Anonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:892:in `anonymous'
+  Current user: anonymous
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`login` = 'admin'[0m
+  ↳ app/models/user.rb:542:in `detect'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND (LOWER(login) = 'admin') LIMIT 1[0m
+  ↳ app/models/user.rb:545:in `find_by_login'
+  [1m[36mAuthSource Load (0.3ms)[0m  [1m[34mSELECT `auth_sources`.* FROM `auth_sources` WHERE `auth_sources`.`onthefly_register` = TRUE[0m
+  ↳ app/models/auth_source.rb:104:in `authenticate'
+Failed login for 'admin' from 192.168.65.1 at 2026-07-18 10:06:04 UTC
+  Rendering layout layouts/base.html.erb
+  Rendering account/login.html.erb within layouts/base
+  Rendered account/login.html.erb within layouts/base (Duration: 2.1ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_html_header.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  [1m[36mRole Load (0.6ms)[0m  [1m[34mSELECT `roles`.* FROM `roles` WHERE `roles`.`builtin` = 2 LIMIT 1[0m
+  ↳ app/models/role.rb:328:in `find_or_create_system_role'
+  [1m[36mGroupAnonymous Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  [1m[36mGroupAnonymous Pluck (0.1ms)[0m  [1m[34mSELECT `users`.`id` FROM `users` WHERE `users`.`type` = 'GroupAnonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:683:in `block in project_ids_by_role'
+  [1m[36mMember Pluck (0.4ms)[0m  [1m[34mSELECT `members`.`user_id`, `role_id`, `members`.`project_id` FROM `members` INNER JOIN `projects` ON `projects`.`id` = `members`.`project_id` INNER JOIN `member_roles` ON `member_roles`.`member_id` = `members`.`id` WHERE (projects.status <> 9) AND (members.user_id = '1' OR (projects.is_public = '1' AND members.user_id = '2'))[0m
+  ↳ app/models/user.rb:688:in `block in project_ids_by_role'
+  [1m[36mCACHE GroupAnonymous Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/_macro_dialog.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_body_bottom.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layout layouts/base.html.erb (Duration: 19.1ms | GC: 0.0ms)
+Completed 200 OK in 42ms (Views: 18.7ms | ActiveRecord: 4.6ms (10 queries, 1 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for 192.168.65.1 at 2026-07-18 10:09:07 +0000
+Processing by AccountController#login as HTML
+  Parameters: {"authenticity_token"=>"IxvsYmzGBDTXtEZzInxY46qMdpzc1MfbAD6vknjlr7RDhbNO2AFDTVIAc_5lAHqPjUkb5k-VdpzD01tU4GTPsg", "back_url"=>"/", "username"=>"admin", "password"=>"[FILTERED]", "login"=>"Login"}
+  [1m[36mSetting Maximum (1.2ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+Settings cache cleared.
+  [1m[36mSetting Load (0.4ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'rest_api_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mAnonymousUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'AnonymousUser' AND `users`.`lastname` = 'Anonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:892:in `anonymous'
+  Current user: anonymous
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'force_default_language_for_anonymous' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`login` = 'admin'[0m
+  ↳ app/models/user.rb:542:in `detect'
+Failed login for 'admin' from 192.168.65.1 at 2026-07-18 10:09:07 UTC
+  Rendering layout layouts/base.html.erb
+  Rendering account/login.html.erb within layouts/base
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'lost_password' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'autologin' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered account/login.html.erb within layouts/base (Duration: 4.0ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'app_title' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'ui_theme' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'wiki_tablesort_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_hide_mail' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_time_zone' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_no_self_notified' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_auto_watch_on' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'plugin_redmine_drawio' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_html_header.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'text_formatting' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'login_required' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'self_registration' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT `roles`.* FROM `roles` WHERE `roles`.`builtin` = 2 LIMIT 1[0m
+  ↳ app/models/role.rb:328:in `find_or_create_system_role'
+  [1m[36mGroupAnonymous Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  [1m[36mGroupAnonymous Pluck (0.1ms)[0m  [1m[34mSELECT `users`.`id` FROM `users` WHERE `users`.`type` = 'GroupAnonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:683:in `block in project_ids_by_role'
+  [1m[36mMember Pluck (0.2ms)[0m  [1m[34mSELECT `members`.`user_id`, `role_id`, `members`.`project_id` FROM `members` INNER JOIN `projects` ON `projects`.`id` = `members`.`project_id` INNER JOIN `member_roles` ON `member_roles`.`member_id` = `members`.`id` WHERE (projects.status <> 9) AND (members.user_id = '1' OR (projects.is_public = '1' AND members.user_id = '2'))[0m
+  ↳ app/models/user.rb:688:in `block in project_ids_by_role'
+  [1m[36mCACHE GroupAnonymous Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/_macro_dialog.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_body_bottom.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layout layouts/base.html.erb (Duration: 22.6ms | GC: 0.0ms)
+Completed 200 OK in 66ms (Views: 21.9ms | ActiveRecord: 4.3ms (23 queries, 1 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for 192.168.65.1 at 2026-07-18 10:09:21 +0000
+Processing by AccountController#login as HTML
+  Parameters: {"authenticity_token"=>"waSqqz6hhndyyLYYBEmlPzDOe9JchXcg2hHOMVH2xWChOvWHimbBDvd8g5VDNYdTFwsWqM_ExmcZ_Dr3yXelZg", "back_url"=>"/", "username"=>"admin", "password"=>"[FILTERED]", "login"=>"Login"}
+  [1m[36mSetting Maximum (2.3ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+  [1m[36mAnonymousUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'AnonymousUser' AND `users`.`lastname` = 'Anonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:892:in `anonymous'
+  Current user: anonymous
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`login` = 'admin'[0m
+  ↳ app/models/user.rb:542:in `detect'
+Failed login for 'admin' from 192.168.65.1 at 2026-07-18 10:09:21 UTC
+  Rendering layout layouts/base.html.erb
+  Rendering account/login.html.erb within layouts/base
+  Rendered account/login.html.erb within layouts/base (Duration: 3.4ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_html_header.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  [1m[36mRole Load (0.5ms)[0m  [1m[34mSELECT `roles`.* FROM `roles` WHERE `roles`.`builtin` = 2 LIMIT 1[0m
+  ↳ app/models/role.rb:328:in `find_or_create_system_role'
+  [1m[36mGroupAnonymous Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  [1m[36mGroupAnonymous Pluck (0.3ms)[0m  [1m[34mSELECT `users`.`id` FROM `users` WHERE `users`.`type` = 'GroupAnonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:683:in `block in project_ids_by_role'
+  [1m[36mMember Pluck (0.5ms)[0m  [1m[34mSELECT `members`.`user_id`, `role_id`, `members`.`project_id` FROM `members` INNER JOIN `projects` ON `projects`.`id` = `members`.`project_id` INNER JOIN `member_roles` ON `member_roles`.`member_id` = `members`.`id` WHERE (projects.status <> 9) AND (members.user_id = '1' OR (projects.is_public = '1' AND members.user_id = '2'))[0m
+  ↳ app/models/user.rb:688:in `block in project_ids_by_role'
+  [1m[36mCACHE GroupAnonymous Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'GroupAnonymous' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/models/group_builtin.rb:43:in `load_instance'
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/_macro_dialog.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_body_bottom.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layout layouts/base.html.erb (Duration: 18.3ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 17.5ms | ActiveRecord: 5.4ms (8 queries, 1 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for 192.168.65.1 at 2026-07-18 10:09:29 +0000
+Processing by AccountController#login as HTML
+  Parameters: {"authenticity_token"=>"PaH5vHNc06uR7aT6C9t_fqDy201ozEATB1mbOv_qCHFdP6aQx5uU0hRZkXdMp10Shze2N_uN8VTEtG_8Z2todw", "back_url"=>"/", "username"=>"admin", "password"=>"[FILTERED]", "login"=>"Login"}
+  [1m[36mSetting Maximum (0.7ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+  [1m[36mAnonymousUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'AnonymousUser' AND `users`.`lastname` = 'Anonymous' LIMIT 1[0m
+  ↳ app/models/user.rb:892:in `anonymous'
+  Current user: anonymous
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`login` = 'admin'[0m
+  ↳ app/models/user.rb:542:in `detect'
+  [1m[36mUser Update (2.7ms)[0m  [1m[33mUPDATE `users` SET `users`.`last_login_on` = '2026-07-18 10:09:29' WHERE `users`.`id` = 3[0m
+  ↳ app/models/user.rb:333:in `update_last_login_on!'
+Successful authentication for 'admin' from 192.168.65.1 at 2026-07-18 10:09:29 UTC
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:454:in `generate_session_token'
+  [1m[36mToken Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM `tokens` WHERE `tokens`.`value` = CAST('' AS BINARY) LIMIT 1[0m
+  ↳ app/models/user.rb:454:in `generate_session_token'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/models/token.rb:136:in `delete_previous_tokens'
+  [1m[36mToken Ids (0.2ms)[0m  [1m[34mSELECT `tokens`.`id` FROM `tokens` WHERE `tokens`.`user_id` = 3 AND `tokens`.`action` = 'session' ORDER BY `tokens`.`updated_on` DESC LIMIT 18446744073709551615 OFFSET 9[0m
+  ↳ app/models/token.rb:139:in `delete_previous_tokens'
+  [1m[36mToken Create (0.4ms)[0m  [1m[32mINSERT INTO `tokens` (`user_id`, `action`, `value`, `created_on`, `updated_on`) VALUES (3, 'session', '35ae1aedc5f9f92e8ba91924e5f3fcd6fb08e004', '2026-07-18 10:09:29', '2026-07-18 10:09:29') RETURNING `id`[0m
+  ↳ app/models/user.rb:454:in `generate_session_token'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:454:in `generate_session_token'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'twofa' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `groups_users` ON `users`.`id` = `groups_users`.`group_id` WHERE `users`.`type` IN ('Group', 'GroupBuiltin', 'GroupAnonymous') AND `groups_users`.`user_id` = 3[0m
+  ↳ app/models/user.rb:409:in `must_activate_twofa?'
+Redirected to http://localhost:3000/
+Completed 302 Found in 65ms (ActiveRecord: 11.1ms (10 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 192.168.65.1 at 2026-07-18 10:09:29 +0000
+Processing by WelcomeController#index as HTML
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'session_lifetime' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'session_timeout' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mToken Maximum (0.1ms)[0m  [1m[34mSELECT MAX(`tokens`.`updated_on`) FROM `tokens` WHERE `tokens`.`user_id` = 3 AND `tokens`.`value` = '35ae1aedc5f9f92e8ba91924e5f3fcd6fb08e004' AND `tokens`.`action` = 'session'[0m
+  ↳ app/models/user.rb:491:in `verify_session_token'
+  [1m[36mSetting Maximum (0.1ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`status` = 1 AND `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:119:in `find_current_user'
+  Current user: admin (id=3)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'force_default_language_for_loggedin' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+Redirected to http://localhost:3000/my/password
+Filter chain halted as :check_password_change rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms (6 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/my/password" for 192.168.65.1 at 2026-07-18 10:09:29 +0000
+Processing by MyController#password as HTML
+  [1m[36mToken Maximum (0.2ms)[0m  [1m[34mSELECT MAX(`tokens`.`updated_on`) FROM `tokens` WHERE `tokens`.`user_id` = 3 AND `tokens`.`value` = '35ae1aedc5f9f92e8ba91924e5f3fcd6fb08e004' AND `tokens`.`action` = 'session'[0m
+  ↳ app/models/user.rb:491:in `verify_session_token'
+  [1m[36mSetting Maximum (0.1ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`status` = 1 AND `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:119:in `find_current_user'
+  Current user: admin (id=3)
+  Rendering layout layouts/base.html.erb
+  Rendering my/password.html.erb within layouts/base
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'password_min_length' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'password_required_char_classes' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered my/password.html.erb within layouts/base (Duration: 25.2ms | GC: 21.7ms)
+  [1m[36mUserPreference Load (0.3ms)[0m  [1m[34mSELECT `user_preferences`.* FROM `user_preferences` WHERE `user_preferences`.`user_id` = 3 LIMIT 1[0m
+  ↳ app/models/user.rb:413:in `pref'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:413:in `pref'
+  [1m[36mUserPreference Create (0.8ms)[0m  [1m[32mINSERT INTO `user_preferences` (`user_id`, `others`, `time_zone`) VALUES (3, '---\n:no_self_notified: \'1\'\n:auto_watch_on:\n- issue_created\n- issue_contributed_to\n:my_page_layout:\n  left:\n  - issuesassignedtome\n  right:\n  - issuesreportedbyme\n:my_page_settings: {}\n', '') RETURNING `id`[0m
+  ↳ app/models/user.rb:413:in `pref'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:413:in `pref'
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_html_header.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/hooks/_api_not_enabled_warning.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'gravatar_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'user_format' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT `projects`.`id`, `projects`.`name`, `projects`.`identifier`, `projects`.`lft`, `projects`.`rgt` FROM `projects` INNER JOIN `members` ON `projects`.`id` = `members`.`project_id` INNER JOIN `projects` `projects_members` ON `projects_members`.`id` = `members`.`project_id` WHERE `members`.`user_id` = 3 AND `projects`.`status` != 9 AND `projects`.`status` = 1[0m
+  ↳ app/helpers/application_helper.rb:565:in `projects_for_jump_box'
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/_macro_dialog.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_body_bottom.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layout layouts/base.html.erb (Duration: 39.8ms | GC: 23.3ms)
+Completed 200 OK in 44ms (Views: 38.5ms | ActiveRecord: 2.5ms (10 queries, 0 cached) | GC: 23.3ms)
+
+
+Started POST "/my/password" for 192.168.65.1 at 2026-07-18 10:09:48 +0000
+Processing by MyController#password as HTML
+  Parameters: {"authenticity_token"=>"Mwyos2v2BEFFsfIKZXhMALBBrTuNGcH7k8l7EtMSLDx6QI07lkmoJkfxxlbaBTxKeRiyNJNNLSwwAYdCr4obLw", "password"=>"[FILTERED]", "new_password"=>"[FILTERED]", "new_password_confirmation"=>"[FILTERED]", "commit"=>"Apply"}
+  [1m[36mToken Maximum (0.5ms)[0m  [1m[34mSELECT MAX(`tokens`.`updated_on`) FROM `tokens` WHERE `tokens`.`user_id` = 3 AND `tokens`.`value` = '35ae1aedc5f9f92e8ba91924e5f3fcd6fb08e004' AND `tokens`.`action` = 'session'[0m
+  ↳ app/models/user.rb:491:in `verify_session_token'
+  [1m[36mSetting Maximum (0.3ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`status` = 1 AND `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:119:in `find_current_user'
+  Current user: admin (id=3)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:948:in `instantiate_email_address'
+  [1m[36mEmailAddress Load (0.2ms)[0m  [1m[34mSELECT `email_addresses`.* FROM `email_addresses` WHERE `email_addresses`.`user_id` = 3 AND `email_addresses`.`is_default` = TRUE LIMIT 1[0m
+  ↳ app/models/user.rb:948:in `instantiate_email_address'
+  [1m[36mEmailAddress Load (0.3ms)[0m  [1m[34mSELECT `email_addresses`.* FROM `email_addresses` WHERE `email_addresses`.`user_id` = 3[0m
+  ↳ app/models/user.rb:943:in `map'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE `users` SET `users`.`hashed_password` = '297ba4e29bd319025cd2e3d4f0239c60eb569de7', `users`.`updated_on` = '2026-07-18 10:09:48', `users`.`salt` = '59481486cf9049221a945f91d7efa881', `users`.`must_change_passwd` = FALSE, `users`.`passwd_changed_on` = '2026-07-18 10:09:48' WHERE `users`.`id` = 3[0m
+  ↳ app/controllers/my_controller.rb:109:in `password'
+  [1m[36mCustomField Load (0.2ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE (type = 'UserCustomField') ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ lib/plugins/acts_as_customizable/lib/acts_as_customizable.rb:52:in `available_custom_fields'
+  [1m[36mCustomValue Load (0.1ms)[0m  [1m[34mSELECT `custom_values`.* FROM `custom_values` WHERE `custom_values`.`customized_id` = 3 AND `custom_values`.`customized_type` = 'Principal'[0m
+  ↳ lib/plugins/acts_as_customizable/lib/acts_as_customizable.rb:149:in `save_custom_field_values'
+  [1m[36mToken Delete All (0.2ms)[0m  [1m[31mDELETE FROM `tokens` WHERE `tokens`.`user_id` = 3 AND `tokens`.`action` IN ('recovery', 'autologin', 'session')[0m
+  ↳ app/models/user.rb:967:in `destroy_tokens'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/my_controller.rb:109:in `password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:454:in `generate_session_token'
+  [1m[36mToken Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `tokens` WHERE `tokens`.`value` = CAST('' AS BINARY) LIMIT 1[0m
+  ↳ app/models/user.rb:454:in `generate_session_token'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/models/token.rb:136:in `delete_previous_tokens'
+  [1m[36mToken Ids (0.1ms)[0m  [1m[34mSELECT `tokens`.`id` FROM `tokens` WHERE `tokens`.`user_id` = 3 AND `tokens`.`action` = 'session' ORDER BY `tokens`.`updated_on` DESC LIMIT 18446744073709551615 OFFSET 9[0m
+  ↳ app/models/token.rb:139:in `delete_previous_tokens'
+  [1m[36mToken Create (0.1ms)[0m  [1m[32mINSERT INTO `tokens` (`user_id`, `action`, `value`, `created_on`, `updated_on`) VALUES (3, 'session', '47d5dcb0e11d69426c4772431e62f4c64dfe7714', '2026-07-18 10:09:48', '2026-07-18 10:09:48') RETURNING `id`[0m
+  ↳ app/models/user.rb:454:in `generate_session_token'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:454:in `generate_session_token'
+[ActiveJob] Enqueued Mailer::DeliveryJob (Job ID: 3efa1ab6-d320-414b-a19a-0e800c29f9eb) to Async(mailers) with arguments: "Mailer", "security_notification", "deliver_now", {:args=>[#<GlobalID:0x0000ffff901ef0b0 @uri=#<URI::GID gid://redmine-app/User/3>>, #<GlobalID:0x0000ffff901eeb88 @uri=#<URI::GID gid://redmine-app/User/3>>, {:message=>"mail_body_password_updated", :title=>"button_change_password", :url=>{:controller=>"my", :action=>"password"}, :remote_ip=>"192.168.65.1"}]}
+Redirected to http://localhost:3000/my/account
+Completed 302 Found in 45ms (ActiveRecord: 7.0ms (13 queries, 0 cached) | GC: 4.3ms)
+
+
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`id` = 3 LIMIT 1[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`id` = 3 LIMIT 1[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb] Performing Mailer::DeliveryJob (Job ID: 3efa1ab6-d320-414b-a19a-0e800c29f9eb) from Async(mailers) enqueued at 2026-07-18T10:09:48.604252174Z with arguments: "Mailer", "security_notification", "deliver_now", {:args=>[#<GlobalID:0x0000ffff901fb9a0 @uri=#<URI::GID gid://redmine-app/User/3>>, #<GlobalID:0x0000ffff901fb4a0 @uri=#<URI::GID gid://redmine-app/User/3>>, {:message=>"mail_body_password_updated", :title=>"button_change_password", :url=>{:controller=>"my", :action=>"password"}, :remote_ip=>"192.168.65.1"}]}
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   [1m[36mAnonymousUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` = 'AnonymousUser' AND `users`.`lastname` = 'Anonymous' LIMIT 1[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   ↳ app/models/user.rb:892:in `anonymous'
+Started GET "/my/account" for 192.168.65.1 at 2026-07-18 10:09:48 +0000
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   [1m[36mSetting Load (0.3ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_language' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   ↳ app/models/setting.rb:363:in `find_or_default'
+Processing by MyController#account as HTML
+  [1m[36mToken Maximum (0.5ms)[0m  [1m[34mSELECT MAX(`tokens`.`updated_on`) FROM `tokens` WHERE `tokens`.`user_id` = 3 AND `tokens`.`value` = '47d5dcb0e11d69426c4772431e62f4c64dfe7714' AND `tokens`.`action` = 'session'[0m
+  ↳ app/models/user.rb:491:in `verify_session_token'
+  [1m[36mSetting Maximum (0.7ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`status` = 1 AND `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:119:in `find_current_user'
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'protocol' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   ↳ app/models/setting.rb:363:in `find_or_default'
+  Current user: admin (id=3)
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   [1m[36mSetting Load (0.3ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'host_name' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.3ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'password_max_age' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mUserPreference Load (10.0ms)[0m  [1m[34mSELECT `user_preferences`.* FROM `user_preferences` WHERE `user_preferences`.`user_id` = 3 LIMIT 1[0m
+  ↳ app/models/user.rb:413:in `pref'
+  Rendering layout layouts/base.html.erb
+  Rendering my/account.html.erb within layouts/base
+  [1m[36mEmailAddress Count (3.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `email_addresses` WHERE `email_addresses`.`user_id` = 3[0m
+  ↳ app/helpers/users_helper.rb:81:in `additional_emails_link'
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'max_additional_emails' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   [1m[36mSetting Load (0.5ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'mail_from' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.4ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'webhooks_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   [1m[36mEmailAddress Pluck (0.2ms)[0m  [1m[34mSELECT `email_addresses`.`address` FROM `email_addresses` WHERE `email_addresses`.`user_id` = 3 AND (is_default = '1' OR notify = '1')[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   ↳ app/models/mailer.rb:768:in `email_addresses'
+  [1m[36mEmailAddress Load (0.2ms)[0m  [1m[34mSELECT `email_addresses`.* FROM `email_addresses` WHERE `email_addresses`.`user_id` = 3 AND `email_addresses`.`is_default` = TRUE LIMIT 1[0m
+  ↳ app/models/user.rb:200:in `mail'
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   Rendering mailer/security_notification.text.erb within layouts/mailer
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'time_format' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   ↳ app/models/setting.rb:363:in `find_or_default'
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   [1m[36mUserPreference Load (0.1ms)[0m  [1m[34mSELECT `user_preferences`.* FROM `user_preferences` WHERE `user_preferences`.`user_id` = 3 LIMIT 1[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   ↳ app/models/user.rb:413:in `pref'
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   [1m[36mSetting Load (0.4ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'date_format' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  [1m[36mCustomField Load (0.1ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE (type = 'UserCustomField') ORDER BY `custom_fields`.`position` ASC[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   ↳ app/models/setting.rb:363:in `find_or_default'
+  ↳ lib/plugins/acts_as_customizable/lib/acts_as_customizable.rb:52:in `available_custom_fields'
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   Rendered mailer/security_notification.text.erb within layouts/mailer (Duration: 3.7ms | GC: 0.0ms)
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   [1m[36mSetting Load (0.4ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'emails_header' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   ↳ app/models/setting.rb:363:in `find_or_default'
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   [1m[36mSetting Load (0.3ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'emails_footer' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT `members`.* FROM `members` INNER JOIN `projects` ON `projects`.`id` = `members`.`project_id` WHERE `members`.`user_id` = 3 AND `projects`.`status` != 9[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   Rendered layout layouts/mailer.text.erb (Duration: 6.3ms | GC: 0.0ms)
+  ↳ app/models/user.rb:529:in `valid_notification_options'
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   [1m[36mSetting Load (0.7ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'plain_text_mail' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `projects` INNER JOIN `members` ON `projects`.`id` = `members`.`project_id` INNER JOIN `projects` `projects_members` ON `projects_members`.`id` = `members`.`project_id` WHERE `members`.`user_id` = 3 AND `projects`.`status` != 9 LIMIT 1[0m
+  ↳ app/helpers/application_helper.rb:460:in `render_project_nested_lists'
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   Rendering mailer/security_notification.html.erb within layouts/mailer
+  [1m[36mIssuePriority Load (0.1ms)[0m  [1m[34mSELECT `enumerations`.* FROM `enumerations` WHERE `enumerations`.`type` = 'IssuePriority' AND `enumerations`.`is_default` = TRUE ORDER BY `enumerations`.`position` ASC LIMIT 1[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   Rendered mailer/security_notification.html.erb within layouts/mailer (Duration: 0.4ms | GC: 0.0ms)
+  ↳ app/models/enumeration.rb:53:in `default'
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   [1m[36mSetting Load (1.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'cache_formatted_text' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   ↳ app/models/setting.rb:363:in `find_or_default'
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb]   Rendered layout layouts/mailer.html.erb (Duration: 3.8ms | GC: 0.0ms)
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb] Mailer#security_notification: processed outbound mail in 182.6ms
+  [1m[36mCACHE IssuePriority Load (0.0ms)[0m  [1m[34mSELECT `enumerations`.* FROM `enumerations` WHERE `enumerations`.`type` = 'IssuePriority' AND `enumerations`.`is_default` = TRUE ORDER BY `enumerations`.`position` ASC LIMIT 1[0m
+  ↳ app/models/enumeration.rb:53:in `default'
+  [1m[36mIssuePriority Load (1.0ms)[0m  [1m[34mSELECT `enumerations`.* FROM `enumerations` WHERE `enumerations`.`type` = 'IssuePriority' AND (position > '2') ORDER BY `enumerations`.`position` ASC LIMIT 1[0m
+  ↳ app/views/users/_mail_notifications.html.erb:28
+  Rendered users/_mail_notifications.html.erb (Duration: 20.8ms | GC: 0.1ms)
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb] Skipped delivery of mail 6a5b50ecc4bef_115fa458416@cfde755b1d32.mail as `perform_deliveries` is false
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb] Date: Sat, 18 Jul 2026 10:09:48 +0000
+From: Redmine <redmine@example.net>
+To: admin@example.invalid
+Message-ID: <6a5b50ecc4bef_115fa458416@cfde755b1d32.mail>
+Subject: [Redmine] Security notification
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_6a5b50ecc2109_115fa4583e3";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Redmine-Sender: admin
+X-Redmine-Url: http://localhost:3000/my/password
+X-Mailer: Redmine
+X-Redmine-Host: localhost:3000
+X-Redmine-Site: Redmine
+X-Auto-Response-Suppress: All
+Auto-Submitted: auto-generated
+List-Id: <redmine.example.net>
+
+
+----==_mimepart_6a5b50ecc2109_115fa4583e3
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Your password has been changed.
+
+http://localhost:3000/my/password
+
+User: admin
+IP address: 192.168.65.1
+Date: 07/18/2026 10:09 AM
+
+-- 
+You have received this notification because you have either subscribed to it, or are involved in it.
+To change your notification preferences, please click here: http://hostname/my/account
+
+----==_mimepart_6a5b50ecc2109_115fa4583e3
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<!-- BEGIN app/views/layouts/mailer.html.erb --><html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>a:link{color:#1864ab}
+a:visited{color:#1864ab}
+a:hover{color:#c92a2a}
+a:active{color:#c92a2a}</style></head>
+<body style="font-family:sans-serif;font-size:14px;line-height:1.5;color:#212529">
+<!-- BEGIN app/views/mailer/security_notification.html.erb --><p>Your password has been changed.<br>
+<a href="http://localhost:3000/my/password" style="color:#1864ab">Change password</a></p>
+
+<p>User: <strong>admin</strong><br>
+IP address: <strong>192.168.65.1</strong><br>
+Date: <strong>07/18/2026 10:09 AM</strong></p>
+<!-- END app/views/mailer/security_notification.html.erb -->
+<hr style="width:100%;height:1px;background:#ced4da;border:0;margin:1.2em 0">
+<span class="footer" style="font-size:0.8em;font-style:italic"><p>You have received this notification because you have either subscribed to it, or are involved in it.<br>
+To change your notification preferences, please click here: http://hostname/my/account</p></span>
+</body>
+</html><!-- END app/views/layouts/mailer.html.erb -->
+
+----==_mimepart_6a5b50ecc2109_115fa4583e3--
+
+[ActiveJob] [Mailer::DeliveryJob] [3efa1ab6-d320-414b-a19a-0e800c29f9eb] Performed Mailer::DeliveryJob (Job ID: 3efa1ab6-d320-414b-a19a-0e800c29f9eb) from Async(mailers) in 210.4ms
+  Rendered users/_auto_watch_on.html.erb (Duration: 8.9ms | GC: 4.7ms)
+  [1m[36mIssueQuery Pluck (0.1ms)[0m  [1m[34mSELECT `queries`.`id` FROM `queries` WHERE `queries`.`type` = 'IssueQuery' AND `queries`.`project_id` IS NULL AND `queries`.`visibility` = 2[0m
+  ↳ app/helpers/users_helper.rb:30:in `default_issue_query_options'
+  [1m[36mIssueQuery Pluck (0.1ms)[0m  [1m[34mSELECT `queries`.`name`, `queries`.`id` FROM `queries` WHERE `queries`.`type` = 'IssueQuery' AND `queries`.`project_id` IS NULL AND `queries`.`visibility` = 2[0m
+  ↳ app/helpers/users_helper.rb:33:in `default_issue_query_options'
+  [1m[36mIssueQuery Pluck (0.1ms)[0m  [1m[34mSELECT `queries`.`name`, `queries`.`id` FROM `queries` WHERE `queries`.`type` = 'IssueQuery' AND `queries`.`project_id` IS NULL AND `queries`.`user_id` = 3 AND `queries`.`id` NOT IN (1, 2, 3, 4)[0m
+  ↳ app/helpers/users_helper.rb:34:in `default_issue_query_options'
+  [1m[36mProjectQuery Ids (0.1ms)[0m  [1m[34mSELECT `queries`.`id` FROM `queries` WHERE `queries`.`type` = 'ProjectQuery' AND `queries`.`visibility` = 2[0m
+  ↳ app/helpers/users_helper.rb:42:in `default_project_query_options'
+  [1m[36mProjectQuery Pluck (0.1ms)[0m  [1m[34mSELECT `queries`.`name`, `queries`.`id` FROM `queries` WHERE `queries`.`type` = 'ProjectQuery' AND `queries`.`visibility` = 2[0m
+  ↳ app/helpers/users_helper.rb:45:in `default_project_query_options'
+  [1m[36mProjectQuery Pluck (0.1ms)[0m  [1m[34mSELECT `queries`.`name`, `queries`.`id` FROM `queries` WHERE `queries`.`type` = 'ProjectQuery' AND `queries`.`user_id` = 3 AND `queries`.`id` NOT IN (5, 6)[0m
+  ↳ app/helpers/users_helper.rb:46:in `default_project_query_options'
+  Rendered users/_preferences.html.erb (Duration: 91.2ms | GC: 31.8ms)
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/hooks/_view_my_account.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'unsubscribe' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`status` = 1 AND `users`.`admin` = TRUE AND (id <> '3') LIMIT 1[0m
+  ↳ app/models/user.rb:818:in `own_account_deletable?'
+  [1m[36mToken Load (0.1ms)[0m  [1m[34mSELECT `tokens`.* FROM `tokens` WHERE `tokens`.`user_id` = 3 AND (tokens.action='feeds') LIMIT 1[0m
+  ↳ app/views/my/_sidebar.html.erb:13
+  Rendered my/_sidebar.html.erb (Duration: 2.5ms | GC: 0.0ms)
+  Rendered my/account.html.erb within layouts/base (Duration: 212.0ms | GC: 70.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_html_header.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/hooks/_api_not_enabled_warning.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT `projects`.`id`, `projects`.`name`, `projects`.`identifier`, `projects`.`lft`, `projects`.`rgt` FROM `projects` INNER JOIN `members` ON `projects`.`id` = `members`.`project_id` INNER JOIN `projects` `projects_members` ON `projects_members`.`id` = `members`.`project_id` WHERE `members`.`user_id` = 3 AND `projects`.`status` != 9 AND `projects`.`status` = 1[0m
+  ↳ app/helpers/application_helper.rb:565:in `projects_for_jump_box'
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/_macro_dialog.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_body_bottom.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layout layouts/base.html.erb (Duration: 219.1ms | GC: 72.1ms)
+Completed 200 OK in 305ms (Views: 265.4ms | ActiveRecord: 19.4ms (25 queries, 1 cached) | GC: 141.2ms)
+
+
+Started GET "/admin" for 192.168.65.1 at 2026-07-18 10:10:01 +0000
+Processing by AdminController#index as HTML
+  [1m[36mToken Maximum (0.7ms)[0m  [1m[34mSELECT MAX(`tokens`.`updated_on`) FROM `tokens` WHERE `tokens`.`user_id` = 3 AND `tokens`.`value` = '47d5dcb0e11d69426c4772431e62f4c64dfe7714' AND `tokens`.`action` = 'session'[0m
+  ↳ app/models/user.rb:491:in `verify_session_token'
+  [1m[36mSetting Maximum (0.5ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`status` = 1 AND `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:119:in `find_current_user'
+  Current user: admin (id=3)
+  [1m[36mRole Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `roles` WHERE `roles`.`builtin` = 0 LIMIT 1[0m
+  ↳ lib/redmine/default_data/loader.rb:31:in `no_data?'
+  Rendering layout layouts/admin.html.erb
+  Rendering admin/index.html.erb within layouts/admin
+  Rendered admin/_menu.html.erb (Duration: 2.0ms | GC: 0.0ms)
+  Rendered admin/index.html.erb within layouts/admin (Duration: 3.6ms | GC: 0.0ms)
+  Rendering layouts/base.html.erb
+  [1m[36mUserPreference Load (0.3ms)[0m  [1m[34mSELECT `user_preferences`.* FROM `user_preferences` WHERE `user_preferences`.`user_id` = 3 LIMIT 1[0m
+  ↳ app/models/user.rb:413:in `pref'
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_html_header.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/hooks/_api_not_enabled_warning.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT `projects`.`id`, `projects`.`name`, `projects`.`identifier`, `projects`.`lft`, `projects`.`rgt` FROM `projects` INNER JOIN `members` ON `projects`.`id` = `members`.`project_id` INNER JOIN `projects` `projects_members` ON `projects_members`.`id` = `members`.`project_id` WHERE `members`.`user_id` = 3 AND `projects`.`status` != 9 AND `projects`.`status` = 1[0m
+  ↳ app/helpers/application_helper.rb:565:in `projects_for_jump_box'
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/_macro_dialog.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_body_bottom.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layouts/base.html.erb (Duration: 8.2ms | GC: 0.0ms)
+  Rendered layout layouts/admin.html.erb (Duration: 12.7ms | GC: 0.0ms)
+Completed 200 OK in 29ms (Views: 14.4ms | ActiveRecord: 2.4ms (6 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/settings" for 192.168.65.1 at 2026-07-18 10:10:08 +0000
+Processing by SettingsController#index as HTML
+  [1m[36mToken Maximum (0.9ms)[0m  [1m[34mSELECT MAX(`tokens`.`updated_on`) FROM `tokens` WHERE `tokens`.`user_id` = 3 AND `tokens`.`value` = '47d5dcb0e11d69426c4772431e62f4c64dfe7714' AND `tokens`.`action` = 'session'[0m
+  ↳ app/models/user.rb:491:in `verify_session_token'
+  [1m[36mSetting Maximum (0.4ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`status` = 1 AND `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:119:in `find_current_user'
+  Current user: admin (id=3)
+  [1m[36mSetting Load (0.3ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'commit_update_keywords' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendering layout layouts/admin.html.erb
+  Rendering settings/edit.html.erb within layouts/admin
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'welcome_text' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mUserPreference Load (0.1ms)[0m  [1m[34mSELECT `user_preferences`.* FROM `user_preferences` WHERE `user_preferences`.`user_id` = 3 LIMIT 1[0m
+  ↳ app/models/user.rb:413:in `pref'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'per_page_options' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'search_results_per_page' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'activity_days_default' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'wiki_compression' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'feeds_limit' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'reactions_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_general.html.erb (Duration: 10.0ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'start_of_week' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'timespan_format' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'gravatar_default' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'thumbnails_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'thumbnails_size' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'new_item_menu_tab' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_display.html.erb (Duration: 7.2ms | GC: 0.0ms)
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT `roles`.* FROM `roles` WHERE `roles`.`builtin` = 2 LIMIT 1[0m
+  ↳ app/models/role.rb:328:in `find_or_create_system_role'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'show_custom_fields_on_registration' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_authentication.html.erb (Duration: 3.1ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'jsonp_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_api.html.erb (Duration: 1.1ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_projects_public' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_projects_modules' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTracker Load (0.1ms)[0m  [1m[34mSELECT `trackers`.* FROM `trackers` ORDER BY `trackers`.`position` ASC[0m
+  ↳ app/views/settings/_projects.html.erb:10:in `collect'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_projects_tracker_ids' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'sequential_project_identifiers' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT `roles`.* FROM `roles` WHERE `roles`.`builtin` = 0 ORDER BY `roles`.`position` ASC[0m
+  ↳ app/models/role.rb:287:in `find_all_givable'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'new_project_user_role_id' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'project_list_defaults' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'project_list_display_type' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mProjectCustomField Load (0.1ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE `custom_fields`.`type` = 'ProjectCustomField' ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ app/models/project_query.rb:96:in `map'
+  Rendered queries/_columns.html.erb (Duration: 1.8ms | GC: 0.0ms)
+  [1m[36mProjectQuery Pluck (0.1ms)[0m  [1m[34mSELECT `queries`.`name`, `queries`.`id` FROM `queries` WHERE `queries`.`type` = 'ProjectQuery' AND `queries`.`visibility` = 2[0m
+  ↳ app/helpers/settings_helper.rb:188:in `default_global_project_query_options'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_project_query' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_projects.html.erb (Duration: 18.0ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'email_domains_allowed' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'email_domains_denied' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_notification_option' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_users.html.erb (Duration: 3.7ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'cross_project_issue_relations' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'link_copied_issue' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'copy_attachments_on_issue_copy' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'cross_project_subtasks' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'close_duplicate_issues' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'issue_group_assignment' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_issue_start_date_to_creation_date' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'display_subprojects_issues' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'issue_done_ratio' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'issue_done_ratio_interval' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'non_working_week_days' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'issues_export_limit' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'gantt_items_limit' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'gantt_months_limit' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'parent_issue_dates' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'parent_issue_priority' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'parent_issue_done_ratio' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'issue_list_default_columns' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mIssueCustomField Load (0.2ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE `custom_fields`.`type` = 'IssueCustomField' ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ app/models/issue_query.rb:306:in `collect'
+  [1m[36mTracker Load (0.3ms)[0m  [1m[34mSELECT DISTINCT `trackers`.* FROM `trackers` INNER JOIN `projects_trackers` ON `projects_trackers`.`tracker_id` = `trackers`.`id` INNER JOIN `projects` ON `projects`.`id` = `projects_trackers`.`project_id` WHERE (projects.status IN (1, 5) AND EXISTS (SELECT 1 AS one FROM enabled_modules em WHERE em.project_id = projects.id AND em.name='issue_tracking')) ORDER BY `trackers`.`position` ASC[0m
+  ↳ app/models/tracker.rb:151:in `disabled_core_fields'
+  Rendered queries/_columns.html.erb (Duration: 10.1ms | GC: 0.7ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'issue_list_default_totals' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mCACHE IssueCustomField Load (0.0ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE `custom_fields`.`type` = 'IssueCustomField' ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ app/models/issue_query.rb:306:in `collect'
+  [1m[36mCACHE Tracker Load (0.0ms)[0m  [1m[34mSELECT DISTINCT `trackers`.* FROM `trackers` INNER JOIN `projects_trackers` ON `projects_trackers`.`tracker_id` = `trackers`.`id` INNER JOIN `projects` ON `projects`.`id` = `projects_trackers`.`project_id` WHERE (projects.status IN (1, 5) AND EXISTS (SELECT 1 AS one FROM enabled_modules em WHERE em.project_id = projects.id AND em.name='issue_tracking')) ORDER BY `trackers`.`position` ASC[0m
+  ↳ app/models/tracker.rb:151:in `disabled_core_fields'
+  [1m[36mIssueQuery Pluck (0.1ms)[0m  [1m[34mSELECT `queries`.`name`, `queries`.`id` FROM `queries` WHERE `queries`.`type` = 'IssueQuery' AND `queries`.`visibility` = 2 AND `queries`.`project_id` IS NULL[0m
+  ↳ app/helpers/settings_helper.rb:184:in `default_global_issue_query_options'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_issue_query' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'related_issues_default_columns' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mCACHE IssueCustomField Load (0.0ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE `custom_fields`.`type` = 'IssueCustomField' ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ app/models/issue_query.rb:306:in `collect'
+  [1m[36mCACHE Tracker Load (0.0ms)[0m  [1m[34mSELECT DISTINCT `trackers`.* FROM `trackers` INNER JOIN `projects_trackers` ON `projects_trackers`.`tracker_id` = `trackers`.`id` INNER JOIN `projects` ON `projects`.`id` = `projects_trackers`.`project_id` WHERE (projects.status IN (1, 5) AND EXISTS (SELECT 1 AS one FROM enabled_modules em WHERE em.project_id = projects.id AND em.name='issue_tracking')) ORDER BY `trackers`.`position` ASC[0m
+  ↳ app/models/tracker.rb:151:in `disabled_core_fields'
+  Rendered queries/_columns.html.erb (Duration: 1.4ms | GC: 0.2ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'display_related_issues_table_headers' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_issues.html.erb (Duration: 32.6ms | GC: 6.9ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'timelog_required_fields' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'timelog_max_hours_per_day' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'timelog_accept_0_hours' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'timelog_accept_future_dates' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'timelog_accept_closed_issues' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'time_entry_list_defaults' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTimeEntryCustomField Load (0.1ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE `custom_fields`.`type` = 'TimeEntryCustomField' ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ app/models/time_entry_query.rb:136:in `map'
+  [1m[36mCACHE IssueCustomField Load (0.0ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE `custom_fields`.`type` = 'IssueCustomField' ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ app/models/time_entry_query.rb:138:in `map'
+  [1m[36mCACHE ProjectCustomField Load (0.0ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE `custom_fields`.`type` = 'ProjectCustomField' ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ app/models/time_entry_query.rb:140:in `map'
+  Rendered queries/_columns.html.erb (Duration: 2.3ms | GC: 0.1ms)
+  Rendered settings/_timelog.html.erb (Duration: 11.7ms | GC: 0.8ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'attachment_max_size' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'bulk_download_max_size' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'attachment_extensions_allowed' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'attachment_extensions_denied' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'file_max_size_displayed' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'diff_max_lines_displayed' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'repositories_encodings' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_attachments.html.erb (Duration: 3.9ms | GC: 0.1ms)
+  Rendered settings/_notifications.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'mail_handler_body_delimiters' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'mail_handler_enable_regex_delimiters' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'mail_handler_excluded_filenames' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'mail_handler_enable_regex_excluded_filenames' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'mail_handler_preferred_body_part' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'mail_handler_api_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'mail_handler_api_key' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_mail_handler.html.erb (Duration: 3.9ms | GC: 0.1ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'enabled_scm' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+Shelling out: 'svn' --version
+Shelling out: 'hg' --version
+Shelling out: 'hg' debuginstall
+Shelling out: 'cvs' --version
+Shelling out: 'bzr' --version
+Shelling out: 'git' --version
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'autofetch_changesets' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'sys_api_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'sys_api_key' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'repository_log_display_limit' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'commit_logs_formatting' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'commit_ref_keywords' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'commit_cross_project_ref' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'commit_logtime_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTimeEntryActivity Load (0.1ms)[0m  [1m[34mSELECT `enumerations`.* FROM `enumerations` WHERE `enumerations`.`type` = 'TimeEntryActivity' AND `enumerations`.`project_id` IS NULL AND `enumerations`.`active` = TRUE ORDER BY `enumerations`.`position` ASC[0m
+  ↳ app/views/settings/_repositories.html.erb:72:in `collect'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'commit_logtime_activity_id' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mCACHE Tracker Load (0.0ms)[0m  [1m[34mSELECT `trackers`.* FROM `trackers` ORDER BY `trackers`.`position` ASC[0m
+  ↳ app/views/settings/_repositories.html.erb:94:in `map'
+  [1m[36mIssueStatus Load (0.1ms)[0m  [1m[34mSELECT `issue_statuses`.* FROM `issue_statuses` ORDER BY `issue_statuses`.`position` ASC[0m
+  ↳ app/views/settings/_repositories.html.erb:108:in `collect'
+  Rendered settings/_repositories.html.erb (Duration: 157.4ms | GC: 0.9ms)
+  Rendered common/_tabs.html.erb (Duration: 264.0ms | GC: 8.7ms)
+  Rendered settings/edit.html.erb within layouts/admin (Duration: 266.8ms | GC: 8.7ms)
+  Rendered admin/_menu.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendering layouts/base.html.erb
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_html_header.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/hooks/_api_not_enabled_warning.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT `projects`.`id`, `projects`.`name`, `projects`.`identifier`, `projects`.`lft`, `projects`.`rgt` FROM `projects` INNER JOIN `members` ON `projects`.`id` = `members`.`project_id` INNER JOIN `projects` `projects_members` ON `projects_members`.`id` = `members`.`project_id` WHERE `members`.`user_id` = 3 AND `projects`.`status` != 9 AND `projects`.`status` = 1[0m
+  ↳ app/helpers/application_helper.rb:565:in `projects_for_jump_box'
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/_macro_dialog.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_body_bottom.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layouts/base.html.erb (Duration: 4.0ms | GC: 0.1ms)
+  Rendered layout layouts/admin.html.erb (Duration: 272.2ms | GC: 8.8ms)
+Completed 200 OK in 291ms (Views: 266.2ms | ActiveRecord: 11.1ms (102 queries, 7 cached) | GC: 8.8ms)
+
+
+Started POST "/settings/edit?tab=display" for 192.168.65.1 at 2026-07-18 10:10:15 +0000
+Processing by SettingsController#edit as HTML
+  Parameters: {"authenticity_token"=>"4Dz8Y__Q8iqvh_S5i_70QXPCTpVu3-biqy3-sqnkkompcNnrAm9eTa3HwOU0g4QLuptRmnCLCjUI5QLi1Xylmg", "settings"=>{"ui_theme"=>"redmine_oh", "default_language"=>"en", "force_default_language_for_anonymous"=>"0", "force_default_language_for_loggedin"=>"0", "start_of_week"=>"", "date_format"=>"", "time_format"=>"", "timespan_format"=>"minutes", "user_format"=>"firstname_lastname", "gravatar_enabled"=>"0", "thumbnails_enabled"=>"1", "thumbnails_size"=>"100", "new_item_menu_tab"=>"2", "wiki_tablesort_enabled"=>"0"}, "commit"=>"Save", "tab"=>"display"}
+  [1m[36mToken Maximum (0.8ms)[0m  [1m[34mSELECT MAX(`tokens`.`updated_on`) FROM `tokens` WHERE `tokens`.`user_id` = 3 AND `tokens`.`value` = '47d5dcb0e11d69426c4772431e62f4c64dfe7714' AND `tokens`.`action` = 'session'[0m
+  ↳ app/models/user.rb:491:in `verify_session_token'
+  [1m[36mSetting Maximum (0.4ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`status` = 1 AND `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:119:in `find_current_user'
+  Current user: admin (id=3)
+  [1m[36mSetting Load (0.4ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'ui_theme' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM `settings` WHERE `settings`.`name` = CAST('ui_theme' AS BINARY) LIMIT 1[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Create (0.3ms)[0m  [1m[32mINSERT INTO `settings` (`name`, `value`, `updated_on`) VALUES ('ui_theme', 'redmine_oh', '2026-07-18 10:10:15') RETURNING `id`[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_language' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM `settings` WHERE `settings`.`name` = CAST('default_language' AS BINARY) LIMIT 1[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Create (0.2ms)[0m  [1m[32mINSERT INTO `settings` (`name`, `value`, `updated_on`) VALUES ('default_language', 'en', '2026-07-18 10:10:15') RETURNING `id`[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'force_default_language_for_anonymous' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `settings` WHERE `settings`.`name` = CAST('force_default_language_for_anonymous' AS BINARY) LIMIT 1[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Create (0.2ms)[0m  [1m[32mINSERT INTO `settings` (`name`, `value`, `updated_on`) VALUES ('force_default_language_for_anonymous', '0', '2026-07-18 10:10:15') RETURNING `id`[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'force_default_language_for_loggedin' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `settings` WHERE `settings`.`name` = CAST('force_default_language_for_loggedin' AS BINARY) LIMIT 1[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Create (0.2ms)[0m  [1m[32mINSERT INTO `settings` (`name`, `value`, `updated_on`) VALUES ('force_default_language_for_loggedin', '0', '2026-07-18 10:10:15') RETURNING `id`[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'start_of_week' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `settings` WHERE `settings`.`name` = CAST('start_of_week' AS BINARY) LIMIT 1[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Create (0.2ms)[0m  [1m[32mINSERT INTO `settings` (`name`, `value`, `updated_on`) VALUES ('start_of_week', '', '2026-07-18 10:10:15') RETURNING `id`[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'date_format' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `settings` WHERE `settings`.`name` = CAST('date_format' AS BINARY) LIMIT 1[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Create (0.1ms)[0m  [1m[32mINSERT INTO `settings` (`name`, `value`, `updated_on`) VALUES ('date_format', '', '2026-07-18 10:10:15') RETURNING `id`[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'time_format' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `settings` WHERE `settings`.`name` = CAST('time_format' AS BINARY) LIMIT 1[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Create (0.1ms)[0m  [1m[32mINSERT INTO `settings` (`name`, `value`, `updated_on`) VALUES ('time_format', '', '2026-07-18 10:10:15') RETURNING `id`[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'timespan_format' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `settings` WHERE `settings`.`name` = CAST('timespan_format' AS BINARY) LIMIT 1[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Create (0.1ms)[0m  [1m[32mINSERT INTO `settings` (`name`, `value`, `updated_on`) VALUES ('timespan_format', 'minutes', '2026-07-18 10:10:15') RETURNING `id`[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'user_format' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `settings` WHERE `settings`.`name` = CAST('user_format' AS BINARY) LIMIT 1[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Create (0.1ms)[0m  [1m[32mINSERT INTO `settings` (`name`, `value`, `updated_on`) VALUES ('user_format', 'firstname_lastname', '2026-07-18 10:10:15') RETURNING `id`[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'gravatar_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `settings` WHERE `settings`.`name` = CAST('gravatar_enabled' AS BINARY) LIMIT 1[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Create (0.1ms)[0m  [1m[32mINSERT INTO `settings` (`name`, `value`, `updated_on`) VALUES ('gravatar_enabled', '0', '2026-07-18 10:10:15') RETURNING `id`[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'thumbnails_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `settings` WHERE `settings`.`name` = CAST('thumbnails_enabled' AS BINARY) LIMIT 1[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Create (0.1ms)[0m  [1m[32mINSERT INTO `settings` (`name`, `value`, `updated_on`) VALUES ('thumbnails_enabled', '1', '2026-07-18 10:10:15') RETURNING `id`[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'thumbnails_size' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `settings` WHERE `settings`.`name` = CAST('thumbnails_size' AS BINARY) LIMIT 1[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Create (0.1ms)[0m  [1m[32mINSERT INTO `settings` (`name`, `value`, `updated_on`) VALUES ('thumbnails_size', '100', '2026-07-18 10:10:15') RETURNING `id`[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'new_item_menu_tab' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `settings` WHERE `settings`.`name` = CAST('new_item_menu_tab' AS BINARY) LIMIT 1[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Create (0.1ms)[0m  [1m[32mINSERT INTO `settings` (`name`, `value`, `updated_on`) VALUES ('new_item_menu_tab', '2', '2026-07-18 10:10:15') RETURNING `id`[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'wiki_tablesort_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `settings` WHERE `settings`.`name` = CAST('wiki_tablesort_enabled' AS BINARY) LIMIT 1[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mSetting Create (0.1ms)[0m  [1m[32mINSERT INTO `settings` (`name`, `value`, `updated_on`) VALUES ('wiki_tablesort_enabled', '0', '2026-07-18 10:10:15') RETURNING `id`[0m
+  ↳ app/models/setting.rb:132:in `[]='
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/setting.rb:132:in `[]='
+Redirected to http://localhost:3000/settings?tab=display
+Completed 302 Found in 72ms (ActiveRecord: 20.7ms (45 queries, 0 cached) | GC: 9.4ms)
+
+
+Started GET "/settings?tab=display" for 192.168.65.1 at 2026-07-18 10:10:15 +0000
+Processing by SettingsController#index as HTML
+  Parameters: {"tab"=>"display"}
+  [1m[36mToken Maximum (0.2ms)[0m  [1m[34mSELECT MAX(`tokens`.`updated_on`) FROM `tokens` WHERE `tokens`.`user_id` = 3 AND `tokens`.`value` = '47d5dcb0e11d69426c4772431e62f4c64dfe7714' AND `tokens`.`action` = 'session'[0m
+  ↳ app/models/user.rb:491:in `verify_session_token'
+  [1m[36mSetting Maximum (0.1ms)[0m  [1m[34mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  ↳ app/models/setting.rb:280:in `check_cache'
+Settings cache cleared.
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`status` = 1 AND `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:119:in `find_current_user'
+  Current user: admin (id=3)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'force_default_language_for_loggedin' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'force_default_language_for_anonymous' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'commit_update_keywords' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendering layout layouts/admin.html.erb
+  Rendering settings/edit.html.erb within layouts/admin
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'app_title' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'text_formatting' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'welcome_text' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mUserPreference Load (0.1ms)[0m  [1m[34mSELECT `user_preferences`.* FROM `user_preferences` WHERE `user_preferences`.`user_id` = 3 LIMIT 1[0m
+  ↳ app/models/user.rb:413:in `pref'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'ui_theme' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'per_page_options' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'search_results_per_page' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'activity_days_default' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'host_name' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'protocol' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'cache_formatted_text' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'wiki_compression' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'feeds_limit' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'reactions_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_general.html.erb (Duration: 8.6ms | GC: 0.3ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_language' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'start_of_week' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'date_format' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'time_format' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'timespan_format' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'user_format' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'gravatar_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'gravatar_default' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'thumbnails_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'thumbnails_size' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'new_item_menu_tab' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'wiki_tablesort_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_display.html.erb (Duration: 8.9ms | GC: 0.9ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'login_required' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT `roles`.* FROM `roles` WHERE `roles`.`builtin` = 2 LIMIT 1[0m
+  ↳ app/models/role.rb:328:in `find_or_create_system_role'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'autologin' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'self_registration' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'show_custom_fields_on_registration' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'password_min_length' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'password_required_char_classes' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'password_max_age' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'lost_password' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'twofa' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'session_lifetime' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'session_timeout' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_authentication.html.erb (Duration: 7.9ms | GC: 0.6ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'rest_api_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'jsonp_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'webhooks_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_api.html.erb (Duration: 1.7ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_projects_public' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_projects_modules' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTracker Load (0.1ms)[0m  [1m[34mSELECT `trackers`.* FROM `trackers` ORDER BY `trackers`.`position` ASC[0m
+  ↳ app/views/settings/_projects.html.erb:10:in `collect'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_projects_tracker_ids' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'sequential_project_identifiers' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT `roles`.* FROM `roles` WHERE `roles`.`builtin` = 0 ORDER BY `roles`.`position` ASC[0m
+  ↳ app/models/role.rb:287:in `find_all_givable'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'new_project_user_role_id' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'project_list_defaults' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'project_list_display_type' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mProjectCustomField Load (0.1ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE `custom_fields`.`type` = 'ProjectCustomField' ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ app/models/project_query.rb:96:in `map'
+  Rendered queries/_columns.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  [1m[36mProjectQuery Pluck (0.1ms)[0m  [1m[34mSELECT `queries`.`name`, `queries`.`id` FROM `queries` WHERE `queries`.`type` = 'ProjectQuery' AND `queries`.`visibility` = 2[0m
+  ↳ app/helpers/settings_helper.rb:188:in `default_global_project_query_options'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_project_query' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_projects.html.erb (Duration: 7.2ms | GC: 0.2ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'max_additional_emails' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'email_domains_allowed' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'email_domains_denied' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'unsubscribe' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_hide_mail' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_notification_option' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_no_self_notified' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_time_zone' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_auto_watch_on' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_users.html.erb (Duration: 6.1ms | GC: 0.2ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'cross_project_issue_relations' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'link_copied_issue' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'copy_attachments_on_issue_copy' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'cross_project_subtasks' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'close_duplicate_issues' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'issue_group_assignment' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_issue_start_date_to_creation_date' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'display_subprojects_issues' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'issue_done_ratio' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'issue_done_ratio_interval' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'non_working_week_days' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'issues_export_limit' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'gantt_items_limit' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'gantt_months_limit' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'parent_issue_dates' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'parent_issue_priority' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'parent_issue_done_ratio' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'issue_list_default_columns' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mIssueCustomField Load (0.1ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE `custom_fields`.`type` = 'IssueCustomField' ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ app/models/issue_query.rb:306:in `collect'
+  [1m[36mTracker Load (0.2ms)[0m  [1m[34mSELECT DISTINCT `trackers`.* FROM `trackers` INNER JOIN `projects_trackers` ON `projects_trackers`.`tracker_id` = `trackers`.`id` INNER JOIN `projects` ON `projects`.`id` = `projects_trackers`.`project_id` WHERE (projects.status IN (1, 5) AND EXISTS (SELECT 1 AS one FROM enabled_modules em WHERE em.project_id = projects.id AND em.name='issue_tracking')) ORDER BY `trackers`.`position` ASC[0m
+  ↳ app/models/tracker.rb:151:in `disabled_core_fields'
+  Rendered queries/_columns.html.erb (Duration: 1.6ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'issue_list_default_totals' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mCACHE IssueCustomField Load (0.0ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE `custom_fields`.`type` = 'IssueCustomField' ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ app/models/issue_query.rb:306:in `collect'
+  [1m[36mCACHE Tracker Load (0.0ms)[0m  [1m[34mSELECT DISTINCT `trackers`.* FROM `trackers` INNER JOIN `projects_trackers` ON `projects_trackers`.`tracker_id` = `trackers`.`id` INNER JOIN `projects` ON `projects`.`id` = `projects_trackers`.`project_id` WHERE (projects.status IN (1, 5) AND EXISTS (SELECT 1 AS one FROM enabled_modules em WHERE em.project_id = projects.id AND em.name='issue_tracking')) ORDER BY `trackers`.`position` ASC[0m
+  ↳ app/models/tracker.rb:151:in `disabled_core_fields'
+  [1m[36mIssueQuery Pluck (0.1ms)[0m  [1m[34mSELECT `queries`.`name`, `queries`.`id` FROM `queries` WHERE `queries`.`type` = 'IssueQuery' AND `queries`.`visibility` = 2 AND `queries`.`project_id` IS NULL[0m
+  ↳ app/helpers/settings_helper.rb:184:in `default_global_issue_query_options'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_issue_query' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'related_issues_default_columns' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mCACHE IssueCustomField Load (0.0ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE `custom_fields`.`type` = 'IssueCustomField' ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ app/models/issue_query.rb:306:in `collect'
+  [1m[36mCACHE Tracker Load (0.0ms)[0m  [1m[34mSELECT DISTINCT `trackers`.* FROM `trackers` INNER JOIN `projects_trackers` ON `projects_trackers`.`tracker_id` = `trackers`.`id` INNER JOIN `projects` ON `projects`.`id` = `projects_trackers`.`project_id` WHERE (projects.status IN (1, 5) AND EXISTS (SELECT 1 AS one FROM enabled_modules em WHERE em.project_id = projects.id AND em.name='issue_tracking')) ORDER BY `trackers`.`position` ASC[0m
+  ↳ app/models/tracker.rb:151:in `disabled_core_fields'
+  Rendered queries/_columns.html.erb (Duration: 1.1ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'display_related_issues_table_headers' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_issues.html.erb (Duration: 17.2ms | GC: 0.8ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'timelog_required_fields' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'timelog_max_hours_per_day' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'timelog_accept_0_hours' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'timelog_accept_future_dates' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'timelog_accept_closed_issues' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'time_entry_list_defaults' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTimeEntryCustomField Load (0.1ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE `custom_fields`.`type` = 'TimeEntryCustomField' ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ app/models/time_entry_query.rb:136:in `map'
+  [1m[36mCACHE IssueCustomField Load (0.0ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE `custom_fields`.`type` = 'IssueCustomField' ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ app/models/time_entry_query.rb:138:in `map'
+  [1m[36mCACHE ProjectCustomField Load (0.0ms)[0m  [1m[34mSELECT `custom_fields`.* FROM `custom_fields` WHERE `custom_fields`.`type` = 'ProjectCustomField' ORDER BY `custom_fields`.`position` ASC[0m
+  ↳ app/models/time_entry_query.rb:140:in `map'
+  Rendered queries/_columns.html.erb (Duration: 1.5ms | GC: 0.0ms)
+  Rendered settings/_timelog.html.erb (Duration: 5.1ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'attachment_max_size' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'bulk_download_max_size' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'attachment_extensions_allowed' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'attachment_extensions_denied' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'file_max_size_displayed' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'diff_max_lines_displayed' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'repositories_encodings' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_attachments.html.erb (Duration: 3.8ms | GC: 0.0ms)
+  Rendered settings/_notifications.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'mail_handler_body_delimiters' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'mail_handler_enable_regex_delimiters' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'mail_handler_excluded_filenames' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'mail_handler_enable_regex_excluded_filenames' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'mail_handler_preferred_body_part' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'mail_handler_api_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'mail_handler_api_key' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered settings/_mail_handler.html.erb (Duration: 3.8ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'enabled_scm' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'autofetch_changesets' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'sys_api_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'sys_api_key' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'repository_log_display_limit' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'commit_logs_formatting' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'commit_ref_keywords' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'commit_cross_project_ref' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'commit_logtime_enabled' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mTimeEntryActivity Load (0.1ms)[0m  [1m[34mSELECT `enumerations`.* FROM `enumerations` WHERE `enumerations`.`type` = 'TimeEntryActivity' AND `enumerations`.`project_id` IS NULL AND `enumerations`.`active` = TRUE ORDER BY `enumerations`.`position` ASC[0m
+  ↳ app/views/settings/_repositories.html.erb:72:in `collect'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'commit_logtime_activity_id' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  [1m[36mCACHE Tracker Load (0.0ms)[0m  [1m[34mSELECT `trackers`.* FROM `trackers` ORDER BY `trackers`.`position` ASC[0m
+  ↳ app/views/settings/_repositories.html.erb:94:in `map'
+  [1m[36mIssueStatus Load (0.1ms)[0m  [1m[34mSELECT `issue_statuses`.* FROM `issue_statuses` ORDER BY `issue_statuses`.`position` ASC[0m
+  ↳ app/views/settings/_repositories.html.erb:108:in `collect'
+  Rendered settings/_repositories.html.erb (Duration: 11.8ms | GC: 4.3ms)
+  Rendered common/_tabs.html.erb (Duration: 84.3ms | GC: 7.7ms)
+  Rendered settings/edit.html.erb within layouts/admin (Duration: 84.4ms | GC: 7.7ms)
+  Rendered admin/_menu.html.erb (Duration: 1.0ms | GC: 0.3ms)
+  Rendering layouts/base.html.erb
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'plugin_redmine_drawio' ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  ↳ app/models/setting.rb:363:in `find_or_default'
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_html_header.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/hooks/_api_not_enabled_warning.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT `projects`.`id`, `projects`.`name`, `projects`.`identifier`, `projects`.`lft`, `projects`.`rgt` FROM `projects` INNER JOIN `members` ON `projects`.`id` = `members`.`project_id` INNER JOIN `projects` `projects_members` ON `projects_members`.`id` = `members`.`project_id` WHERE `members`.`user_id` = 3 AND `projects`.`status` != 9 AND `projects`.`status` = 1[0m
+  ↳ app/helpers/application_helper.rb:565:in `projects_for_jump_box'
+  Rendered plugins/redmine_drawio/app/views/redmine_drawio/_macro_dialog.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered plugins/redmine_wiki_extensions/app/views/wiki_extensions/_body_bottom.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layouts/base.html.erb (Duration: 4.7ms | GC: 0.2ms)
+  Rendered layout layouts/admin.html.erb (Duration: 90.5ms | GC: 8.2ms)
+Completed 200 OK in 97ms (Views: 80.8ms | ActiveRecord: 10.7ms (135 queries, 7 cached) | GC: 8.7ms)
+
+
