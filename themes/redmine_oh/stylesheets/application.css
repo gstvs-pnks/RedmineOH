@@ -1,0 +1,10 @@
+/* RedmineOH theme entry point */
+
+:root {
+  --oh-theme-name: "RedmineOH";
+  --oh-theme-version: "0.1.0";
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif;
+}
