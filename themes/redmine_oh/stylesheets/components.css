@@ -1,0 +1,401 @@
+/* Buttons */
+#content .buttons,
+#content p.buttons,
+#content div.buttons {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oh-space-2);
+}
+
+#content .buttons {
+  margin-bottom: var(--oh-space-5);
+  margin-top: var(--oh-space-4);
+}
+
+#content input[type="submit"],
+#content input[type="button"],
+#content form button[type="submit"],
+#content form button[type="button"],
+#content .buttons button:not(.tab-left):not(.tab-right):not(.jstb_button),
+#content p.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button),
+#content div.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button) {
+  appearance: auto;
+  background-color: var(--oh-surface-secondary);
+  border: 1px solid var(--oh-border-default);
+  border-radius: var(--oh-radius-control);
+  box-shadow: none;
+  color: var(--oh-text-primary);
+  cursor: pointer;
+  font-family: var(--oh-font-sans);
+  font-size: var(--oh-text-sm);
+  font-weight: var(--oh-weight-medium);
+  height: var(--oh-control-height);
+  line-height: calc(var(--oh-control-height) - 2px);
+  padding: 0 var(--oh-space-4);
+  transition:
+    background-color var(--oh-duration-fast) var(--oh-ease-standard),
+    border-color var(--oh-duration-fast) var(--oh-ease-standard),
+    box-shadow var(--oh-duration-fast) var(--oh-ease-standard),
+    color var(--oh-duration-fast) var(--oh-ease-standard);
+}
+
+#content input[type="submit"]:hover,
+#content input[type="button"]:hover,
+#content form button[type="submit"]:hover,
+#content form button[type="button"]:hover,
+#content .buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):hover,
+#content p.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):hover,
+#content div.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):hover {
+  background-color: var(--oh-surface-hover);
+  border-color: var(--oh-border-strong);
+}
+
+#content input[type="submit"]:focus-visible,
+#content input[type="button"]:focus-visible,
+#content form button[type="submit"]:focus-visible,
+#content form button[type="button"]:focus-visible,
+#content .buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):focus-visible,
+#content p.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):focus-visible,
+#content div.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--oh-focus-ring);
+}
+
+#content input[type="submit"]:active,
+#content input[type="button"]:active,
+#content form button[type="submit"]:active,
+#content form button[type="button"]:active,
+#content .buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):active,
+#content p.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):active,
+#content div.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):active {
+  background-color: var(--oh-surface-tertiary);
+  border-color: var(--oh-border-strong);
+}
+
+#content input[type="submit"],
+#content form button[type="submit"] {
+  background-color: var(--oh-accent);
+  border-color: var(--oh-accent);
+  color: var(--oh-text-on-accent);
+}
+
+#content input[type="submit"]:hover,
+#content form button[type="submit"]:hover {
+  background-color: var(--oh-accent-hover);
+  border-color: var(--oh-accent-hover);
+}
+
+#content input[type="submit"]:active,
+#content form button[type="submit"]:active {
+  background-color: var(--oh-accent-active);
+  border-color: var(--oh-accent-active);
+}
+
+#content input[type="submit"].delete,
+#content input[type="button"].delete,
+#content form button[type="submit"].delete,
+#content form button[type="button"].delete,
+#content button.delete,
+#content .buttons .delete input[type="submit"] {
+  background-color: var(--oh-danger-soft);
+  border-color: rgba(194, 87, 87, 0.28);
+  color: var(--oh-danger);
+}
+
+#content input[type="submit"].delete:hover,
+#content input[type="button"].delete:hover,
+#content form button[type="submit"].delete:hover,
+#content form button[type="button"].delete:hover,
+#content button.delete:hover,
+#content .buttons .delete input[type="submit"]:hover {
+  background-color: #f7dede;
+  border-color: rgba(194, 87, 87, 0.4);
+}
+
+#content .button-small,
+#content input[type="submit"].small,
+#content input[type="button"].small,
+#content button.small {
+  font-size: var(--oh-text-xs);
+  height: var(--oh-control-height-compact);
+  line-height: calc(var(--oh-control-height-compact) - 2px);
+  padding: 0 var(--oh-space-3);
+}
+
+/* Text inputs and textareas */
+#content input[type="text"],
+#content input[type="password"],
+#content input[type="email"],
+#content input[type="number"],
+#content input[type="date"],
+#content input[type="search"],
+#content input[type="url"],
+#content input[type="tel"],
+#content input[type="time"],
+#content textarea {
+  background-color: var(--oh-surface-elevated);
+  border: 1px solid var(--oh-border-default);
+  border-radius: var(--oh-radius-control);
+  box-shadow: none;
+  color: var(--oh-text-primary);
+  font-family: var(--oh-font-sans);
+  font-size: var(--oh-text-sm);
+  line-height: var(--oh-line-normal);
+  transition:
+    background-color var(--oh-duration-fast) var(--oh-ease-standard),
+    border-color var(--oh-duration-fast) var(--oh-ease-standard),
+    box-shadow var(--oh-duration-fast) var(--oh-ease-standard),
+    color var(--oh-duration-fast) var(--oh-ease-standard);
+}
+
+#content input[type="text"],
+#content input[type="password"],
+#content input[type="email"],
+#content input[type="number"],
+#content input[type="date"],
+#content input[type="search"],
+#content input[type="url"],
+#content input[type="tel"],
+#content input[type="time"] {
+  height: var(--oh-control-height);
+  padding: 0 var(--oh-space-3);
+}
+
+#content textarea {
+  min-height: calc(var(--oh-control-height) * 2.5);
+  padding: var(--oh-space-2) var(--oh-space-3);
+}
+
+#content input[type="text"]:hover,
+#content input[type="password"]:hover,
+#content input[type="email"]:hover,
+#content input[type="number"]:hover,
+#content input[type="date"]:hover,
+#content input[type="search"]:hover,
+#content input[type="url"]:hover,
+#content input[type="tel"]:hover,
+#content input[type="time"]:hover,
+#content textarea:hover {
+  border-color: var(--oh-border-strong);
+}
+
+#content input[type="text"]:focus-visible,
+#content input[type="password"]:focus-visible,
+#content input[type="email"]:focus-visible,
+#content input[type="number"]:focus-visible,
+#content input[type="date"]:focus-visible,
+#content input[type="search"]:focus-visible,
+#content input[type="url"]:focus-visible,
+#content input[type="tel"]:focus-visible,
+#content input[type="time"]:focus-visible,
+#content textarea:focus-visible {
+  border-color: var(--oh-accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--oh-focus-ring);
+}
+
+#content input::placeholder,
+#content textarea::placeholder {
+  color: var(--oh-text-tertiary);
+}
+
+#content textarea.wiki-edit {
+  width: 99%;
+}
+
+#content .jstBlock textarea,
+#content .jstBlock .wiki-preview,
+#content .jstBlock .jstTabs {
+  border-radius: var(--oh-radius-control);
+}
+
+/* Selects */
+#content select {
+  appearance: auto;
+  background-color: var(--oh-surface-elevated);
+  background-image: none;
+  border: 1px solid var(--oh-border-default);
+  border-radius: var(--oh-radius-control);
+  box-shadow: none;
+  color: var(--oh-text-primary);
+  font-family: var(--oh-font-sans);
+  font-size: var(--oh-text-sm);
+  height: var(--oh-control-height);
+  line-height: var(--oh-line-normal);
+  padding: 0 calc(var(--oh-space-4) + 1.2rem) 0 var(--oh-space-3);
+  transition:
+    background-color var(--oh-duration-fast) var(--oh-ease-standard),
+    border-color var(--oh-duration-fast) var(--oh-ease-standard),
+    box-shadow var(--oh-duration-fast) var(--oh-ease-standard),
+    color var(--oh-duration-fast) var(--oh-ease-standard);
+}
+
+#content select:hover {
+  border-color: var(--oh-border-strong);
+}
+
+#content select:focus-visible {
+  border-color: var(--oh-accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--oh-focus-ring);
+}
+
+#content select[multiple],
+#content select[multiple="multiple"] {
+  height: auto;
+  min-height: calc(var(--oh-control-height) * 2.5);
+  padding: var(--oh-space-2);
+}
+
+#content .check_box_group {
+  background-color: var(--oh-surface-elevated);
+  border: 1px solid var(--oh-border-default);
+  border-radius: var(--oh-radius-control);
+  padding: var(--oh-space-2) var(--oh-space-3);
+}
+
+/* Checkboxes and radio buttons */
+#content input[type="checkbox"],
+#content input[type="radio"] {
+  accent-color: var(--oh-accent);
+  height: 1rem;
+  margin: 0;
+  width: 1rem;
+}
+
+#content label.inline input[type="checkbox"],
+#content label.inline input[type="radio"],
+#content p > input[type="checkbox"],
+#content p > input[type="radio"] {
+  margin-right: var(--oh-space-2);
+}
+
+/* Labels and help text */
+#content label {
+  color: var(--oh-text-primary);
+  font-size: var(--oh-text-sm);
+  font-weight: var(--oh-weight-medium);
+  letter-spacing: normal;
+}
+
+#content .tabular label {
+  line-height: var(--oh-control-height);
+}
+
+#content label.inline,
+#content .tabular label.inline,
+#content .tabular label.block,
+#content .check_box_group label,
+#content #issue_is_private_label {
+  font-weight: var(--oh-weight-regular);
+  line-height: var(--oh-line-normal);
+}
+
+#content span.required,
+#content label .required {
+  color: var(--oh-danger);
+  font-weight: var(--oh-weight-semibold);
+}
+
+#content span.field-description,
+#content em.info,
+#content p.help,
+#content .form-help,
+#content .tabular .wiki-preview + p {
+  color: var(--oh-text-secondary);
+  font-size: var(--oh-text-xs);
+  line-height: 1.45;
+}
+
+#content abbr,
+#content span.field-description[title] {
+  border-bottom-color: var(--oh-border-strong);
+  color: var(--oh-text-secondary);
+}
+
+/* Disabled and readonly states */
+#content input:disabled,
+#content select:disabled,
+#content textarea:disabled,
+#content button:disabled,
+#content input[readonly],
+#content textarea[readonly] {
+  background-color: var(--oh-surface-tertiary);
+  border-color: var(--oh-border-subtle);
+  box-shadow: none;
+  color: var(--oh-text-disabled);
+}
+
+#content input:disabled,
+#content select:disabled,
+#content textarea:disabled,
+#content button:disabled {
+  cursor: not-allowed;
+}
+
+#content input[readonly],
+#content textarea[readonly] {
+  cursor: default;
+}
+
+/* Validation states */
+#content .tabular label.error,
+#content label.error,
+#content .errorExplanation,
+#content #errorExplanation {
+  color: var(--oh-danger);
+}
+
+#content .tabular label.error + *:not(#issue_description_and_toolbar),
+#content .tabular label.error + span#issue_description_and_toolbar div.jstBlock,
+#content .field_with_errors input[type="text"],
+#content .field_with_errors input[type="password"],
+#content .field_with_errors input[type="email"],
+#content .field_with_errors input[type="number"],
+#content .field_with_errors input[type="date"],
+#content .field_with_errors input[type="search"],
+#content .field_with_errors select,
+#content .field_with_errors textarea {
+  border-color: var(--oh-danger);
+  box-shadow: 0 0 0 1px rgba(194, 87, 87, 0.08);
+}
+
+#content .tabular label.error + *:not(#issue_description_and_toolbar):focus-visible,
+#content .tabular label.error + span#issue_description_and_toolbar div.jstBlock:focus-within,
+#content .field_with_errors input[type="text"]:focus-visible,
+#content .field_with_errors input[type="password"]:focus-visible,
+#content .field_with_errors input[type="email"]:focus-visible,
+#content .field_with_errors input[type="number"]:focus-visible,
+#content .field_with_errors input[type="date"]:focus-visible,
+#content .field_with_errors input[type="search"]:focus-visible,
+#content .field_with_errors select:focus-visible,
+#content .field_with_errors textarea:focus-visible {
+  border-color: var(--oh-danger);
+  box-shadow:
+    0 0 0 1px rgba(194, 87, 87, 0.18),
+    0 0 0 3px var(--oh-focus-ring);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #content input[type="submit"],
+  #content input[type="button"],
+  #content form button,
+  #content .buttons button,
+  #content p.buttons button,
+  #content div.buttons button,
+  #content input[type="text"],
+  #content input[type="password"],
+  #content input[type="email"],
+  #content input[type="number"],
+  #content input[type="date"],
+  #content input[type="search"],
+  #content input[type="url"],
+  #content input[type="tel"],
+  #content input[type="time"],
+  #content select,
+  #content textarea {
+    transition: none;
+  }
+}
