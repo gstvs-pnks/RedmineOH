@@ -1103,29 +1103,47 @@ body.controller-issues.action-index p.nodata {
 }
 
 /* Projects index */
+body.controller-projects.action-index #content {
+  padding-top: 0.7rem;
+}
+
 body.controller-projects.action-index #content > .contextual {
+  background: transparent;
+  border: 0;
+  float: right;
+  justify-content: flex-end;
+  margin: 0 0 0.55rem var(--oh-space-3);
+  padding: 0;
+  width: auto;
+}
+
+body.controller-projects.action-index #content > .contextual form {
+  display: none;
+}
+
+body.controller-projects.action-index #content > .contextual,
+body.controller-projects.action-index #content > p.other-formats,
+body.controller-projects.action-index #content > p[style*="text-align:right"] {
   align-items: center;
-  background-color: rgba(247, 249, 252, 0.9);
-  border: 1px solid rgba(126, 145, 166, 0.16);
-  border-radius: var(--oh-radius-control);
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 0.3rem;
-  margin: 0 0 var(--oh-space-3) var(--oh-space-3);
-  padding: 0.25rem;
+  gap: 0.35rem 0.6rem;
   white-space: normal;
 }
 
 body.controller-projects.action-index #content > .contextual a {
   align-items: center;
-  border: 1px solid transparent;
+  background-color: rgba(247, 249, 252, 0.86);
+  border: 1px solid rgba(126, 145, 166, 0.15);
   border-radius: 0.45rem;
   color: var(--oh-text-secondary);
   display: inline-flex;
   gap: 0.35rem;
   line-height: 1.3;
-  min-height: 1.85rem;
-  padding: 0.3rem 0.55rem;
+  font-size: var(--oh-text-xs);
+  font-weight: var(--oh-weight-medium);
+  min-height: 2.25rem;
+  padding: 0.18rem 0.62rem;
   text-decoration: none;
 }
 
@@ -1146,17 +1164,20 @@ body.controller-projects.action-index #content > .contextual a:active {
 }
 
 body.controller-projects.action-index #content > h2 {
-  margin-bottom: 0.35rem;
+  clear: none;
+  margin: 0 0 0.2rem;
+  min-height: 2.25rem;
   overflow-wrap: anywhere;
 }
 
 body.controller-projects.action-index #content > .subtitle {
   color: var(--oh-text-secondary);
-  margin-bottom: var(--oh-space-3);
+  margin: 0 0 0.7rem;
 }
 
 body.controller-projects.action-index #content > .tabs {
-  margin-bottom: var(--oh-space-3);
+  clear: both;
+  margin: 0 0 var(--oh-space-2);
   min-height: 2.15rem;
 }
 
@@ -1207,26 +1228,28 @@ body.controller-projects.action-index #content > .tabs ul li a[aria-selected="tr
 }
 
 body.controller-projects.action-index #query_form {
-  margin-bottom: var(--oh-space-4);
+  margin: 0 0 var(--oh-space-2);
+  max-width: none;
+  width: auto;
 }
 
 body.controller-projects.action-index #query_form_with_buttons {
   background: rgba(252, 253, 255, 0.92);
   border-color: rgba(126, 145, 166, 0.16);
   border-radius: calc(var(--oh-radius-container) - 0.2rem);
-  margin-bottom: var(--oh-space-4);
+  margin: 0;
 }
 
 body.controller-projects.action-index #query_form_content {
-  padding: var(--oh-space-3) var(--oh-space-4) 0;
+  padding: 0.7rem 0.9rem 0;
 }
 
 body.controller-projects.action-index #query_form_content > fieldset {
-  padding: var(--oh-space-2) 0;
+  padding: 0.45rem 0;
 }
 
 body.controller-projects.action-index #query_form_content > fieldset > legend {
-  padding-bottom: 0.35rem;
+  padding-bottom: 0.2rem;
 }
 
 body.controller-projects.action-index #query_form_content > fieldset.collapsed > legend {
@@ -1235,42 +1258,229 @@ body.controller-projects.action-index #query_form_content > fieldset.collapsed >
 
 body.controller-projects.action-index #query_form_content #options > div > div,
 body.controller-projects.action-index #query_form_content #list-definition > div {
-  gap: 0.55rem var(--oh-space-3);
-  padding-top: var(--oh-space-2);
+  align-items: start;
+  display: grid;
+  grid-template-columns: minmax(10rem, 12.5rem) minmax(0, 1fr);
+  gap: 0.35rem 0.8rem;
+  padding-top: 0.45rem;
 }
 
 body.controller-projects.action-index #query_form_content #options .field,
 body.controller-projects.action-index #query_form_content #list-definition > div .field {
-  padding-top: 0.35rem;
+  min-width: 0;
+  padding-top: 0.2rem;
 }
 
-body.controller-projects.action-index #filters-table .filter {
-  background-color: rgba(247, 249, 252, 0.78);
-  border-color: rgba(126, 145, 166, 0.15);
-  border-radius: 0.6rem;
-  gap: 0.45rem 0.75rem;
-  margin-bottom: 0.5rem;
-  padding: 0.45rem 0.75rem;
+body.controller-projects.action-index #query_form_content fieldset#options > div.hidden {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  max-width: 52rem;
 }
 
-body.controller-projects.action-index #filters-table .filter > input[type="checkbox"] {
+body.controller-projects.action-index #query_form_content fieldset#options > div.hidden > div:first-child {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.7rem;
+}
+
+body.controller-projects.action-index #query_form_content fieldset#options > div.hidden > div:first-child > .field {
+  flex: 0 0 auto;
+  padding-top: 0;
+  white-space: nowrap;
+}
+
+body.controller-projects.action-index #query_form_content fieldset#options > div.hidden > div:first-child > input[type="radio"],
+body.controller-projects.action-index #query_form_content fieldset#options > div.hidden > div:first-child > label {
+  flex: 0 0 auto;
   margin: 0;
 }
 
-body.controller-projects.action-index #filters-table .field {
-  flex-basis: 12.5rem;
-  min-width: 9rem;
+body.controller-projects.action-index #query_form_content fieldset#options > div.hidden > div:first-child > input[type="radio"] {
+  margin-right: 0.2rem;
 }
 
-body.controller-projects.action-index #filters-table .operator select {
-  width: 7.75rem;
+body.controller-projects.action-index #query_form_content fieldset#options > div.hidden > div:first-child > label.inline {
+  align-items: center;
+  display: inline-flex;
+  margin: 0 0.8rem 0 0;
+  white-space: nowrap;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div {
+  max-width: 52rem;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:first-child {
+  order: 2;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:nth-child(2) {
+  order: 1;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:first-child {
+  display: grid;
+  gap: 0.45rem 0.9rem;
+  grid-template-columns: minmax(14rem, 1fr) auto minmax(14rem, 1fr);
+  grid-template-rows: auto auto auto;
+  align-items: start;
+  border-top-color: rgba(126, 145, 166, 0.12);
+  padding-top: 0.7rem;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:first-child > .field {
+  color: var(--oh-text-primary);
+  font-size: var(--oh-text-sm);
+  font-weight: var(--oh-weight-semibold);
+  grid-column: 1 / -1;
+  grid-row: 1;
+  align-self: start;
+  line-height: 1.35;
+  margin: 0;
+  padding-top: 0;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:first-child > .query-columns:first-of-type {
+  grid-column: 1;
+  grid-row: 2 / span 2;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:first-child > .buttons:first-of-type {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  grid-column: 2;
+  grid-row: 2;
+  justify-content: center;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:first-child > .query-columns:last-of-type {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:first-child > .buttons:last-of-type {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  grid-column: 3;
+  grid-row: 3;
+  justify-content: flex-start;
+  margin-top: 0.15rem;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:first-child .query-columns {
+  min-width: 0;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:first-child .query-columns label {
+  margin: 0 0 0.28rem;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:first-child .query-columns select {
+  height: auto;
+  margin: 0;
+  min-height: 8rem;
+  width: 100%;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:first-child .buttons input[type="button"] {
+  min-height: 2rem;
+  min-width: 2rem;
+  padding: 0.08rem 0.4rem;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:first-child > .buttons:first-of-type input[type="button"] {
+  width: 2.05rem;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:nth-child(2) {
+  align-items: center;
+  gap: 0.3rem 0.8rem;
+  max-width: 24rem;
+  padding-top: 0;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:nth-child(2) > :not(.field) {
+  width: auto;
+}
+
+body.controller-projects.action-index #query_form_content #list-definition > div:nth-child(2) select {
+  width: clamp(8rem, 18vw, 11rem);
+}
+
+body.controller-projects.action-index #filters-table .filter {
+  align-items: center;
+  background-color: rgba(247, 249, 252, 0.78);
+  border-color: rgba(126, 145, 166, 0.15);
+  border-radius: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.6rem;
+  justify-content: flex-start;
+  margin-bottom: 0.3rem;
+  padding: 0.38rem 0.6rem;
+  text-align: left;
+}
+
+body.controller-projects.action-index #filters-table .field {
+  align-self: center;
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 0.38rem;
+  justify-content: flex-start;
+  margin: 0;
+  min-width: 0;
+  text-align: left;
+  width: clamp(6rem, 15vw, 8rem);
+}
+
+body.controller-projects.action-index #filters-table .field input[type="checkbox"] {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+body.controller-projects.action-index #filters-table .field label {
+  margin: 0;
+  min-width: 0;
+}
+
+body.controller-projects.action-index #filters-table .operator {
+  align-self: center;
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+body.controller-projects.action-index #filters-table .operator select,
+body.controller-projects.action-index #query_form .add-filter select {
+  max-width: 100%;
+}
+
+body.controller-projects.action-index #filters-table .operator,
+body.controller-projects.action-index #filters-table .values {
+  justify-content: flex-start;
+  text-align: left;
 }
 
 body.controller-projects.action-index #filters-table .values {
   align-items: center;
   display: flex;
+  flex: 0 1 auto;
   flex-wrap: wrap;
-  gap: 0.4rem 0.65rem;
+  gap: 0.25rem 0.45rem;
+  justify-content: flex-start;
+  margin: 0;
+  min-width: 0;
 }
 
 body.controller-projects.action-index #filters-table .values .value,
@@ -1279,40 +1489,78 @@ body.controller-projects.action-index #filters-table .values label.inline {
   margin-right: 0;
 }
 
+body.controller-projects.action-index #filters-table .values > span,
+body.controller-projects.action-index #filters-table .values > label,
+body.controller-projects.action-index #filters-table .values > a,
+body.controller-projects.action-index #filters-table .values > .icon-only {
+  flex: 0 0 auto;
+}
+
+body.controller-projects.action-index #filters-table .values input[type="text"],
+body.controller-projects.action-index #filters-table .values input[type="number"],
+body.controller-projects.action-index #filters-table .values input[type="date"],
+body.controller-projects.action-index #filters-table .values select {
+  min-width: min(8rem, 100%);
+}
+
+body.controller-projects.action-index #filters-table .operator select {
+  width: clamp(5rem, 9vw, 6rem);
+}
+
+body.controller-projects.action-index #filters-table .values select {
+  width: clamp(6.75rem, 14vw, 9rem);
+}
+
+body.controller-projects.action-index #query_form_content select,
+body.controller-projects.action-index #query_form_content input[type="text"],
+body.controller-projects.action-index #query_form_content input[type="number"],
+body.controller-projects.action-index #query_form_content input[type="date"] {
+  min-height: 2.25rem;
+}
+
 body.controller-projects.action-index #filters-table .values label.inline {
   gap: 0.4rem;
 }
 
 body.controller-projects.action-index #query_form .add-filter {
   border-top-color: rgba(126, 145, 166, 0.12);
-  gap: 0.5rem 0.75rem;
+  display: grid;
+  gap: 0.3rem 0.55rem;
+  grid-template-columns: max-content minmax(9rem, 13rem);
   justify-content: flex-start;
-  margin-top: var(--oh-space-2);
-  padding-top: var(--oh-space-2);
+  margin-top: 0.45rem;
+  padding-top: 0.45rem;
 }
 
 body.controller-projects.action-index #query_form .add-filter label {
+  align-self: center;
   white-space: nowrap;
+}
+
+body.controller-projects.action-index #query_form .add-filter select {
+  width: min(13rem, 100%);
 }
 
 body.controller-projects.action-index #query_form_with_buttons > p.buttons {
   background-color: rgba(247, 249, 252, 0.78);
   border-top-color: rgba(126, 145, 166, 0.12);
-  gap: 0.45rem;
-  padding: 0.75rem 1rem;
+  display: inline-flex;
+  gap: 0.35rem;
+  margin: 0.35rem 0 0.5rem 0.9rem;
+  padding: 0;
 }
 
 body.controller-projects.action-index #query_form_with_buttons > p.buttons a {
   font-size: var(--oh-text-xs);
   line-height: 1.3;
-  min-height: 1.9rem;
-  padding: 0.28rem 0.72rem;
+  min-height: 2.25rem;
+  padding: 0.18rem 0.68rem;
 }
 
 body.controller-projects.action-index .query-totals {
   color: var(--oh-text-secondary);
   font-size: var(--oh-text-xs);
-  margin: 0 0 var(--oh-space-2);
+  margin: 0 0 0.35rem;
   text-align: right;
 }
 
@@ -1325,11 +1573,13 @@ body.controller-projects.action-index .autoscroll {
   background-color: rgba(252, 253, 255, 0.92);
   border: 1px solid rgba(126, 145, 166, 0.16);
   border-radius: calc(var(--oh-radius-container) - 0.2rem);
-  margin-bottom: var(--oh-space-3);
+  margin: 0 0 var(--oh-space-2);
+  max-width: none;
   overflow-x: auto;
   overflow-y: hidden;
   padding: 0;
   position: relative;
+  width: 100%;
 }
 
 body.controller-projects.action-index table.list.projects {
@@ -1337,6 +1587,7 @@ body.controller-projects.action-index table.list.projects {
   border: 0;
   border-collapse: collapse;
   margin: 0;
+  table-layout: fixed;
   width: 100%;
 }
 
@@ -1346,7 +1597,7 @@ body.controller-projects.action-index table.list.projects thead th {
   color: var(--oh-text-secondary);
   font-size: var(--oh-text-xs);
   font-weight: var(--oh-weight-semibold);
-  padding: 0.72rem 0.85rem;
+  padding: 0.58rem 0.72rem;
   text-transform: none;
   white-space: nowrap;
 }
@@ -1374,8 +1625,24 @@ body.controller-projects.action-index table.list.projects tbody td {
   color: var(--oh-text-primary);
   font-size: var(--oh-text-sm);
   line-height: 1.45;
-  padding: 0.9rem 0.85rem;
+  padding: 0.58rem 0.72rem;
   vertical-align: top;
+}
+
+body.controller-projects.action-index table.list.projects thead th.name,
+body.controller-projects.action-index table.list.projects tbody td.name {
+  width: 23%;
+}
+
+body.controller-projects.action-index table.list.projects thead th.identifier,
+body.controller-projects.action-index table.list.projects tbody td.identifier {
+  white-space: nowrap;
+  width: 12%;
+}
+
+body.controller-projects.action-index table.list.projects thead th.short_description,
+body.controller-projects.action-index table.list.projects tbody td.short_description {
+  width: auto;
 }
 
 body.controller-projects.action-index table.list.projects tbody tr:last-child td {
@@ -1407,6 +1674,7 @@ body.controller-projects.action-index table.list.projects tbody td.name {
 
 body.controller-projects.action-index table.list.projects tbody td.name a {
   color: var(--oh-text-primary);
+  display: inline;
   font-weight: var(--oh-weight-semibold);
   text-decoration: none;
 }
@@ -1443,13 +1711,92 @@ body.controller-projects.action-index table.list.projects tbody td.description .
   margin-bottom: 0;
 }
 
+body.controller-projects.action-index #projects-index {
+  columns: auto;
+  column-gap: 0;
+  column-width: auto;
+  margin: 0 0 var(--oh-space-2);
+  max-width: none;
+  width: 100%;
+}
+
+body.controller-projects.action-index #projects-index > ul.projects.root {
+  display: grid;
+  gap: var(--oh-space-2);
+  grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
+  margin: 0;
+  padding: 0;
+}
+
+body.controller-projects.action-index #projects-index > ul.projects.root > li.root {
+  background: rgba(252, 253, 255, 0.92);
+  border: 1px solid rgba(126, 145, 166, 0.16);
+  border-radius: calc(var(--oh-radius-container) - 0.2rem);
+  box-shadow: none;
+  break-inside: auto;
+  margin: 0;
+  min-width: 0;
+  padding: 1.05rem 1.1rem;
+  width: 100%;
+}
+
+body.controller-projects.action-index #projects-index > ul.projects.root > li.root:only-child {
+  grid-column: 1 / -1;
+}
+
+body.controller-projects.action-index #projects-index ul.projects li.root ul.projects {
+  border-left: 1px solid rgba(126, 145, 166, 0.18);
+  margin-top: 0.75rem;
+  padding-left: 0.9rem;
+}
+
+body.controller-projects.action-index #projects-index ul.projects li.child {
+  margin-top: 0.7rem;
+}
+
+body.controller-projects.action-index #projects-index ul.projects div.root a.project,
+body.controller-projects.action-index #projects-index ul.projects li.child > div > a.project {
+  background-image: none;
+  color: var(--oh-text-primary);
+  display: inline;
+  font-family: var(--oh-font-sans);
+  font-size: 1rem;
+  font-weight: var(--oh-weight-semibold);
+  line-height: 1.35;
+  padding-left: 0;
+  text-decoration: none;
+}
+
+body.controller-projects.action-index #projects-index ul.projects div.root a.project:hover,
+body.controller-projects.action-index #projects-index ul.projects li.child > div > a.project:hover {
+  color: var(--oh-accent-hover);
+  text-decoration: underline;
+}
+
+body.controller-projects.action-index #projects-index ul.projects .icon-only {
+  color: var(--oh-text-tertiary);
+  margin-left: 0.3rem;
+}
+
+body.controller-projects.action-index #projects-index ul.projects div.description {
+  color: var(--oh-text-secondary);
+  line-height: 1.45;
+  padding-top: 0.24rem;
+}
+
+body.controller-projects.action-index #projects-index div.wiki p:last-child {
+  margin-bottom: 0;
+}
+
 body.controller-projects.action-index span.pagination {
   align-items: center;
   color: var(--oh-text-secondary);
   display: flex;
   flex-wrap: wrap;
   gap: var(--oh-space-2) var(--oh-space-3);
-  margin: 0 0 var(--oh-space-4);
+  margin: 0 0 0.55rem;
+  max-width: none;
+  width: auto;
 }
 
 body.controller-projects.action-index .pagination ul.pages {
@@ -1511,10 +1858,21 @@ body.controller-projects.action-index .pagination .per-page span.selected {
 
 body.controller-projects.action-index #content > p.other-formats {
   color: var(--oh-text-secondary);
-  display: flex;
+  display: inline-flex;
+  font-size: var(--oh-text-xs);
+  float: left;
   flex-wrap: wrap;
-  gap: 0.35rem 0.55rem;
-  margin: 0 0 var(--oh-space-4);
+  gap: 0.25rem 0.45rem;
+  margin: 0 0 0.85rem;
+  max-width: none;
+  text-align: left;
+  width: auto;
+}
+
+body.controller-projects.action-index #content > p.other-formats span + span::before {
+  color: var(--oh-text-disabled);
+  content: "|";
+  margin-right: 0.45rem;
 }
 
 body.controller-projects.action-index #content > p.other-formats a {
@@ -1526,7 +1884,7 @@ body.controller-projects.action-index #content > p.other-formats a {
   display: inline-flex;
   font-size: var(--oh-text-xs);
   min-height: 1.8rem;
-  padding: 0.22rem 0.65rem;
+  padding: 0.08rem 0.42rem;
   text-decoration: none;
 }
 
@@ -1537,13 +1895,18 @@ body.controller-projects.action-index #content > p.other-formats a:hover {
 }
 
 body.controller-projects.action-index #content > p[style*="text-align:right"] {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem 0.75rem;
+  float: right;
   justify-content: flex-end;
-  margin: var(--oh-space-3) 0 0;
+  margin: 0 0 0.85rem;
+  max-width: none;
   text-align: right;
+  width: auto;
+}
+
+body.controller-projects.action-index #content::after {
+  clear: both;
+  content: "";
+  display: block;
 }
 
 body.controller-projects.action-index #content > p[style*="text-align:right"] .icon {
@@ -1555,28 +1918,88 @@ body.controller-projects.action-index #content > p[style*="text-align:right"] .i
   display: inline-flex;
   gap: 0.4rem;
   min-height: 1.8rem;
-  padding: 0.2rem 0.65rem;
+  padding: 0.08rem 0.42rem;
 }
 
 @media (max-width: 899px) {
   body.controller-projects.action-index #content > .contextual {
     float: none;
     margin-left: 0;
+    width: 100%;
   }
 
   body.controller-projects.action-index #content > .tabs ul {
     padding-right: 0;
   }
 
-  body.controller-projects.action-index #filters-table .field,
-  body.controller-projects.action-index #filters-table .operator,
-  body.controller-projects.action-index #filters-table .values {
-    flex-basis: 100%;
+  body.controller-projects.action-index #query_form_content #options > div > div,
+  body.controller-projects.action-index #query_form_content #list-definition > div,
+  body.controller-projects.action-index #query_form .add-filter {
+    grid-template-columns: 1fr;
+  }
+
+  body.controller-projects.action-index #query_form_content fieldset#options > div.hidden {
+    max-width: none;
+  }
+
+  body.controller-projects.action-index #query_form_content fieldset#options > div.hidden > div:first-child > .field,
+  body.controller-projects.action-index #query_form_content #list-definition > div:nth-child(2) {
+    max-width: none;
+  }
+
+  body.controller-projects.action-index #query_form_content #list-definition > div:first-child {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  body.controller-projects.action-index #query_form_content #list-definition > div:first-child > .field,
+  body.controller-projects.action-index #query_form_content #list-definition > div:first-child > .query-columns:first-of-type,
+  body.controller-projects.action-index #query_form_content #list-definition > div:first-child > .buttons:first-of-type,
+  body.controller-projects.action-index #query_form_content #list-definition > div:first-child > .query-columns:last-of-type,
+  body.controller-projects.action-index #query_form_content #list-definition > div:first-child > .buttons:last-of-type {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  body.controller-projects.action-index #query_form_content #list-definition > div:first-child > .buttons:first-of-type,
+  body.controller-projects.action-index #query_form_content #list-definition > div:first-child > .buttons:last-of-type {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  body.controller-projects.action-index #query_form_content #list-definition > div:nth-child(2) select {
+    width: 100%;
+  }
+
+  body.controller-projects.action-index #filters-table .filter {
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  body.controller-projects.action-index #filters-table .field {
+    width: auto;
   }
 
   body.controller-projects.action-index #filters-table .operator select,
-  body.controller-projects.action-index #filters-table .values .autocomplete {
+  body.controller-projects.action-index #filters-table .values .autocomplete,
+  body.controller-projects.action-index #filters-table .values input[type="text"],
+  body.controller-projects.action-index #filters-table .values input[type="number"],
+  body.controller-projects.action-index #filters-table .values input[type="date"],
+  body.controller-projects.action-index #filters-table .values select,
+  body.controller-projects.action-index #query_form .add-filter select {
     width: 100%;
+  }
+
+  body.controller-projects.action-index #content > p[style*="text-align:right"] {
+    float: none;
+    justify-content: flex-start;
+    margin-right: 0;
+    text-align: left;
+  }
+
+  body.controller-projects.action-index #content > p.other-formats {
+    float: none;
+    margin-left: 0;
   }
 }
 
