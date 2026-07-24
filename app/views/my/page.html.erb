@@ -1,12 +1,14 @@
-<div class="contextual">
-  <%= form_tag({:action => "add_block"}, :remote => true, :id => "block-form", authenticity_token: true) do %>
-    <%= label_tag('block-select', l(:button_add)) %>:
-    <%= block_select_tag(@user) %>
-  <% end %>
-  <%= call_hook(:view_my_page_contextual, :user => @user) %>
-</div>
+<div class="my-page-header">
+  <h2><%=l(:label_my_page)%></h2>
 
-<h2><%=l(:label_my_page)%></h2>
+  <div class="contextual">
+    <%= form_tag({:action => "add_block"}, :remote => true, :id => "block-form", authenticity_token: true) do %>
+      <%= label_tag('block-select', l(:button_add)) %>:
+      <%= block_select_tag(@user) %>
+    <% end %>
+    <%= call_hook(:view_my_page_contextual, :user => @user) %>
+  </div>
+</div>
 
 <div id="my-page" class="splitcontent">
 <% @groups.each do |group| %>

@@ -85,7 +85,8 @@
     </nav>
 </div>
 
-<% header_title = page_header_title %>
+<% show_project_workspace_title = @project.present? && !@project.new_record? %>
+<% header_title = show_project_workspace_title ? page_header_title : nil %>
 <% if header_title.present? || display_main_menu?(@project) %>
 <div id="header" class="oh-workspace-header">
 

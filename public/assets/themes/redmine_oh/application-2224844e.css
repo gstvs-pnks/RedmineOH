@@ -1,0 +1,17 @@
+/* RedmineOH theme entry point */
+
+@import url("/assets/application-2ac82834.css");
+@import url("/assets/themes/redmine_oh/tokens-5ba4b3c2.css");
+@import url("/assets/themes/redmine_oh/base-dd72773d.css");
+@import url("/assets/themes/redmine_oh/layout-8cea3faa.css");
+@import url("/assets/themes/redmine_oh/components-341024a8.css");
+@import url("/assets/themes/redmine_oh/pages-1d632dcc.css");
+
+:root {
+  --oh-theme-name: "RedmineOH";
+  --oh-theme-version: "0.1.0";
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif;
+}

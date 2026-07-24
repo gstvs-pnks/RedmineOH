@@ -34,12 +34,24 @@ module MyHelper
   def render_block(block, user)
     content = render_block_content(block, user)
     if content.present?
+      extra_actions = @my_page_block_actions&.delete(block.to_s).to_s.html_safe
       handle = content_tag('span', sprite_icon('reorder', ''), :class => 'icon-only icon-sort-handle sort-handle', :title => l(:button_move))
       close = link_to(sprite_icon('close', l(:button_delete)),
                       {:action => "remove_block", :block => block},
                       :remote => true, :method => 'post',
                       :class => "icon-only icon-close", :title => l(:button_delete))
-      content = content_tag('div', handle + close, :class => 'contextual') + content
+      actions = content_tag('div', handle + extra_actions + close, :class => 'contextual dashboard-card-actions')
+
+      if (title = content.match(/<h3\b[^>]*>.*?<\/h3>/m))
+        header = content_tag(
+          'div',
+          content_tag('div', title[0].html_safe, :class => 'dashboard-card-title') + actions,
+          :class => 'dashboard-card-header'
+        )
+        content = header + (title.pre_match + title.post_match).html_safe
+      else
+        content = actions + content
+      end
 
       content_tag('div', content, :class => "mypage-box", :id => "block-#{block}")
     end

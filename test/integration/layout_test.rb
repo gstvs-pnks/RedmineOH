@@ -122,7 +122,11 @@ class LayoutTest < Redmine::IntegrationTest
 
   def test_help_and_powered_by_redmine_link_should_open_separate_tab
     get '/'
-    assert_select '#top-menu a.help[target="_blank"][rel="noopener"]'
+    if Redmine::Plugin.installed?(:redmine_oh_shell)
+      assert_select '#top-menu a.help', count: 0
+    else
+      assert_select '#top-menu a.help[target="_blank"][rel="noopener"]'
+    end
     # "Powered by Redmine" link
     assert_select '#footer a[target="_blank"][rel="noopener"]'
   end

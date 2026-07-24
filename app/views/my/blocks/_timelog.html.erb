@@ -1,6 +1,8 @@
-<div class="contextual">
-  <%= link_to_function sprite_icon('settings', l(:label_options)), "$('#timelog-settings').toggle();", :class => 'icon-only icon-settings', :title => l(:label_options) %>
-</div>
+<% (@my_page_block_actions ||= {})[block.to_s] =
+     link_to_function(sprite_icon('settings', l(:label_options)),
+                      "$('#timelog-settings').toggle();",
+                      :class => 'icon-only icon-settings',
+                      :title => l(:label_options)) %>
 
 <h3>
   <%= link_to l(:label_spent_time), time_entries_path(:user_id => 'me') %>
