@@ -1,2 +1,3 @@
 log/development.log
 log/development.scm.stderr.log
+*.log
