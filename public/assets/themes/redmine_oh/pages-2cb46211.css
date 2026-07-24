@@ -1727,7 +1727,6 @@ body.controller-my.action-page #block-form {
   flex-wrap: wrap;
   gap: var(--oh-space-2);
   margin: 0;
-  vertical-align: middle;
 }
 
 body.controller-my.action-page #block-form label {
@@ -1749,27 +1748,17 @@ body.controller-my.action-page #my-page.splitcontent {
 }
 
 body.controller-my.action-page #my-page .block-receiver {
-  background: rgba(244, 247, 250, 0.16);
-  border: 1px dashed rgba(126, 145, 166, 0.14);
+  background: rgba(244, 247, 250, 0.34);
+  border: 1px dashed rgba(126, 145, 166, 0.22);
   border-radius: var(--oh-radius-container);
   display: flex;
-  flex: 1 1 0;
+  flex: 1 1 22rem;
   flex-direction: column;
   gap: var(--oh-space-3);
   margin: 0;
   min-height: 8rem;
   min-width: 0;
   padding: var(--oh-space-2);
-}
-
-body.controller-my.action-page #my-page .block-receiver:has(.mypage-box) {
-  background: transparent;
-  border-color: transparent;
-  flex-grow: 999;
-}
-
-body.controller-my.action-page #my-page .block-receiver:not(:has(.mypage-box)) {
-  flex: 0 1 11rem;
 }
 
 body.controller-my.action-page #my-page.dragging .block-receiver,
@@ -1895,7 +1884,7 @@ body.controller-my.action-page #block-form .icon.disabled {
 body.controller-projects.action-show #content .issues.box .list.issue-report,
 body.controller-my.action-page #my-page .mypage-box .list {
   margin: 0;
-  table-layout: auto;
+  table-layout: fixed;
   width: 100%;
 }
 
@@ -1924,29 +1913,8 @@ body.controller-my.action-page #my-page .mypage-box .list tbody tr:last-child td
 body.controller-projects.action-show #content .issues.box .list.issue-report td,
 body.controller-my.action-page #my-page .mypage-box .list td {
   color: var(--oh-text-primary);
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   vertical-align: top;
-}
-
-body.controller-my.action-page #my-page .mypage-box .list th.id,
-body.controller-my.action-page #my-page .mypage-box .list td.id,
-body.controller-my.action-page #my-page .mypage-box .list th.tracker,
-body.controller-my.action-page #my-page .mypage-box .list td.tracker,
-body.controller-my.action-page #my-page .mypage-box .list th.status,
-body.controller-my.action-page #my-page .mypage-box .list td.status,
-body.controller-my.action-page #my-page .mypage-box .list th.buttons,
-body.controller-my.action-page #my-page .mypage-box .list td.buttons {
-  white-space: nowrap;
-  width: 1%;
-}
-
-body.controller-my.action-page #my-page .mypage-box .list th.subject,
-body.controller-my.action-page #my-page .mypage-box .list td.subject,
-body.controller-my.action-page #my-page .mypage-box .list th.name,
-body.controller-my.action-page #my-page .mypage-box .list td.name {
-  overflow-wrap: break-word;
-  white-space: normal;
-  width: auto;
 }
 
 body.controller-projects.action-show #content .issues.box .list.issue-report th:first-child,
