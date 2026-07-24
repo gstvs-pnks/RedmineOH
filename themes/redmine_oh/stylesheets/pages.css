@@ -339,13 +339,14 @@ body.controller-issues.action-index table.list.issues thead th:last-child {
 }
 
 body.controller-issues.action-index table.list.issues thead th.checkbox,
-body.controller-issues.action-index table.list.issues thead th.buttons {
+body.controller-issues.action-index table.list.issues thead th.issue-actions {
   width: 1%;
 }
 
-body.controller-issues.action-index table.list.issues thead th.buttons,
-body.controller-issues.action-index table.list.issues tbody td.buttons {
-  display: table-cell;
+body.controller-issues.action-index table.list.issues thead th.issue-actions,
+body.controller-issues.action-index table.list.issues tbody td.issue-actions {
+  display: table-cell !important;
+  float: none !important;
   margin: 0;
 }
 
@@ -395,6 +396,19 @@ body.controller-issues.action-index table.list.issues tbody tr.issue.context-men
 body.controller-issues.action-index table.list.issues tbody tr.issue.ui-state-highlight td,
 body.controller-issues.action-index table.list.issues tbody tr.issue.selected td {
   background-color: var(--oh-surface-selected);
+  color: var(--oh-text-primary);
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue.context-menu-selection td a,
+body.controller-issues.action-index table.list.issues tbody tr.issue.ui-state-highlight td a,
+body.controller-issues.action-index table.list.issues tbody tr.issue.selected td a {
+  color: var(--oh-text-primary) !important;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue.context-menu-selection td a .icon-svg,
+body.controller-issues.action-index table.list.issues tbody tr.issue.ui-state-highlight td a .icon-svg,
+body.controller-issues.action-index table.list.issues tbody tr.issue.selected td a .icon-svg {
+  stroke: var(--oh-text-primary) !important;
 }
 
 body.controller-issues.action-index table.list.issues tbody tr.issue.overdue td.due_date,
@@ -408,7 +422,7 @@ body.controller-issues.action-index table.list.issues tbody tr.issue.closed td {
 }
 
 body.controller-issues.action-index table.list.issues tbody tr.issue td.checkbox,
-body.controller-issues.action-index table.list.issues tbody tr.issue td.buttons {
+body.controller-issues.action-index table.list.issues tbody tr.issue td.issue-actions {
   background-clip: padding-box;
   white-space: nowrap;
 }
@@ -418,32 +432,40 @@ body.controller-issues.action-index table.list.issues tbody tr.issue td.checkbox
   text-align: center;
 }
 
-body.controller-issues.action-index table.list.issues tbody tr.issue td.buttons {
+body.controller-issues.action-index table.list.issues tbody tr.issue td.issue-actions {
   padding-left: 0.4rem;
   padding-right: 0.55rem;
   text-align: right;
-  width: 1%;
 }
 
-body.controller-issues.action-index table.list.issues tbody tr.issue td.buttons a {
-  border-radius: 0.4rem;
+body.controller-issues.action-index table.list.issues tbody tr.issue td.issue-actions a {
   color: var(--oh-text-tertiary);
-  display: inline-flex;
-  justify-content: center;
+  display: inline-block;
   line-height: 1;
-  padding: 0.15rem;
+  padding: 0;
   text-decoration: none;
+  transition: color 0.15s ease;
   vertical-align: middle;
 }
 
-body.controller-issues.action-index table.list.issues tbody tr.issue td.buttons a:hover {
-  background-color: rgba(230, 235, 242, 0.9);
+body.controller-issues.action-index table.list.issues tbody tr.issue td.issue-actions a:hover {
   color: var(--oh-text-primary);
 }
 
-body.controller-issues.action-index table.list.issues tbody tr.issue td.buttons a:focus-visible {
-  box-shadow: 0 0 0 3px var(--oh-focus-ring);
+body.controller-issues.action-index table.list.issues tbody tr.issue td.issue-actions a:focus-visible {
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 2px var(--oh-focus-ring);
   outline: none;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue td.issue-actions a .icon-svg {
+  stroke: var(--oh-text-tertiary);
+  transition: stroke 0.15s ease;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue td.issue-actions a:hover .icon-svg,
+body.controller-issues.action-index table.list.issues tbody tr.issue td.issue-actions a:focus-visible .icon-svg {
+  stroke: var(--oh-text-primary);
 }
 
 body.controller-issues.action-index table.list.issues tbody tr.group td {
@@ -2869,6 +2891,43 @@ body.controller-my.action-page #block-form .icon:active,
 body.controller-projects.action-show #content .issues.box h3 .icon-only:active {
   background-color: rgba(230, 235, 242, 0.92);
   border-color: rgba(126, 145, 166, 0.28);
+}
+
+body.controller-projects.action-show #content > .contextual .drdn,
+body.controller-projects.action-show #content > .contextual .drdn-trigger {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+body.controller-projects.action-show #content > .contextual .drdn-trigger {
+  align-items: center;
+  border-radius: 0.45rem;
+  color: var(--oh-text-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  min-height: 1.9rem;
+  min-width: 1.9rem;
+  padding: 0.2rem 0.3rem;
+  transition:
+    background-color var(--oh-duration-fast) var(--oh-ease-standard),
+    box-shadow var(--oh-duration-fast) var(--oh-ease-standard),
+    color var(--oh-duration-fast) var(--oh-ease-standard);
+}
+
+body.controller-projects.action-show #content > .contextual .drdn-trigger:hover,
+body.controller-projects.action-show #content > .contextual .drdn.expanded > .drdn-trigger {
+  background-color: var(--oh-surface-hover);
+  color: var(--oh-text-primary);
+}
+
+body.controller-projects.action-show #content > .contextual .drdn-trigger:focus-visible {
+  box-shadow: 0 0 0 3px var(--oh-focus-ring);
+  outline: none;
+}
+
+body.controller-projects.action-show #content > .contextual .drdn-trigger .icon-svg {
+  stroke: currentColor;
 }
 
 body.controller-my.action-page #my-page .mypage-box .dashboard-card-actions a.ui-sortable-handle,

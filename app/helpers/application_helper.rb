@@ -861,8 +861,12 @@ module ApplicationHelper
     content = capture(&)
     if content.present?
       trigger =
-        content_tag('span', sprite_icon('3-bullets', l(:button_actions)), :class => 'icon-only icon-actions',
-                    :title => l(:button_actions))
+        content_tag(
+          'span',
+          sprite_icon('3-bullets', l(:button_actions), icon_only: true),
+          :class => 'icon-only icon-actions',
+          :aria => {:label => l(:button_actions)}
+        )
       trigger = content_tag('span', trigger, :class => 'drdn-trigger')
       content = content_tag('div', content, :class => 'drdn-items')
       content = content_tag('div', content, :class => 'drdn-content')
@@ -1615,7 +1619,12 @@ module ApplicationHelper
   end
 
   def link_to_context_menu
-    link_to sprite_icon('3-bullets', l(:button_actions)), '#', title: l(:button_actions), class: 'icon-only icon-actions js-contextmenu '
+    link_to(
+      sprite_icon('3-bullets', l(:button_actions)),
+      '#',
+      class: 'icon-only icon-actions js-contextmenu ',
+      aria: {label: l(:button_actions)}
+    )
   end
 
   # Helper to render JSON in views

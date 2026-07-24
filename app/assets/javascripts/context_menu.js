@@ -6,6 +6,10 @@
 
 var contextMenuObserving;
 
+function contextMenuSuppressRowHighlight() {
+  return $('body').is('.controller-issues.action-index');
+}
+
 function contextMenuRightClick(event) {
   var target = $(event.target);
   if (target.is('a:not(.js-contextmenu)')) {return;}
@@ -195,7 +199,9 @@ function contextMenuToggleSelection(tr) {
 }
 
 function contextMenuAddSelection(tr) {
-  tr.addClass('context-menu-selection');
+  if (!contextMenuSuppressRowHighlight()) {
+    tr.addClass('context-menu-selection');
+  }
   contextMenuCheckSelectionBox(tr, true);
 }
 

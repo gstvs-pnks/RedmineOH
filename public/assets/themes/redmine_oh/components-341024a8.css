@@ -1,5 +1,4 @@
 /* Buttons */
-#content .buttons,
 #content p.buttons,
 #content div.buttons {
   align-items: center;
@@ -8,7 +7,8 @@
   gap: var(--oh-space-2);
 }
 
-#content .buttons {
+#content p.buttons,
+#content div.buttons {
   margin-bottom: var(--oh-space-5);
   margin-top: var(--oh-space-4);
 }
@@ -17,7 +17,6 @@
 #content input[type="button"],
 #content form button[type="submit"],
 #content form button[type="button"],
-#content .buttons button:not(.tab-left):not(.tab-right):not(.jstb_button),
 #content p.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button),
 #content div.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button) {
   appearance: auto;
@@ -44,7 +43,6 @@
 #content input[type="button"]:hover,
 #content form button[type="submit"]:hover,
 #content form button[type="button"]:hover,
-#content .buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):hover,
 #content p.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):hover,
 #content div.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):hover {
   background-color: var(--oh-surface-hover);
@@ -55,7 +53,6 @@
 #content input[type="button"]:focus-visible,
 #content form button[type="submit"]:focus-visible,
 #content form button[type="button"]:focus-visible,
-#content .buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):focus-visible,
 #content p.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):focus-visible,
 #content div.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):focus-visible {
   outline: none;
@@ -66,7 +63,6 @@
 #content input[type="button"]:active,
 #content form button[type="submit"]:active,
 #content form button[type="button"]:active,
-#content .buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):active,
 #content p.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):active,
 #content div.buttons button:not(.tab-left):not(.tab-right):not(.jstb_button):active {
   background-color: var(--oh-surface-tertiary);
@@ -97,7 +93,8 @@
 #content form button[type="submit"].delete,
 #content form button[type="button"].delete,
 #content button.delete,
-#content .buttons .delete input[type="submit"] {
+#content p.buttons .delete input[type="submit"],
+#content div.buttons .delete input[type="submit"] {
   background-color: var(--oh-danger-soft);
   border-color: rgba(194, 87, 87, 0.28);
   color: var(--oh-danger);
@@ -108,7 +105,8 @@
 #content form button[type="submit"].delete:hover,
 #content form button[type="button"].delete:hover,
 #content button.delete:hover,
-#content .buttons .delete input[type="submit"]:hover {
+#content p.buttons .delete input[type="submit"]:hover,
+#content div.buttons .delete input[type="submit"]:hover {
   background-color: #f7dede;
   border-color: rgba(194, 87, 87, 0.4);
 }
