@@ -1,9 +1,8 @@
 /* RedmineOH theme entry point */
 
-@import url(../../application.css);
-@import url("tokens.css");
-@import url("base.css");
-@import url("layout.css");
+@import url("/assets/application-2ac82834.css");
+@import url("/assets/themes/redmine_oh/tokens-5ba4b3c2.css");
+@import url("/assets/themes/redmine_oh/base-dd72773d.css");
 
 :root {
   --oh-theme-name: "RedmineOH";

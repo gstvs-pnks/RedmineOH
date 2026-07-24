@@ -1,0 +1,331 @@
+/* Application shell */
+#top-menu {
+  background-color: #24303c;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: var(--oh-text-xs);
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  min-height: 2rem;
+  padding: var(--oh-space-2) var(--oh-space-4);
+}
+
+#top-menu ul {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+#top-menu li {
+  align-items: center;
+  display: inline-flex;
+  float: none;
+  position: relative;
+}
+
+#top-menu li + li {
+  margin-left: var(--oh-space-2);
+  padding-left: var(--oh-space-2);
+}
+
+#top-menu li + li::before {
+  background: rgba(255, 255, 255, 0.16);
+  content: "";
+  height: 0.75rem;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+}
+
+#top-menu a,
+#top-menu #loggedas a,
+#top-menu #account a {
+  border-radius: 0.375rem;
+  color: inherit;
+  display: inline-flex;
+  font-weight: var(--oh-weight-medium);
+  margin-right: 0;
+  padding: 0.125rem 0.25rem;
+  text-decoration: none;
+  transition:
+    background-color var(--oh-duration-fast) var(--oh-ease-standard),
+    color var(--oh-duration-fast) var(--oh-ease-standard);
+}
+
+#top-menu a:hover,
+#top-menu #loggedas a:hover,
+#top-menu #account a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+#top-menu a:focus-visible,
+#top-menu #loggedas a:focus-visible,
+#top-menu #account a:focus-visible {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  outline: 2px solid rgba(255, 255, 255, 0.26);
+  outline-offset: 1px;
+}
+
+#top-menu #loggedas {
+  color: rgba(255, 255, 255, 0.68);
+  float: right;
+  font-weight: var(--oh-weight-regular);
+  margin-right: var(--oh-space-2);
+  padding: 0.125rem 0;
+}
+
+#account {
+  float: right;
+}
+
+#account ul {
+  justify-content: flex-end;
+}
+
+#account a {
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: var(--oh-weight-regular);
+}
+
+#account a:hover,
+#account a:focus-visible {
+  color: #ffffff;
+}
+
+#header {
+  background-color: var(--oh-surface);
+  border-bottom: 1px solid var(--oh-border-subtle);
+  color: var(--oh-text-primary);
+  min-height: 0;
+  padding: var(--oh-space-3) var(--oh-space-4) calc(var(--oh-space-3) + 2.5rem);
+  position: relative;
+}
+
+#header a {
+  color: inherit;
+}
+
+#header h1 {
+  color: var(--oh-text-primary);
+  font-size: var(--oh-text-xl);
+  font-weight: var(--oh-weight-semibold);
+  line-height: var(--oh-line-compact);
+  margin: 0;
+  max-width: calc(100% - 24rem);
+  overflow: hidden;
+  padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#header h1 .breadcrumbs {
+  color: var(--oh-text-tertiary);
+  display: block;
+  font-size: var(--oh-text-xs);
+  font-weight: var(--oh-weight-medium);
+  line-height: 1.35;
+  margin-bottom: 0.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#quick-search {
+  align-items: center;
+  display: flex;
+  float: right;
+  gap: var(--oh-space-2);
+  margin-left: var(--oh-space-4);
+  max-width: 22rem;
+}
+
+#quick-search form {
+  align-items: center;
+  display: inline-flex;
+  float: none;
+  gap: var(--oh-space-2);
+  margin-right: 0;
+}
+
+#quick-search form label {
+  color: var(--oh-text-secondary);
+  font-size: var(--oh-text-sm);
+  font-weight: var(--oh-weight-medium);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+#quick-search form a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#quick-search form a:hover {
+  color: var(--oh-text-primary);
+}
+
+#quick-search form a:focus-visible {
+  border-radius: 0.375rem;
+  outline: 2px solid var(--oh-focus-ring);
+  outline-offset: 2px;
+}
+
+#quick-search #q {
+  background-color: var(--oh-surface-secondary);
+  border: 1px solid var(--oh-border-subtle);
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+  color: var(--oh-text-primary);
+  height: var(--oh-control-height-compact);
+  padding: 0 var(--oh-space-3);
+  vertical-align: middle;
+  width: 10rem;
+}
+
+#quick-search #q:hover {
+  border-color: var(--oh-border-default);
+}
+
+#quick-search #q:focus {
+  border-color: var(--oh-accent);
+  outline: none;
+}
+
+#quick-search #q:focus-visible {
+  box-shadow: 0 0 0 3px var(--oh-focus-ring);
+}
+
+#quick-search #project-jump {
+  float: none;
+}
+
+#quick-search select {
+  background-color: var(--oh-surface-secondary);
+  border: 1px solid var(--oh-border-subtle);
+  border-radius: 0.4rem;
+  color: var(--oh-text-primary);
+  height: var(--oh-control-height-compact);
+  max-width: 10rem;
+}
+
+#main-menu {
+  background-color: var(--oh-surface-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.72);
+  bottom: 0;
+  left: 0;
+  margin-right: 0;
+  padding: var(--oh-space-2) var(--oh-space-4) 0;
+  width: 100%;
+}
+
+#main-menu ul {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oh-space-1);
+  white-space: normal;
+  width: auto;
+}
+
+#main-menu li {
+  display: inline-flex;
+  float: none;
+  margin: 0;
+  position: relative;
+}
+
+#main-menu li a {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  border-top-left-radius: 0.55rem;
+  border-top-right-radius: 0.55rem;
+  color: var(--oh-text-secondary);
+  font-size: var(--oh-text-sm);
+  font-weight: var(--oh-weight-medium);
+  line-height: 1.25;
+  padding: 0.45rem 0.7rem 0.5rem;
+  transition:
+    background-color var(--oh-duration-fast) var(--oh-ease-standard),
+    border-color var(--oh-duration-fast) var(--oh-ease-standard),
+    color var(--oh-duration-fast) var(--oh-ease-standard);
+}
+
+#main-menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.72);
+  border-color: rgba(217, 224, 234, 0.8);
+  color: var(--oh-text-primary);
+}
+
+#main-menu li a:focus-visible {
+  background-color: var(--oh-surface-elevated);
+  border-color: var(--oh-border-default);
+  color: var(--oh-text-primary);
+  outline: 2px solid var(--oh-focus-ring);
+  outline-offset: 1px;
+}
+
+#main-menu li a.selected,
+#main-menu li a.selected:hover {
+  background-color: var(--oh-surface-elevated);
+  border-color: var(--oh-border-default);
+  color: var(--oh-text-primary);
+  font-weight: var(--oh-weight-semibold);
+}
+
+#main-menu li a.new-object {
+  color: var(--oh-accent-active);
+}
+
+#main-menu li a.new-object:hover,
+#main-menu li a.new-object:focus-visible {
+  color: var(--oh-accent-hover);
+}
+
+#main-menu li:hover ul.menu-children,
+#main-menu li ul.menu-children.visible {
+  display: block;
+}
+
+#main-menu .menu-children {
+  background-color: var(--oh-surface-elevated);
+  border: 1px solid var(--oh-border-default);
+  border-radius: 0.65rem;
+  box-shadow: var(--oh-shadow-subtle);
+  margin-top: 0.3rem;
+  min-width: 12rem;
+  overflow: hidden;
+  width: max-content;
+}
+
+#main-menu .menu-children li {
+  display: block;
+  float: none;
+  width: 100%;
+}
+
+#main-menu .menu-children li a {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  color: var(--oh-text-secondary);
+  font-weight: var(--oh-weight-regular);
+  padding: 0.5rem 0.8rem;
+}
+
+#main-menu .menu-children li a:hover,
+#main-menu .menu-children li a:focus-visible {
+  background-color: var(--oh-surface-hover);
+  color: var(--oh-text-primary);
+}
+
+#main-menu .tabs-buttons {
+  background-color: transparent;
+  border-bottom-color: transparent;
+  right: var(--oh-space-3);
+}
