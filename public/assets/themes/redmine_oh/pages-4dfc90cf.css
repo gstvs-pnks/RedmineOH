@@ -1,0 +1,626 @@
+/* Query workspace */
+#query_form {
+  margin-bottom: var(--oh-space-4);
+}
+
+#query_form_with_buttons {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(247, 249, 252, 0.92));
+  border: 1px solid var(--oh-border-subtle);
+  border-radius: var(--oh-radius-container);
+  box-shadow: none;
+  margin-bottom: var(--oh-space-4);
+  overflow: hidden;
+}
+
+#query_form_content {
+  color: var(--oh-text-secondary);
+  font-size: var(--oh-text-sm);
+  padding: var(--oh-space-3) var(--oh-space-4) 0;
+}
+
+#query_form_content > fieldset {
+  border: 0;
+  border-top: 1px solid var(--oh-border-subtle);
+  margin: 0;
+  max-width: 100%;
+  min-width: 0;
+  padding: var(--oh-space-3) 0;
+}
+
+#query_form_content > fieldset:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+#query_form_content > fieldset > legend {
+  align-items: center;
+  color: var(--oh-text-primary);
+  display: inline-flex;
+  float: none;
+  font-size: var(--oh-text-sm);
+  font-weight: var(--oh-weight-semibold);
+  gap: var(--oh-space-2);
+  line-height: 1.2;
+  margin: 0;
+  padding: 0 0 var(--oh-space-2);
+}
+
+#query_form_content > fieldset.collapsed > legend {
+  color: var(--oh-text-secondary);
+  padding-bottom: 0;
+}
+
+#query_form_content > fieldset > legend .icon-svg {
+  color: inherit;
+  flex-shrink: 0;
+}
+
+#query_form_content > fieldset > div {
+  clear: both;
+}
+
+#query_form_content #options > div > div,
+#query_form_content #list-definition > div {
+  align-items: flex-start;
+  border-top: 1px solid rgba(126, 145, 166, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oh-space-2) var(--oh-space-4);
+  margin: 0;
+  padding: var(--oh-space-3) 0 0;
+}
+
+#query_form_content #options > div > div:first-child,
+#query_form_content #list-definition > div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+#query_form_content #options .field,
+#query_form_content #list-definition > div .field {
+  color: var(--oh-text-secondary);
+  flex: 0 0 10rem;
+  font-size: var(--oh-text-xs);
+  font-weight: var(--oh-weight-semibold);
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  max-width: 100%;
+  padding-top: 0.45rem;
+}
+
+#query_form_content #options .field label {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+#query_form_content #options > div > div > :not(.field),
+#query_form_content #list-definition > div > :not(.field) {
+  flex: 1 1 18rem;
+  min-width: 0;
+}
+
+#query_form_content .query-columns label {
+  color: var(--oh-text-secondary);
+  display: block;
+  font-weight: var(--oh-weight-regular);
+  margin-top: var(--oh-space-1);
+}
+
+#query_form_content .query-columns select {
+  min-width: 10rem;
+}
+
+#query_form_content #list-definition .buttons {
+  margin: 0;
+}
+
+/* Filter rows */
+#filters-table {
+  float: none;
+  width: 100%;
+}
+
+#filters-table .filter {
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--oh-border-subtle);
+  border-radius: var(--oh-radius-control);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oh-space-1) var(--oh-space-2);
+  margin: 0 0 var(--oh-space-2);
+  padding: 0.375rem var(--oh-space-2);
+}
+
+#filters-table .filter:last-child {
+  margin-bottom: 0;
+}
+
+#filters-table .filter > label,
+#filters-table .filter > input[type="checkbox"] {
+  flex-shrink: 0;
+}
+
+#filters-table .field {
+  color: var(--oh-text-primary);
+  flex: 0 1 14rem;
+  font-size: var(--oh-text-sm);
+  font-weight: var(--oh-weight-medium);
+  line-height: 1.35;
+  max-width: 100%;
+  min-width: 10rem;
+  width: auto;
+}
+
+#filters-table .field label {
+  color: inherit;
+  display: block;
+  font-size: inherit;
+  font-weight: inherit;
+  overflow-wrap: anywhere;
+}
+
+#filters-table .operator {
+  flex: 0 0 auto;
+}
+
+#filters-table .operator select {
+  width: 8.5rem;
+}
+
+#filters-table .values {
+  flex: 1 1 16rem;
+  min-width: 12rem;
+}
+
+#filters-table .values input[type="text"],
+#filters-table .values input[type="number"],
+#filters-table .values input[type="date"],
+#filters-table .values select,
+#filters-table .values span {
+  max-width: 100%;
+}
+
+#filters-table .values .autocomplete {
+  width: min(100%, 22rem);
+}
+
+#filters-table .values .value,
+#filters-table .values .between,
+#filters-table .values label.inline {
+  margin-right: var(--oh-space-2);
+}
+
+#filters-table .values label.inline {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--oh-space-2);
+}
+
+#query_form .add-filter {
+  align-items: center;
+  border-top: 1px solid rgba(126, 145, 166, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  float: none;
+  gap: var(--oh-space-2) var(--oh-space-3);
+  justify-content: flex-end;
+  margin-top: var(--oh-space-3);
+  padding-top: var(--oh-space-3);
+  text-align: left;
+  vertical-align: top;
+  width: 100%;
+}
+
+#query_form .add-filter label {
+  color: var(--oh-text-secondary);
+  flex: 0 0 auto;
+  font-size: var(--oh-text-xs);
+  font-weight: var(--oh-weight-semibold);
+  letter-spacing: 0.02em;
+}
+
+#query_form .add-filter select {
+  max-width: min(100%, 18rem);
+}
+
+/* Query actions */
+#query_form_with_buttons > p.buttons {
+  align-items: center;
+  background-color: rgba(241, 244, 248, 0.92);
+  border-top: 1px solid var(--oh-border-subtle);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oh-space-2);
+  margin: 0;
+  padding: var(--oh-space-3) var(--oh-space-4);
+}
+
+#query_form_with_buttons > p.buttons a {
+  align-items: center;
+  background-color: var(--oh-surface-elevated);
+  border: 1px solid var(--oh-border-default);
+  border-radius: var(--oh-radius-control);
+  color: var(--oh-text-primary);
+  display: inline-flex;
+  font-size: var(--oh-text-sm);
+  font-weight: var(--oh-weight-medium);
+  gap: var(--oh-space-2);
+  line-height: calc(var(--oh-control-height) - 2px);
+  min-height: var(--oh-control-height);
+  padding: 0 var(--oh-space-4);
+  text-decoration: none;
+  transition:
+    background-color var(--oh-duration-fast) var(--oh-ease-standard),
+    border-color var(--oh-duration-fast) var(--oh-ease-standard),
+    box-shadow var(--oh-duration-fast) var(--oh-ease-standard),
+    color var(--oh-duration-fast) var(--oh-ease-standard);
+}
+
+#query_form_with_buttons > p.buttons a:hover {
+  background-color: var(--oh-surface-hover);
+  border-color: var(--oh-border-strong);
+  color: var(--oh-text-primary);
+}
+
+#query_form_with_buttons > p.buttons a:focus-visible {
+  box-shadow: 0 0 0 3px var(--oh-focus-ring);
+  outline: none;
+}
+
+#query_form_with_buttons > p.buttons a.icon-checked {
+  background-color: var(--oh-accent-soft);
+  border-color: rgba(47, 124, 246, 0.22);
+  color: var(--oh-accent-active);
+  font-weight: var(--oh-weight-semibold);
+}
+
+#query_form_with_buttons > p.buttons a.icon-checked:hover {
+  background-color: #dceaff;
+  border-color: rgba(47, 124, 246, 0.34);
+  color: var(--oh-accent-active);
+}
+
+#query_form_with_buttons > p.buttons .icon-svg {
+  flex-shrink: 0;
+}
+
+/* Issue table */
+body.controller-issues.action-index .query-totals {
+  color: var(--oh-text-secondary);
+  font-size: var(--oh-text-xs);
+  margin: 0 0 var(--oh-space-2);
+  text-align: right;
+}
+
+body.controller-issues.action-index .query-totals .value {
+  color: var(--oh-text-primary);
+  font-weight: var(--oh-weight-semibold);
+}
+
+body.controller-issues.action-index .autoscroll {
+  background-color: var(--oh-surface);
+  border: 1px solid var(--oh-border-subtle);
+  border-radius: var(--oh-radius-container);
+  margin-bottom: var(--oh-space-4);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0;
+  position: relative;
+}
+
+body.controller-issues.action-index table.list.issues {
+  background-color: transparent;
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  width: 100%;
+}
+
+/* Table header */
+body.controller-issues.action-index table.list.issues thead th {
+  background-color: var(--oh-surface-secondary);
+  border-bottom: 1px solid var(--oh-border-subtle);
+  color: var(--oh-text-secondary);
+  font-size: var(--oh-text-xs);
+  font-weight: var(--oh-weight-semibold);
+  padding: 0.7rem 0.75rem;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+body.controller-issues.action-index table.list.issues thead th:first-child {
+  border-top-left-radius: calc(var(--oh-radius-container) - 1px);
+}
+
+body.controller-issues.action-index table.list.issues thead th:last-child {
+  border-top-right-radius: calc(var(--oh-radius-container) - 1px);
+}
+
+body.controller-issues.action-index table.list.issues thead th.checkbox,
+body.controller-issues.action-index table.list.issues thead th.buttons {
+  width: 1%;
+}
+
+body.controller-issues.action-index table.list.issues thead th.buttons,
+body.controller-issues.action-index table.list.issues tbody td.buttons {
+  display: table-cell;
+  margin: 0;
+}
+
+body.controller-issues.action-index table.list.issues thead th a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body.controller-issues.action-index table.list.issues thead th a:hover {
+  color: var(--oh-text-primary);
+  text-decoration: none;
+}
+
+/* Issue rows */
+body.controller-issues.action-index table.list.issues tbody td {
+  border-bottom: 1px solid rgba(126, 145, 166, 0.14);
+  color: var(--oh-text-primary);
+  font-size: var(--oh-text-sm);
+  line-height: 1.4;
+  padding: 0.72rem 0.75rem;
+  vertical-align: middle;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue td.subject {
+  max-width: 0;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue td.subject a {
+  display: inline;
+  overflow-wrap: anywhere;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue td.subject,
+body.controller-issues.action-index table.list.issues tbody tr.issue td.description {
+  word-break: break-word;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue:hover td {
+  background-color: rgba(243, 247, 252, 0.82);
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue.context-menu-selection td,
+body.controller-issues.action-index table.list.issues tbody tr.issue.ui-state-highlight td,
+body.controller-issues.action-index table.list.issues tbody tr.issue.selected td {
+  background-color: var(--oh-surface-selected);
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue.overdue td.due_date,
+body.controller-issues.action-index table.list.issues tbody tr.issue.overdue td.due_date a {
+  color: var(--oh-danger);
+  font-weight: var(--oh-weight-medium);
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue.closed td {
+  color: var(--oh-text-secondary);
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue td.checkbox,
+body.controller-issues.action-index table.list.issues tbody tr.issue td.buttons {
+  background-clip: padding-box;
+  white-space: nowrap;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue td.checkbox {
+  padding-right: 0.4rem;
+  text-align: center;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue td.buttons {
+  padding-left: 0.4rem;
+  padding-right: 0.55rem;
+  text-align: right;
+  width: 1%;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue td.buttons a {
+  border-radius: 0.4rem;
+  color: var(--oh-text-tertiary);
+  display: inline-flex;
+  justify-content: center;
+  line-height: 1;
+  padding: 0.15rem;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue td.buttons a:hover {
+  background-color: rgba(230, 235, 242, 0.9);
+  color: var(--oh-text-primary);
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue td.buttons a:focus-visible {
+  box-shadow: 0 0 0 3px var(--oh-focus-ring);
+  outline: none;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.group td {
+  background-color: rgba(247, 249, 252, 0.9);
+  border-bottom: 1px solid var(--oh-border-subtle);
+  color: var(--oh-text-secondary);
+  font-size: var(--oh-text-xs);
+  font-weight: var(--oh-weight-semibold);
+  padding: 0.6rem 0.75rem;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.group .name {
+  color: var(--oh-text-primary);
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.group .count {
+  background: none;
+  border: 0;
+  color: var(--oh-text-secondary);
+  font-size: inherit;
+  font-weight: var(--oh-weight-medium);
+  min-width: 0;
+  padding: 0;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr td.block_column {
+  background-color: rgba(247, 249, 252, 0.66);
+  color: var(--oh-text-secondary);
+  font-size: var(--oh-text-xs);
+  line-height: 1.5;
+  padding-top: 0.55rem;
+}
+
+body.controller-issues.action-index table.list.issues tbody tr td.block_column > span:first-child {
+  color: var(--oh-text-primary);
+  display: inline-block;
+  font-weight: var(--oh-weight-semibold);
+  margin-right: var(--oh-space-2);
+}
+
+/* Sort and context actions */
+body.controller-issues.action-index table.list.issues thead th[aria-sort] {
+  background-color: #eef4ff;
+  color: var(--oh-text-primary);
+}
+
+body.controller-issues.action-index table.list.issues thead th.sort a,
+body.controller-issues.action-index table.list.issues thead th[aria-sort] a,
+body.controller-issues.action-index a.sort {
+  color: var(--oh-text-primary);
+  font-weight: var(--oh-weight-semibold);
+}
+
+body.controller-issues.action-index table.list.issues tbody tr.issue.hascontextmenu {
+  cursor: context-menu;
+}
+
+/* Pagination and exports */
+body.controller-issues.action-index span.pagination {
+  align-items: center;
+  color: var(--oh-text-secondary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oh-space-2) var(--oh-space-3);
+  margin: 0 0 var(--oh-space-4);
+}
+
+body.controller-issues.action-index .pagination ul.pages {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--oh-space-1);
+  margin: 0;
+  padding: 0;
+}
+
+body.controller-issues.action-index .pagination ul.pages li {
+  background-color: var(--oh-surface-elevated);
+  border: 1px solid var(--oh-border-subtle);
+  border-radius: 0.45rem;
+  line-height: 1;
+  margin: 0;
+  min-width: 2rem;
+}
+
+body.controller-issues.action-index .pagination ul.pages li a,
+body.controller-issues.action-index .pagination ul.pages li span {
+  color: var(--oh-text-secondary);
+  display: inline-flex;
+  justify-content: center;
+  min-width: 2rem;
+  padding: 0.45rem 0.6rem;
+  text-decoration: none;
+}
+
+body.controller-issues.action-index .pagination ul.pages li.page:hover {
+  background-color: var(--oh-surface-hover);
+}
+
+body.controller-issues.action-index .pagination ul.pages li.page a:hover,
+body.controller-issues.action-index .pagination ul.pages li.page a:active {
+  color: var(--oh-text-primary);
+  text-decoration: none;
+}
+
+body.controller-issues.action-index .pagination ul.pages li.current {
+  background-color: var(--oh-accent-soft);
+  border-color: rgba(47, 124, 246, 0.26);
+}
+
+body.controller-issues.action-index .pagination ul.pages li.current span {
+  color: var(--oh-accent-active);
+  font-weight: var(--oh-weight-semibold);
+}
+
+body.controller-issues.action-index .pagination ul.pages li span.previous,
+body.controller-issues.action-index .pagination ul.pages li span.next {
+  color: var(--oh-text-disabled);
+}
+
+body.controller-issues.action-index .pagination .items {
+  font-size: var(--oh-text-xs);
+}
+
+body.controller-issues.action-index .pagination .per-page {
+  font-size: var(--oh-text-xs);
+}
+
+body.controller-issues.action-index .pagination .per-page span.selected {
+  color: var(--oh-text-primary);
+  font-weight: var(--oh-weight-semibold);
+}
+
+body.controller-issues.action-index p.other-formats {
+  align-items: center;
+  color: var(--oh-text-secondary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oh-space-2);
+  justify-content: flex-end;
+  margin: 0;
+  text-align: right;
+}
+
+body.controller-issues.action-index .other-formats span + span::before {
+  color: var(--oh-text-disabled);
+  content: "|";
+  margin-right: var(--oh-space-2);
+}
+
+body.controller-issues.action-index p.other-formats a {
+  color: var(--oh-text-secondary);
+  font-size: var(--oh-text-xs);
+  font-weight: var(--oh-weight-medium);
+  text-decoration: none;
+}
+
+body.controller-issues.action-index p.other-formats a:hover {
+  color: var(--oh-text-primary);
+  text-decoration: underline;
+}
+
+body.controller-issues.action-index p.nodata {
+  background-color: var(--oh-surface-secondary);
+  border: 1px solid var(--oh-border-subtle);
+  border-radius: var(--oh-radius-container);
+  margin-top: var(--oh-space-4);
+  padding: var(--oh-space-5);
+  text-align: center;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #query_form_with_buttons > p.buttons a,
+  body.controller-issues.action-index table.list.issues tbody tr.issue td,
+  body.controller-issues.action-index table.list.issues tbody tr.issue td.buttons a,
+  body.controller-issues.action-index .pagination ul.pages li,
+  body.controller-issues.action-index p.other-formats a {
+    transition: none;
+  }
+}
