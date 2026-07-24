@@ -1,6 +1,6 @@
-# RedmineM89
- As for now, a simple Redmine project for Madara89.
- Experimenting with plugins, themes, afterwards Redmine installation will be made more portable. 
+# RedmineOH
+ Started in life as a base Redmine pilot project for one customer, now doing a complete overhaul. 
+ Who knows what will come out, but making public. 
 
 
 ## Redmine how-to : 
