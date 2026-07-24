@@ -178,12 +178,12 @@
 }
 
 #header.oh-workspace-header {
-  /* Redmine's base background shorthand needs a full background reset to remove the blue band. */
-  background: var(--oh-surface) !important;
+  /* Redmine's base background shorthand needs this color override to win. */
+  background-color: var(--oh-surface) !important;
   border-bottom: 1px solid var(--oh-border-subtle);
   color: var(--oh-text-primary);
   min-height: 0;
-  padding: var(--oh-space-2) var(--oh-space-4) 0;
+  padding: var(--oh-space-3) var(--oh-space-4) 0;
   position: relative;
 }
 
@@ -192,13 +192,13 @@
 }
 
 .oh-workspace-title {
-  padding-bottom: var(--oh-space-2);
+  padding-bottom: var(--oh-space-3);
 }
 
 #header h1 {
   color: var(--oh-text-primary);
-  font-size: var(--oh-text-lg);
-  font-weight: var(--oh-weight-medium);
+  font-size: var(--oh-text-xl);
+  font-weight: var(--oh-weight-semibold);
   line-height: var(--oh-line-compact);
   margin: 0;
   overflow: hidden;
@@ -364,14 +364,6 @@
   min-height: 100%;
   overflow-x: auto;
   padding: var(--oh-space-4) var(--oh-space-5) var(--oh-space-5);
-}
-
-.oh-main-content > .tabs ul {
-  padding-left: 0;
-}
-
-.oh-main-content > .tabs ul li:first-child a {
-  border-top-left-radius: 0;
 }
 
 #sidebar,

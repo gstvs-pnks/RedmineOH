@@ -366,14 +366,6 @@
   padding: var(--oh-space-4) var(--oh-space-5) var(--oh-space-5);
 }
 
-.oh-main-content > .tabs ul {
-  padding-left: 0;
-}
-
-.oh-main-content > .tabs ul li:first-child a {
-  border-top-left-radius: 0;
-}
-
 #sidebar,
 #sidebar-switch-panel {
   display: none;
